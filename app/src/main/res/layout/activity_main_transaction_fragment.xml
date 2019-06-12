@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+>
+    <data>
+
+        <variable
+            name="handlers"
+            type="com.razytech.razynet.gui.maintransaction.MainTransactionFragment.MyClickHandlers"/>
+    </data>
+
+
+<android.support.design.widget.CoordinatorLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".gui.maintransaction.MainTransactionFragment"
+    android:id="@+id/coormaintrans"
+    android:background="@color/lightBlack"
+    >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:layout_marginTop="30dp"
+        >
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            >
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="130dp"
+            android:layout_margin="10dp"
+            android:background="@color/darkBlack"
+            android:onClick="@{handlers.btnRedeem}"
+            >
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@mipmap/redeem"
+                android:padding="15dp"
+                android:layout_centerInParent="true"
+                />
+
+        </RelativeLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/redeem"
+                android:textColor="@color/darkred"
+                android:textSize="20sp"
+                android:fontFamily="@font/ralewaybold"
+                android:gravity="center"
+
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            >
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="130dp"
+                android:layout_margin="10dp"
+                android:background="@color/darkBlack"
+                android:onClick="@{handlers.btnTransfer}"
+                >
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@mipmap/transfer"
+                android:padding="15dp"
+                android:layout_centerInParent="true"
+                />
+        </RelativeLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/transfer"
+                android:textColor="@color/darkred"
+                android:textSize="20sp"
+                android:fontFamily="@font/ralewaybold"
+                android:gravity="center"
+                />
+        </LinearLayout>
+    </LinearLayout>
+
+    </RelativeLayout>
+
+
+</android.support.design.widget.CoordinatorLayout>
+
+</layout>

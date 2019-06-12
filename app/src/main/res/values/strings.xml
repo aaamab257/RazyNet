@@ -1,0 +1,73 @@
+<resources>
+    <string name="app_name">RazyNet</string>
+
+    <string name="noconnection">No Network Connection</string>
+    <string name="loading">Loading ......</string>
+
+
+    <string name="create_acc_user_hint">User Name</string>
+    <string name="create_acc_phone_hint">Phone Number</string>
+    <string name="create_acc_password_hint">Password</string>
+    <string name="create_acc_confpassword_hint">Confirm Password</string>
+    <string name="create_acc_nid_hint">NID Number</string>
+    <string name="create_acc_email_hint">Email</string>
+    <string name="gender">Gender :</string>
+    <string name="male_btn">Male</string>
+    <string name="female_btn">Female</string>
+    <string name="enter_invitation_code">Enter Invitation Code</string>
+    <string name="upload_nid_image">Upload  NID Image</string>
+    <string name="enter_btn">Enter</string>
+    <string name="add_btn">ADD</string>
+    <string name="city">City</string>
+    <string name="area">Area</string>
+    <string name="addwallet">Add Wallet</string>
+    <string name="yourwallet">Your Wallet :-</string>
+    <string name="topwallet">Top Wallet in System :-</string>
+    <string name="walletlevel"><font size="20">Wallet </font> <font size="11">(Level)</font></string>
+    <string name="walletlevelvalue"><font size="20">%1$s </font> <font size="11">( %2$s ) </font>   </string>
+    <string name="takephoto">Take Photo</string>
+    <string name="chooselib">Choose from library</string>
+    <string name="cancel">Cancel</string>
+    <string name="selectimage">Select File</string>
+    <string name="titledialoug">Add Photo</string>
+    <string name="invitation_code_txt">Invitation Code</string>
+    <string name="cropimage">Crop Image</string>
+    <string name="invitation_expired_txt">Your invitation code has expired. Please contact with your friend to invite you again.</string>
+
+    <string name="redeem">Redeem</string>
+    <string name="transfer">Transfer</string>
+    <string name="review_txt">Review</string>
+    <string name="points">Point</string>
+
+
+    <!-- empty filds -->
+    <string name="emptyuserName">Your User Name is Empty</string>
+    <string name="emptyPassword">Your Password is Empty</string>
+    <string name="emptynid">Your NID Number is Empty</string>
+    <string name="emptyinvcode">Your Invitation Code is Empty</string>
+    <string name="emptyConfPassword">Your Confirm Password is Empty</string>
+
+    <!--errors-->
+    <string name="tryagaing">Error occured, Please try again!</string>
+    <string name="invaildPasswordLenght">Password Length Should between 6 to 50</string>
+    <string name="Passworddonotmatch">Password does not match the confirm password.</string>
+
+
+    <!--Crop -->
+    <string name="crop_image_activity_title"></string>
+    <string name="crop_image_menu_rotate_left">Rotate counter clockwise</string>
+    <string name="crop_image_menu_rotate_right">Rotate</string>
+    <string name="crop_image_menu_crop">Crop</string>
+    <string name="crop_image_menu_flip">Flip</string>
+    <string name="crop_image_menu_flip_horizontally">Flip horizontally</string>
+    <string name="crop_image_menu_flip_vertically">Flip vertically</string>
+    <string name="pick_image_intent_chooser_title">Select source</string>
+    <string name="crop_image_activity_no_permissions">Cancelling, required permissions are not granted</string>
+
+
+    <!-- Test -->
+    <string name="create_acc_date_hint">DD / MM / YYYY</string>
+    <string name="forgot_your_txt">Forgot your</string>
+    <string name="welcome_name_txt">Mohamed Magdy</string>
+
+</resources>

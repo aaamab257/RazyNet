@@ -1,0 +1,102 @@
+apply plugin: 'com.android.application'
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    defaultConfig {
+        applicationId "com.razytech.razynet"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode 1
+        versionName "1.0.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
+        javaCompileOptions {
+            annotationProcessorOptions {
+                includeCompileClasspath = false
+            }
+        }
+    }
+
+    buildTypes {
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            buildConfigField("String", "API_LINK", "\"https://snsta.com/admin/api/\"")
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            buildConfigField("String", "API_LINK", "\"https://snsta.com/admin/api/\"")
+
+        }
+    }
+
+
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
+
+    dexOptions {
+        javaMaxHeapSize "4g"
+    }
+
+    dataBinding {
+        enabled = true
+    }
+}
+dependencies {
+
+    // basic init  lib
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "com.android.support:appcompat-v7:$rootProject.supportLibraryVersion"
+    implementation "com.android.support:design:$rootProject.supportLibraryVersion"
+    implementation "com.android.support:support-v4:$rootProject.supportLibraryVersion"
+    //implementation "com.android.support:$rootProject.supportLibraryVersion"
+    implementation "com.android.support:multidex:$rootProject.multidex"
+
+    //test lib
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+    testImplementation "junit:junit:$rootProject.junitVersion"
+
+    //  constrains layout
+    implementation "com.android.support.constraint:constraint-layout:$rootProject.layoutconstrains"
+
+    //  download image lib
+    implementation "com.github.bumptech.glide:glide:$rootProject.glideVersion"
+    implementation "com.squareup.picasso:picasso:$rootProject.picassoVersion"
+
+    // rx java , rx android and okhttp lib
+    implementation "com.squareup.retrofit2:retrofit:$rootProject.rxjava2Version"
+    implementation "com.squareup.retrofit2:converter-gson:$rootProject.rxjava2Version"
+    implementation "com.squareup.okhttp3:logging-interceptor:$rootProject.okHTTP3Version"
+    implementation "com.squareup.okhttp3:okhttp:$rootProject.okHTTP3Version"
+    implementation "io.reactivex.rxjava2:rxjava:$rootProject.rxjava2Version"
+    implementation "io.reactivex.rxjava2:rxandroid:$rootProject.rxandroidVersion"
+    implementation "com.jakewharton.retrofit:retrofit2-rxjava2-adapter:$rootProject.adapterVersion"
+
+    /// helper lib
+    implementation "com.daimajia.slider:library:$rootProject.sliderVersion"
+    implementation "info.hoang8f:android-segmented:$rootProject.segmentedVersion"
+    implementation "com.github.GrenderG:Toasty:$rootProject.ToastyVersion"
+    implementation "de.hdodenhof:circleimageview:$rootProject.circleimageviewVersion"
+    implementation "com.github.d-max:spots-dialog:$rootProject.dialogVersion"
+    implementation "com.nineoldandroids:library:$rootProject.ninoVersion"
+    implementation 'com.github.ceryle:SegmentedButton:v2.0.2'
+
+    // implementation 'com.jakewharton:butterknife:7.0.1'
+    // dagger2 lib
+    implementation "com.google.dagger:dagger:$rootProject.dagger2Version"
+    annotationProcessor "com.google.dagger:dagger-compiler:$rootProject.dagger2Version"
+    annotationProcessor "com.google.dagger:dagger-android-processor:$rootProject.dagger2Version"
+    implementation "com.google.dagger:dagger-android-support:$rootProject.dagger2Version"
+
+    // Crop Lib
+    implementation 'com.theartofdev.edmodo:android-image-cropper:1.2.1'
+
+}

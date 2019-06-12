@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+>
+    <data>
+
+        <variable
+            name="handlers"
+            type="com.razytech.razynet.gui.addwallet.AddWalletFragment.MyClickHandlers"/>
+
+    </data>
+
+<android.support.design.widget.CoordinatorLayout
+    android:id="@+id/cooraddwallet"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".gui.addwallet.AddWalletFragment"
+    android:background="@color/lightBlack">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        >
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:src="@mipmap/add_wallet"
+                android:layout_gravity="center"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/addwallet"
+                android:textColor="@color/white"
+                android:textSize="22sp"
+                android:fontFamily="@font/ralewaybold"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:gravity="center"
+                />
+
+
+        <EditText
+            android:id="@+id/create_acc_phone_ET"
+            style="@style/CreateAccEditTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:inputType="phone"
+            android:hint="@string/create_acc_phone_hint"
+            android:fontFamily="@font/ralewaymedium"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            />
+
+            <Button
+                android:id="@+id/enter_code_btn"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/btn_bg"
+                android:text="@string/enter_btn"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="25sp"
+                android:fontFamily="@font/ralewaybold"
+                android:onClick="@{handlers.btnAdd}"
+                android:layout_marginTop="20dp"
+                />
+
+
+
+    </LinearLayout>
+
+    </RelativeLayout>
+</android.support.design.widget.CoordinatorLayout>
+
+</layout>

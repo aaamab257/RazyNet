@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
+
+    <data>
+        <import type="android.view.View"/>
+        <variable
+            name="showback"
+            type="java.lang.Boolean"/>
+
+        <variable
+            name="pointsnumber"
+            type="java.lang.String"/>
+        <variable
+            name="walletsnumber"
+            type="java.lang.String"/>
+    </data>
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/darkBlack"
+    android:padding="5dp"
+    android:orientation="horizontal"
+    >
+
+    <ImageView
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:src="@mipmap/back"
+        android:id="@+id/imgback"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:layout_alignParentLeft="true"
+        android:visibility="@{showback == true ? View.VISIBLE : View.GONE}"
+        />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/linwallet"
+        android:layout_toLeftOf="@+id/linpoints"
+        android:paddingTop="15dp"
+        android:layout_marginRight="15dp"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/txtwallet"
+            android:text="@{walletsnumber}"
+            android:textSize="14dp"
+            android:textColor="@color/white"
+            android:layout_toLeftOf="@+id/imgwallet"
+            android:gravity="center"
+            android:layout_centerVertical="true"
+            android:fontFamily="@font/ralewaybold"
+            android:layout_marginRight="10dp"
+            />
+
+        <ImageView
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:background="@mipmap/wallet_small"
+            android:id="@+id/imgwallet"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginRight="10dp"
+            android:padding="5dp"
+            android:layout_marginTop="10dp"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/linpoints"
+        android:layout_toLeftOf="@+id/imgnotification"
+        android:paddingTop="15dp"
+        android:layout_marginRight="20dp"
+        >
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txttitle"
+        android:text="@{pointsnumber}"
+        android:textSize="14dp"
+        android:textColor="@color/green"
+        android:layout_toLeftOf="@+id/cartpoint"
+        android:gravity="center"
+        android:layout_centerVertical="true"
+        android:fontFamily="@font/ralewaybold"
+        android:layout_marginRight="10dp"
+        />
+
+        <TextView
+            android:id="@+id/cartpoint"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_gravity="center"
+            android:background="@drawable/cart_circle_shap"
+
+            />
+    </LinearLayout>
+
+
+    <ImageView
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:src="@mipmap/notification_notactive"
+        android:id="@+id/imgnotification"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginRight="10dp"
+        android:layout_toLeftOf="@+id/img_profile"
+        android:layout_marginTop="10dp"
+        />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/img_profile"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_centerInParent="true"
+        android:src="@drawable/avatar_profile"
+        app:civ_border_color="@color/colorAccent"
+        app:civ_border_width="2dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginLeft="5dp"
+        />
+
+
+
+    </RelativeLayout>
+
+</layout>

@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
+    <data>
+
+        <import type="android.view.View"/>
+
+        <variable
+            name="showbottombar"
+            type="java.lang.Boolean"/>
+        <variable
+            name="handlers"
+            type="com.razytech.razynet.gui.mainpage.MainpageActivity.MyClickHandlers"/>
+
+    </data>
+
+
+    <android.support.design.widget.CoordinatorLayout
+
+        android:id="@+id/coormainpage"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/lightBlack"
+        tools:context=".gui.mainpage.MainpageActivity"
+        >
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+
+            <include layout="@layout/toolbarhome"
+                android:id="@+id/toolbarpublic"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_alignParentTop="true"
+                />
+
+            <FrameLayout
+                android:id="@+id/main_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/toolbarpublic"
+                android:layout_above="@+id/linearlaycate"
+                android:layout_marginTop="5dp"
+                android:background="@color/lightBlack"
+                />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:id="@+id/linearlaycate"
+                    android:orientation="horizontal"
+                    android:visibility="@{showbottombar == true ? View.VISIBLE : View.GONE}"
+                    android:background="@color/darkBlack"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    >
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:id="@+id/linhome"
+                        android:onClick="@{handlers::btnHome}"
+                        >
+
+                        <ImageView
+                            android:id="@+id/imghome"
+                            android:layout_width="@dimen/width_icon_home"
+                            android:layout_height="@dimen/height_icon_home"
+                            android:src="@mipmap/home_active"
+                            android:layout_gravity="center"
+                            />
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:id="@+id/lincategory"
+                        android:onClick="@{handlers::btnTree}"
+                        >
+
+                        <ImageView
+                            android:id="@+id/imgtree"
+                            android:layout_width="@dimen/width_icon_home"
+                            android:layout_height="@dimen/height_icon_home"
+                            android:src="@mipmap/tree_notactive"
+                            android:layout_gravity="center"
+                            />
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:id="@+id/linorders"
+                        android:onClick="@{handlers::btnAddWallet}"
+                        >
+
+                        <ImageView
+                            android:id="@+id/imgaddtrans"
+                            android:layout_width="45dp"
+                            android:layout_height="35dp"
+                            android:src="@mipmap/add_wallet"
+                            android:layout_gravity="center"
+                            />
+
+                    </LinearLayout>
+
+
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:id="@+id/linmore"
+                        android:onClick="@{handlers::btnTransactions}"
+                        >
+
+                        <ImageView
+                            android:id="@+id/imgtransaction"
+                            android:layout_width="@dimen/width_icon_home"
+                            android:layout_height="@dimen/height_icon_home"
+                            android:src="@mipmap/redeem_notactive"
+                            android:layout_gravity="center"
+                            />
+
+                    </LinearLayout>
+
+            </LinearLayout>
+        </RelativeLayout>
+
+    </android.support.design.widget.CoordinatorLayout>
+</layout>

@@ -1,0 +1,24 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/lightBlack</item>
+        <item name="colorPrimaryDark">@color/lightBlack</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="CreateAccEditTextStyle">
+        <item name="android:background">@drawable/edit_text_bg</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textColorHint">#ABEBE6E6</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:paddingRight">15dp</item>
+        <item name="android:paddingLeft">15dp</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:layout_marginBottom">10dp</item>
+        <item name="android:textStyle">italic</item>
+        <item name="android:fontFamily">@font/ralewaymedium</item>
+    </style>
+
+</resources>
