@@ -7,10 +7,12 @@
 
     <string name="create_acc_user_hint">User Name</string>
     <string name="create_acc_phone_hint">Phone Number</string>
+    <string name="create_acc_searchphone_hint">Search By Phone Number</string>
     <string name="create_acc_password_hint">Password</string>
     <string name="create_acc_confpassword_hint">Confirm Password</string>
     <string name="create_acc_nid_hint">NID Number</string>
     <string name="create_acc_email_hint">Email</string>
+    <string name="points_hint">Enter Number Points</string>
     <string name="gender">Gender :</string>
     <string name="male_btn">Male</string>
     <string name="female_btn">Female</string>
@@ -36,8 +38,17 @@
 
     <string name="redeem">Redeem</string>
     <string name="transfer">Transfer</string>
-    <string name="review_txt">Review</string>
     <string name="points">Point</string>
+    <string name="choosewallet">Choose Wallet</string>
+    <string name="choosepoint">Choose Point</string>
+    <string name="confirm">Confirm</string>
+    <string name="next">NEXT</string>
+    <string name="back">BACK</string>
+    <string name="home">HOME</string>
+
+
+    <string name="confirmtxt">When you press the Confirm button, points will be deducted from your account </string>
+    <string name="confirmtxtsuccess">Points sent successfully </string>
 
 
     <!-- empty filds -->
@@ -46,12 +57,14 @@
     <string name="emptynid">Your NID Number is Empty</string>
     <string name="emptyinvcode">Your Invitation Code is Empty</string>
     <string name="emptyConfPassword">Your Confirm Password is Empty</string>
+    <string name="emptynumberphone">Your Phone Number is Empty</string>
 
     <!--errors-->
     <string name="tryagaing">Error occured, Please try again!</string>
     <string name="invaildPasswordLenght">Password Length Should between 6 to 50</string>
     <string name="Passworddonotmatch">Password does not match the confirm password.</string>
-
+    <string name="invaildnumberphone">Invalid Phone Number </string>
+    <string name="donothaveenoughpoints">You Donot have enough points</string>
 
     <!--Crop -->
     <string name="crop_image_activity_title"></string>

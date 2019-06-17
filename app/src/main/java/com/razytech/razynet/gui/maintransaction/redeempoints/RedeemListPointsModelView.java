@@ -15,7 +15,9 @@ import java.util.List;
  * Created by A.Noby on 6/12/2019.
  */
  class RedeemListPointsModelView   extends BaseViewModel<RedeemListPointsView> {
- List<RedeemPointsResponse> LoadingTestData(){
+
+
+  List<RedeemPointsResponse> LoadingTestData(){
 
   List<RedeemPointsResponse> redeemResponses  =  new ArrayList<>();
   RedeemPointsResponse response =  new RedeemPointsResponse();

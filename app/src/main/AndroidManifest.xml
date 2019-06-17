@@ -16,18 +16,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".gui.maintransaction.redeempoints.RedeemListPointsFragment"></activity>
-        <activity android:name=".gui.updateprofile.UpdateProfileFragment" />
-        <activity android:name=".gui.porfile.ProfileFragment" />
-        <activity android:name=".gui.walletpage.WalletFragment" />
-        <activity android:name=".gui.pointhistory.PointsHistoryFragment" />
-        <activity android:name=".gui.notifications.NotificationsFragment" />
-        <activity android:name=".gui.maintransaction.transfer.TransferFragment" />
-        <activity android:name=".gui.maintransaction.redeem.RedeemListFragment" />
-        <activity android:name=".gui.maintransaction.MainTransactionFragment" />
-        <activity android:name=".gui.addwallet.AddWalletFragment" />
-        <activity android:name=".gui.treepage.TreeFragment" />
-        <activity android:name=".gui.homepage.HomeFragment" />
+
         <activity
             android:name=".gui.splash.SplashActivity"
             android:screenOrientation="portrait">

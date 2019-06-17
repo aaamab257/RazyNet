@@ -26,7 +26,6 @@ public class WalletFragment extends BaseFragment implements WalletView {
         view = binding.getRoot();
         handlers =  new MyClickHandlers(getActivity());
         binding.setHandlers(handlers);
-
         inilizeVariables();
         return  view;
     }

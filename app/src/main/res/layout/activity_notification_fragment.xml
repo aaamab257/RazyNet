@@ -14,7 +14,30 @@
     android:id="@+id/coornotification"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".gui.notifications.NotificationsFragment">
+    tools:context=".gui.notifications.NotificationsFragment"
+    android:background="@color/lightBlack"
+    >
+
+    <FrameLayout
+        android:id="@+id/framedata"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/swipeRefreshLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            >
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rec_notificationlist"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                />
+        </android.support.v4.widget.SwipeRefreshLayout>
+    </FrameLayout>
 
 </android.support.design.widget.CoordinatorLayout>
 

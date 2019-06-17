@@ -20,6 +20,11 @@ import com.razytech.razynet.gui.mainpage.MainpageActivity;
 
 import java.util.List;
 
+import static com.razytech.razynet.Utils.AppConstant.REDEEMPOINTS_page;
+import static com.razytech.razynet.Utils.AppConstant.REDEEM_page;
+import static com.razytech.razynet.Utils.AppConstant.RedeemidKey;
+import static com.razytech.razynet.Utils.AppConstant.RedeemnameKey;
+
 public class RedeemListFragment extends BaseFragment implements  RedeemView , RedeemAdapter.RedeemListener {
 
     View view ;
@@ -80,6 +85,9 @@ public class RedeemListFragment extends BaseFragment implements  RedeemView , Re
 
     @Override
     public void onredeemClicked(RedeemResponse post) {
-
+        Bundle bundle = new Bundle();
+        bundle.putString(RedeemidKey,post.getId()+"");
+        bundle.putString(RedeemnameKey,post.getCompanyname()+"");
+        ((MainpageActivity)getActivity()).setBundlevalue(bundle , REDEEMPOINTS_page);
     }
 }

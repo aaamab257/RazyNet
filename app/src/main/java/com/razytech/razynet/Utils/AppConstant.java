@@ -32,12 +32,21 @@ public  final class AppConstant {
             PROFILE_page =7,
             UPDATEPROFILE_page =8,
             REDEEM_page =9,
-            TRANSFER_page =10;
+            TRANSFER_page =10,
+            REDEEMPOINTS_page =11,
+
+            TRANSFERWALLET_page =20,
+            TRANSFERPOINTS_page =21,
+            TRANSFERCONFIRM_page =22,
+            TRANSFERCONFIRMFINAL_page =23
+                    ;
+
 
     public final static int
             MALE =1,
             FEMALE =2;
-
+    public final static String RedeemidKey  =  "redeemid"
+            ,RedeemnameKey  =  "redeemname"   ;
 
     public static UserResponse userResponse =  null ;
 

@@ -15,6 +15,7 @@ import com.razytech.razynet.gui.addwallet.AddWalletFragment;
 import com.razytech.razynet.gui.homepage.HomeFragment;
 import com.razytech.razynet.gui.maintransaction.MainTransactionFragment;
 import com.razytech.razynet.gui.maintransaction.redeem.RedeemListFragment;
+import com.razytech.razynet.gui.maintransaction.redeempoints.RedeemListPointsFragment;
 import com.razytech.razynet.gui.maintransaction.transfer.TransferFragment;
 import com.razytech.razynet.gui.notifications.NotificationsFragment;
 import com.razytech.razynet.gui.pointhistory.PointsHistoryFragment;
@@ -31,7 +32,11 @@ import static com.razytech.razynet.Utils.AppConstant.MAINTRANSACTION_page;
 import static com.razytech.razynet.Utils.AppConstant.NOTIFICATION_page;
 import static com.razytech.razynet.Utils.AppConstant.POINTS_page;
 import static com.razytech.razynet.Utils.AppConstant.PROFILE_page;
+import static com.razytech.razynet.Utils.AppConstant.REDEEMPOINTS_page;
 import static com.razytech.razynet.Utils.AppConstant.REDEEM_page;
+import static com.razytech.razynet.Utils.AppConstant.TRANSFERCONFIRMFINAL_page;
+import static com.razytech.razynet.Utils.AppConstant.TRANSFERCONFIRM_page;
+import static com.razytech.razynet.Utils.AppConstant.TRANSFERPOINTS_page;
 import static com.razytech.razynet.Utils.AppConstant.TRANSFER_page;
 import static com.razytech.razynet.Utils.AppConstant.TREE_page;
 import static com.razytech.razynet.Utils.AppConstant.UPDATEPROFILE_page;
@@ -44,10 +49,11 @@ public class MainpageActivity extends BaseActivity<ActivityMainpageBinding , Mai
     @Inject MainpageModelView  modelView ;
     MyClickHandlers handlers  ;
 
-    int selectedPosition =  -1 ;
+   public   int selectedPosition =  -1 ;
 
     Bundle bundle =  null  ;
     FragmentManager fragmentManager ;
+    RedeemListPointsFragment redeemListPointsFragment ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +67,9 @@ public class MainpageActivity extends BaseActivity<ActivityMainpageBinding , Mai
     private void inilizeVaribles() {
         modelView.attachView(this);
         displayView(HOME_page);
+        binding.toolbarpublic.imgback.setOnClickListener((View) ->{
+            onBackPressed();
+        });
     }
 
     @Override
@@ -165,14 +174,14 @@ public class MainpageActivity extends BaseActivity<ActivityMainpageBinding , Mai
                 fragmentTransaction.replace(R.id.main_content, new UpdateProfileFragment());
                 break;
 
-//            case STORE_page:
-//                //STORE_page Fragment
-//                selectedPosition = STORE_page;
-//                fragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
-//                storePageFragment =  new StorePageFragment() ;
-//                storePageFragment.setArguments(bundle);
-//                fragmentTransaction.replace(R.id.main_content, storePageFragment);
-//                break;
+            case REDEEMPOINTS_page:
+                //REDEEMPOINTS_page Fragment
+                selectedPosition = REDEEMPOINTS_page;
+                fragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                redeemListPointsFragment =  new RedeemListPointsFragment() ;
+                redeemListPointsFragment.setArguments(bundle);
+                fragmentTransaction.replace(R.id.main_content, redeemListPointsFragment);
+                break;
 
 
         }
@@ -182,6 +191,15 @@ public class MainpageActivity extends BaseActivity<ActivityMainpageBinding , Mai
     public void onBackPressed() {
         if (selectedPosition >= TREE_page  && selectedPosition <= PROFILE_page) {
             displayView(HOME_page);
+        }
+        else if(selectedPosition == REDEEM_page || selectedPosition == TRANSFER_page ) {
+            displayView(MAINTRANSACTION_page);
+        }
+        else if(selectedPosition == REDEEMPOINTS_page ) {
+            displayView(REDEEM_page);
+        }
+        else if(selectedPosition == TRANSFERPOINTS_page || selectedPosition == TRANSFERCONFIRM_page || selectedPosition == TRANSFERCONFIRMFINAL_page) {
+            //displayView(REDEEM_page);
         }
         else {
             super.onBackPressed();

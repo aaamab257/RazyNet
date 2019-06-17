@@ -4,6 +4,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
 >
+    <data>
+        <import type="android.view.View"/>
+        <variable
+            name="redeemname"
+            type="java.lang.String"/>
+    </data>
 
 
 <android.support.design.widget.CoordinatorLayout
@@ -13,6 +19,22 @@
     tools:context=".gui.maintransaction.redeempoints.RedeemListPointsFragment"
     android:padding="10dp"
     >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{redeemname}"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:fontFamily="@font/ralewaybold"
+            android:gravity="center"
+            android:layout_margin="10dp"
+            />
 
     <FrameLayout
         android:id="@+id/framedata"
@@ -34,6 +56,7 @@
                 />
         </android.support.v4.widget.SwipeRefreshLayout>
     </FrameLayout>
+    </LinearLayout>
 
 </android.support.design.widget.CoordinatorLayout>
 

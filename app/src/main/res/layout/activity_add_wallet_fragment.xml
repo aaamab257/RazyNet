@@ -64,9 +64,9 @@
 
             <Button
                 android:id="@+id/enter_code_btn"
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:layout_gravity="center_vertical"
+                android:layout_width="@dimen/width_btn"
+                android:layout_height="@dimen/height_btn"
+                android:layout_gravity="center"
                 android:background="@drawable/btn_bg"
                 android:text="@string/enter_btn"
                 android:textAllCaps="false"
@@ -75,6 +75,7 @@
                 android:fontFamily="@font/ralewaybold"
                 android:onClick="@{handlers.btnAdd}"
                 android:layout_marginTop="20dp"
+
                 />
 
 

@@ -3,4 +3,9 @@
 
   <dimen name="width_icon_home">30dp</dimen>
   <dimen name="height_icon_home">30dp</dimen>
+  <dimen name="width_icon_status">70dp</dimen>
+   <dimen name="height_icon_status">70dp</dimen>
+
+    <dimen name="width_btn">250dp</dimen>
+    <dimen name="height_btn">60dp</dimen>
 </resources>

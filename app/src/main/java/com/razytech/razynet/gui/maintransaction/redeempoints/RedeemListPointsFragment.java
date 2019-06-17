@@ -24,6 +24,8 @@ public class RedeemListPointsFragment extends BaseFragment implements RedeemList
     ActivityRedeemListPointsBinding binding ;
     RedeemListPointsModelView modelView   ;
     RedeemPointsAdapter adapter ;
+   String redeem_id =  ""  , redeem_name =  "" ;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -36,9 +38,13 @@ public class RedeemListPointsFragment extends BaseFragment implements RedeemList
     }
 
     private void inilizeVariables() {
-        ((MainpageActivity)getActivity()).setViewHandling("128"  ,"3"  , true , false );
         modelView =  new RedeemListPointsModelView();
         modelView.attachView(this);
+        redeem_id= getArguments().getString(AppConstant.RedeemidKey);
+        redeem_name =  getArguments().getString(AppConstant.RedeemnameKey) ;
+        binding.setRedeemname(redeem_name);
+        ((MainpageActivity)getActivity()).setViewHandling("128"  ,"3"  , true , false );
+
         binding.swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -49,7 +55,7 @@ public class RedeemListPointsFragment extends BaseFragment implements RedeemList
     }
 
     private void CheckloadingData() {
-        if (AppConstant.redeemResponses == null)
+        if (AppConstant.redeemPointsResponses == null)
             modelView.loadingRedeemData(binding.coorredeempoints,getActivity(),false);
         else {
             LoadingReddemData(AppConstant.redeemPointsResponses);

@@ -62,8 +62,6 @@
                     android:fontFamily="@font/ralewaymedium"
                     />
 
-
-
                 <EditText
                     android:id="@+id/create_acc_phone_ET"
                     style="@style/CreateAccEditTextStyle"
@@ -226,9 +224,9 @@
 
                 <Button
                     android:id="@+id/enter_code_btn"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
+                    android:layout_width="@dimen/width_btn"
+                    android:layout_height="@dimen/height_btn"
+                    android:layout_gravity="center"
                     android:background="@drawable/btn_bg"
                     android:text="@string/enter_btn"
                     android:textAllCaps="false"
