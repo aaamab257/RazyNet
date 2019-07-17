@@ -4,11 +4,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <data>
-        <variable
-            name="handlers"
-            type="com.razytech.razynet.gui.notifications.NotificationsFragment.MyClickHandlers" />
-    </data>
+    <!--<data>-->
+        <!--<variable-->
+            <!--name="handlers"-->
+            <!--type="com.razytech.razynet.gui.notifications.NotificationsFragment.MyClickHandlers" />-->
+    <!--</data>-->
 
 <android.support.design.widget.CoordinatorLayout
     android:id="@+id/coornotification"

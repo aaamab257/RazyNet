@@ -1,6 +1,5 @@
 package com.razytech.razynet.gui.maintransaction.redeem;
 
-import android.content.Context;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -8,20 +7,15 @@ import android.support.v7.widget.GridLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import com.razytech.razynet.Adapter.RedeemAdapter;
 import com.razytech.razynet.R;
 import com.razytech.razynet.Utils.AppConstant;
 import com.razytech.razynet.baseClasses.BaseFragment;
 import com.razytech.razynet.data.beans.RedeemResponse;
-import com.razytech.razynet.data.prefs.PrefUtils;
 import com.razytech.razynet.databinding.ActivityRedeemFragmentBinding;
 import com.razytech.razynet.gui.mainpage.MainpageActivity;
-
 import java.util.List;
-
 import static com.razytech.razynet.Utils.AppConstant.REDEEMPOINTS_page;
-import static com.razytech.razynet.Utils.AppConstant.REDEEM_page;
 import static com.razytech.razynet.Utils.AppConstant.RedeemidKey;
 import static com.razytech.razynet.Utils.AppConstant.RedeemnameKey;
 
@@ -70,6 +64,7 @@ public class RedeemListFragment extends BaseFragment implements  RedeemView , Re
     @Override
     public void LoadingReddemData(List<RedeemResponse> redeemResponses) {
         hide_refreshView();
+        show_errorView(false,  "" );
         AppConstant.redeemResponses =  redeemResponses ;
         binding.recRedeemlist.setLayoutManager(new GridLayoutManager(getActivity(), 2));
         adapter =  new RedeemAdapter(getActivity(),redeemResponses,this);
@@ -80,6 +75,19 @@ public class RedeemListFragment extends BaseFragment implements  RedeemView , Re
     public void hide_refreshView() {
         if (binding.swipeRefreshLayout.isRefreshing()) {
             binding.swipeRefreshLayout.setRefreshing(false);
+        }
+    }
+
+    @Override
+    public void show_errorView(boolean Isshow, String error) {
+        if (Isshow){
+            binding.errorLayoutView.setViewerror(Isshow);
+            binding.errorLayoutView.setErrortxt(error);
+            binding.errorLayoutView.btnTryAgain.setOnClickListener((View)->{
+                CheckloadingData();
+            });
+        }else {
+            binding.errorLayoutView.setViewerror(Isshow);
         }
     }
 

@@ -1,0 +1,75 @@
+<layout
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <import type="android.view.View"/>
+        <variable
+            name="handlers"
+            type="com.razytech.razynet.data.beans.NotificationsResponse"
+
+            />
+
+    </data>
+    <android.support.v7.widget.CardView
+        android:id="@+id/card_view"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        card_view:cardUseCompatPadding="true"
+        card_view:cardCornerRadius="8dp"
+        android:layout_marginBottom="10dp"
+        card_view:cardBackgroundColor="@color/Black"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        >
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                >
+
+                <ImageView
+                    android:id="@+id/imgnotification"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:src="@mipmap/notification_notactive"
+                    android:layout_gravity="center"
+                    android:background="@drawable/cart_circle_black"
+                    android:padding="20dp"
+                    android:layout_centerVertical="true"
+                   android:layout_alignParentLeft="true"
+                    android:layout_centerHorizontal="true"
+                    />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/imgnotification"
+                android:orientation="vertical"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_centerVertical="true"
+                >
+                <TextView
+                    android:id="@+id/txtnotification"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@{handlers.title}"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/ralewaymedium"
+                    android:textSize="14sp"
+
+                    />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@{handlers.description}"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/ralewayregular"
+                    android:textSize="12sp"
+                    android:layout_marginTop="10dp"
+                    />
+            </LinearLayout>
+            </RelativeLayout>
+    </android.support.v7.widget.CardView>
+</layout>

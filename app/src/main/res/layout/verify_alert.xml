@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@android:color/transparent"
+    >
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@android:color/transparent"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:id="@+id/linwallet"
+            android:background="@color/darkBlack"
+            android:padding="20dp"
+            >
+
+
+
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/sorry"
+                android:textColor="@color/darkred"
+                android:textSize="22sp"
+                android:fontFamily="@font/ralewaybold"
+                android:layout_margin="10dp"
+                android:gravity="center"
+                />
+
+            <TextView
+                android:id="@+id/txtmessage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/yourinvitation"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:fontFamily="@font/ralewaymedium"
+                android:layout_margin="10dp"
+                />
+
+
+
+            <Button
+                android:id="@+id/btn_cancel"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/btn_bg_gray"
+                android:text="@string/cancel"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:fontFamily="@font/ralewaybold"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="20dp"
+                />
+
+        </LinearLayout>
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@mipmap/closedailogue"
+            android:layout_gravity="top|right"
+            android:id="@+id/imgclose"
+            />
+    </FrameLayout>
+
+</android.support.design.widget.CoordinatorLayout>

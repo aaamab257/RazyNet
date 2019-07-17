@@ -5,6 +5,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     >
     <data>
+
+        <variable
+            name="pointsnumber"
+            type="java.lang.String"/>
+        <variable
+            name="walletnumber"
+            type="java.lang.String"/>
+
         <variable
             name="handlers"
             type="com.razytech.razynet.gui.walletpage.WalletFragment.MyClickHandlers"/>
@@ -14,7 +22,121 @@
     android:id="@+id/coorwallet"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".gui.walletpage.WalletFragment">
+    tools:context=".gui.walletpage.WalletFragment"
+    android:background="@color/lightBlack"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_marginTop="20dp"
+            >
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                >
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="130dp"
+                    android:layout_margin="10dp"
+                    android:background="@color/darkBlack"
+                    >
+
+                    <ImageView
+                        android:id="@+id/imgwallet"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:src="@mipmap/wallet"
+                        android:padding="15dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_alignParentTop="true"
+                        />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@{walletnumber}"
+                        android:textColor="@color/white"
+                        android:textSize="23sp"
+                        android:fontFamily="@font/ralewaybold"
+                        android:gravity="center"
+                        android:layout_below="@+id/imgwallet"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"/>
+                </RelativeLayout>
+
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                >
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="130dp"
+                    android:layout_margin="10dp"
+                    android:background="@color/darkBlack"
+
+                    >
+                    <ImageView
+                        android:id="@+id/imgpoints"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:src="@drawable/cart_circle_shap"
+                        android:padding="15dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_alignParentTop="true"
+                        />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@{pointsnumber}"
+                        android:textColor="@color/green"
+                        android:textSize="23sp"
+                        android:fontFamily="@font/ralewaybold"
+                        android:gravity="center"
+                        android:layout_below="@+id/imgpoints"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        />
+                </RelativeLayout>
+
+            </LinearLayout>
+        </LinearLayout>
+
+
+        <FrameLayout
+            android:id="@+id/framedata"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+            <!--<android.support.v4.widget.SwipeRefreshLayout-->
+                <!--android:id="@+id/swipeRefreshLayout"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="match_parent"-->
+                <!--&gt;-->
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rec_userdatalist"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="10dp"
+                    />
+            <!--</android.support.v4.widget.SwipeRefreshLayout>-->
+        </FrameLayout>
+
+
+    </LinearLayout>
 
 </android.support.design.widget.CoordinatorLayout>
 </layout>

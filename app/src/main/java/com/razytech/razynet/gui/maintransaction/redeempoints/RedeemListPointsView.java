@@ -10,8 +10,7 @@ import java.util.List;
  * Created by A.Noby on 6/12/2019.
  */
  interface RedeemListPointsView  extends BaseView {
-
-
  void   LoadingReddemData (List<RedeemPointsResponse> redeemResponses );
  void  hide_refreshView();
+ void show_errorView(boolean Isshow , String error);
 }

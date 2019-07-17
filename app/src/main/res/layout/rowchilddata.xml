@@ -1,0 +1,108 @@
+<layout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+   >
+
+    <data>
+        <import type="android.view.View"/>
+        <variable
+            name="handlers"
+            type="com.razytech.razynet.data.beans.ChildResponse"
+            />
+        <variable
+            name="showwallet"
+            type="java.lang.Boolean"/>
+
+    </data>
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/card_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        card_view:cardUseCompatPadding="true"
+        card_view:cardCornerRadius="8dp"
+        android:layout_marginBottom="10dp"
+        card_view:cardBackgroundColor="@color/Black"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        >
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            >
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/img_child"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_centerInParent="true"
+                android:src="@drawable/avatar_profile"
+                app:civ_border_color="@color/colorAccent"
+                app:civ_border_width="2dp"
+                android:layout_alignParentLeft="true"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="5dp"
+                />
+
+
+
+            <TextView
+                android:id="@+id/txtnamechild"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{handlers.name}"
+                android:textColor="@color/white"
+                android:fontFamily="@font/ralewayregular"
+                android:textSize="14sp"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@+id/img_child"
+                android:layout_toLeftOf="@+id/linpoints"
+                />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:id="@+id/linpoints"
+                android:visibility="@{showwallet == true ? View.VISIBLE : View.INVISIBLE}"
+                >
+
+                <ImageView
+                    android:id="@+id/imgpoints"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@mipmap/choose_point_active"
+                    android:padding="5dp" />
+
+                <TextView
+                    android:id="@+id/txtpoints"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dp"
+                    android:layout_toLeftOf="@+id/imgpoints"
+                    android:fontFamily="@font/ralewayregular"
+                    android:gravity="center"
+                    android:text="@{handlers.balance+``}"
+                    android:textColor="@color/green"
+                    android:textSize="12sp" />
+
+
+            </LinearLayout>
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+</layout>

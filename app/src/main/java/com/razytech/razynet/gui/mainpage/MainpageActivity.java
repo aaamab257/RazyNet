@@ -27,6 +27,7 @@ import com.razytech.razynet.gui.walletpage.WalletFragment;
 
 import javax.inject.Inject;
 import static com.razytech.razynet.Utils.AppConstant.ADDWALLET_PAGE;
+import static com.razytech.razynet.Utils.AppConstant.CHILDDETAILS_page;
 import static com.razytech.razynet.Utils.AppConstant.HOME_page;
 import static com.razytech.razynet.Utils.AppConstant.MAINTRANSACTION_page;
 import static com.razytech.razynet.Utils.AppConstant.NOTIFICATION_page;
@@ -70,6 +71,20 @@ public class MainpageActivity extends BaseActivity<ActivityMainpageBinding , Mai
         binding.toolbarpublic.imgback.setOnClickListener((View) ->{
             onBackPressed();
         });
+
+        binding.toolbarpublic.imgnotification.setOnClickListener((View) ->{
+           displayView(NOTIFICATION_page);
+        });
+        binding.toolbarpublic.linpoints.setOnClickListener((View) ->{
+            displayView(POINTS_page);
+        });
+        binding.toolbarpublic.linwallet.setOnClickListener((View) ->{
+           displayView(WALLET_page);
+        });
+        binding.toolbarpublic.imgProfile.setOnClickListener((View) ->{
+          displayView(PROFILE_page);
+        });
+
     }
 
     @Override
@@ -189,7 +204,7 @@ public class MainpageActivity extends BaseActivity<ActivityMainpageBinding , Mai
     }
     @Override
     public void onBackPressed() {
-        if (selectedPosition >= TREE_page  && selectedPosition <= PROFILE_page) {
+        if (selectedPosition >= TREE_page  && selectedPosition <= PROFILE_page ||selectedPosition == CHILDDETAILS_page ) {
             displayView(HOME_page);
         }
         else if(selectedPosition == REDEEM_page || selectedPosition == TRANSFER_page ) {
@@ -207,16 +222,20 @@ public class MainpageActivity extends BaseActivity<ActivityMainpageBinding , Mai
     }
 
     public  void setViewHandling(String PointsString ,String wallet   ,boolean showback, boolean bottombar ){
-        binding.toolbarpublic.setPointsnumber(PointsString);
-        binding.toolbarpublic.setWalletsnumber(wallet);
+        binding.toolbarpublic.setPointsnumber(AppConstant.userResponse.getBalance()+"");
+        binding.toolbarpublic.setWalletsnumber(AppConstant.userResponse.getChildsCount()+"");
         binding.toolbarpublic.setShowback(showback);
         binding.setShowbottombar(bottombar);
     }
     public  void setViewHandling(String PointsString ,String wallet  ,boolean showback){
-        binding.toolbarpublic.setPointsnumber(PointsString);
-        binding.toolbarpublic.setWalletsnumber(wallet);
+        binding.toolbarpublic.setPointsnumber(AppConstant.userResponse.getBalance()+"");
+        binding.toolbarpublic.setWalletsnumber(AppConstant.userResponse.getChildsCount()+"");
         binding.toolbarpublic.setShowback(showback);
         binding.setShowbottombar(true);
+    }
+    public  void UpdatePointsHandling(String PointsString   ){
+        binding.toolbarpublic.setPointsnumber(PointsString);
+
     }
 
 

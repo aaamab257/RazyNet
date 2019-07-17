@@ -10,6 +10,9 @@ import android.view.ViewGroup;
 import com.razytech.razynet.R;
 import com.razytech.razynet.baseClasses.BaseFragment;
 import com.razytech.razynet.databinding.ActivityAddWalletFragmentBinding;
+import com.razytech.razynet.gui.mainpage.MainpageActivity;
+
+import static com.razytech.razynet.Utils.AppConstant.HOME_page;
 
 
 public class AddWalletFragment extends BaseFragment  implements  AddWalletView {
@@ -30,18 +33,21 @@ public class AddWalletFragment extends BaseFragment  implements  AddWalletView {
         inilizeVariables();
         return  view;
     }
-
     private void inilizeVariables() {
         modelView =  new AddWalletModelView();
         modelView.attachView(this);
     }
-
+    @Override
+    public void SuccessData(String VerificationCode) {
+        ((MainpageActivity)getActivity()).displayView(HOME_page);
+    }
     public class MyClickHandlers {
         Context context;
         public MyClickHandlers(Context context) {
             this.context = context;
         }
         public void btnAdd(View view) {
+            modelView.vaildatedata(getActivity() ,  binding.cooraddwallet  ,  getActivity(),binding.createAccPhoneET.getText().toString());
         }
     }
 }

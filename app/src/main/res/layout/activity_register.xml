@@ -70,10 +70,11 @@
                     android:inputType="phone"
                     android:hint="@string/create_acc_phone_hint"
                     android:fontFamily="@font/ralewaymedium"
+                    android:enabled="false"
                     />
 
                 <EditText
-                    android:id="@+id/create_acc_email_ET"
+                    android:id="@+id/create_acc_nid_ET"
                     style="@style/CreateAccEditTextStyle"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
@@ -107,7 +108,7 @@
 
 
                 <EditText
-                    android:id="@+id/create_acc_nid_ET"
+                    android:id="@+id/create_acc_email_ET"
                     style="@style/CreateAccEditTextStyle"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"

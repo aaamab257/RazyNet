@@ -1,0 +1,94 @@
+<layout
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <import type="android.view.View"/>
+        <variable
+            name="handlers"
+            type="com.razytech.razynet.data.beans.PointsResponse"
+
+            />
+
+    </data>
+    <android.support.v7.widget.CardView
+        android:id="@+id/card_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        card_view:cardUseCompatPadding="true"
+        card_view:cardCornerRadius="8dp"
+        card_view:cardBackgroundColor="@color/Black">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="10dp"
+            >
+            
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/txttitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@{handlers.title}"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/ralewaymedium"
+                    android:textSize="14sp"
+                    android:layout_centerVertical="true"
+                    />
+
+                <TextView
+                    android:id="@+id/txtdate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@{handlers.date}"
+                    android:textColor="@color/gray"
+                    android:fontFamily="@font/ralewaymedium"
+                    android:textSize="14sp"
+                    android:layout_centerVertical="true"
+
+                    />
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+                <TextView
+                    android:id="@+id/txtpoints"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@{handlers.points}"
+                    android:textColor="@{handlers.isin == true ? @color/green : @color/darkred }"
+                    android:fontFamily="@font/ralewaybold"
+                    android:textSize="14sp"
+                    android:layout_centerInParent="true"
+                    />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+                <TextView
+                    android:id="@+id/txtavaliable"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@{handlers.avapoints}"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/ralewaybold"
+                    android:textSize="14sp"
+                    android:layout_centerInParent="true"
+
+                    />
+            </RelativeLayout>
+
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+</layout>

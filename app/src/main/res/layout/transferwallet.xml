@@ -32,7 +32,7 @@
                 android:background="@drawable/btn_bg"
                 >
                 <ImageView
-                    android:id="@+id/img_cate"
+                    android:id="@+id/img_search"
                     android:layout_width="45dp"
                     android:layout_height="40dp"
                     android:src="@mipmap/search"
@@ -53,7 +53,6 @@
                 android:singleLine="true"
                 android:hint="@string/create_acc_searchphone_hint"
                 android:fontFamily="@font/ralewaymedium"
-                android:imeOptions="actionSearch"
                 android:layout_toLeftOf="@+id/rev_cate"
                 android:layout_marginRight="10dp"
                 android:layout_marginLeft="10dp"
@@ -64,7 +63,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
         <android.support.v7.widget.RecyclerView
-            android:id="@+id/rec_redeemlist"
+            android:id="@+id/rectransfer"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="10dp"

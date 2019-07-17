@@ -7,20 +7,34 @@ import com.google.gson.annotations.SerializedName;
  */
 public class NotificationsResponse {
 
+
     @SerializedName("id")
-    private String id;
+    private int id;
     @SerializedName("title")
     private String title;
+    @SerializedName("description")
+    private String description;
+    @SerializedName("read")
+    private boolean read;
+    @SerializedName("notificationType")
+    private int notificationType;
+    @SerializedName("senderId")
+    private int senderId;
+    @SerializedName("recipientId")
+    private int recipientId;
+    @SerializedName("url")
+    private String url;
+    @SerializedName("template")
+    private String template;
 
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
-
 
     public String getTitle() {
         return title;
@@ -28,5 +42,61 @@ public class NotificationsResponse {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public boolean isRead() {
+        return read;
+    }
+
+    public void setRead(boolean read) {
+        this.read = read;
+    }
+
+    public int getNotificationType() {
+        return notificationType;
+    }
+
+    public void setNotificationType(int notificationType) {
+        this.notificationType = notificationType;
+    }
+
+    public int getSenderId() {
+        return senderId;
+    }
+
+    public void setSenderId(int senderId) {
+        this.senderId = senderId;
+    }
+
+    public int getRecipientId() {
+        return recipientId;
+    }
+
+    public void setRecipientId(int recipientId) {
+        this.recipientId = recipientId;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public String getTemplate() {
+        return template;
+    }
+
+    public void setTemplate(String template) {
+        this.template = template;
     }
 }

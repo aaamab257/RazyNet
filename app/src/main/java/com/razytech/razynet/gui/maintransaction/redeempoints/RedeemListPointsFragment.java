@@ -43,7 +43,7 @@ public class RedeemListPointsFragment extends BaseFragment implements RedeemList
         redeem_id= getArguments().getString(AppConstant.RedeemidKey);
         redeem_name =  getArguments().getString(AppConstant.RedeemnameKey) ;
         binding.setRedeemname(redeem_name);
-        ((MainpageActivity)getActivity()).setViewHandling("128"  ,"3"  , true , false );
+        ((MainpageActivity)getActivity()).setViewHandling(""  ,""  , true , false );
 
         binding.swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -55,15 +55,11 @@ public class RedeemListPointsFragment extends BaseFragment implements RedeemList
     }
 
     private void CheckloadingData() {
-        if (AppConstant.redeemPointsResponses == null)
-            modelView.loadingRedeemData(binding.coorredeempoints,getActivity(),false);
-        else {
-            LoadingReddemData(AppConstant.redeemPointsResponses);
-        }
+            modelView.loadingRedeemData(binding.coorredeempoints,getActivity(),false, redeem_id);
     }
     private void refreshdata(){
         binding.swipeRefreshLayout.setRefreshing(true);
-        modelView.loadingRedeemData(binding.coorredeempoints,getActivity(),true);
+        modelView.loadingRedeemData(binding.coorredeempoints,getActivity(),true , redeem_id);
     }
 
     @Override
@@ -81,6 +77,20 @@ public class RedeemListPointsFragment extends BaseFragment implements RedeemList
             binding.swipeRefreshLayout.setRefreshing(false);
         }
     }
+
+    @Override
+    public void show_errorView(boolean Isshow, String error) {
+        if (Isshow){
+            binding.errorLayoutView.setViewerror(Isshow);
+            binding.errorLayoutView.setErrortxt(error);
+            binding.errorLayoutView.btnTryAgain.setOnClickListener((View)->{
+                CheckloadingData();
+            });
+        }else {
+            binding.errorLayoutView.setViewerror(Isshow);
+        }
+    }
+
     @Override
     public void onredeemClicked(RedeemPointsResponse post) {
 

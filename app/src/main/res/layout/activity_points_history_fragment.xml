@@ -5,6 +5,14 @@
     xmlns:tools="http://schemas.android.com/tools"
 >
 <data>
+
+    <variable
+        name="pointsnumber"
+        type="java.lang.String"/>
+    <variable
+        name="walletnumber"
+        type="java.lang.String"/>
+
     <variable
         name="handlers"
         type="com.razytech.razynet.gui.pointhistory.PointsHistoryFragment.MyClickHandlers"/>
@@ -12,11 +20,281 @@
 </data>
 
 <android.support.design.widget.CoordinatorLayout
-    android:id="@+id/pointhistory"
+    android:id="@+id/coorpointhistory"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".gui.pointhistory.PointsHistoryFragment">
+    tools:context=".gui.pointhistory.PointsHistoryFragment"
+    android:background="@color/lightBlack">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/pointhistory"
+            android:textColor="@color/darkred"
+            android:textSize="20sp"
+            android:fontFamily="@font/ralewaybold"
+            android:gravity="center"
+            android:layout_marginTop="20dp"
+            />
 
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            android:layout_marginBottom="20dp"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/avaliablenow"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:fontFamily="@font/ralewaybold"
+                android:id="@+id/txtava"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="30dp"
+                />
+
+            <ImageView
+                android:id="@+id/imgpoints"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginRight="10dp"
+                android:background="@mipmap/choose_point_active"
+                android:padding="5dp" />
+
+            <TextView
+                android:id="@+id/txtpoints"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:layout_toLeftOf="@+id/imgpoints"
+                android:fontFamily="@font/ralewayregular"
+                android:gravity="center"
+                android:text="@{pointsnumber}"
+                android:textColor="@color/green"
+                android:textSize="20sp" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            >
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_weight="1"
+                android:layout_marginStart="15dp"
+                android:layout_marginLeft="15dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:onClick="@{handlers.btnall}"
+                    >
+                    <TextView
+                        android:id="@+id/imgall"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:textSize="18sp"
+                        android:fontFamily="@font/ralewaybold"
+                        android:textColor="@color/white"
+                        android:text="@string/all"
+                        android:gravity="center"
+                        />
+                    <TextView
+                        android:id="@+id/txtall"
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:textColor="@color/white"
+                        android:fontFamily="@font/ralewaymedium"
+                        android:gravity="center"
+                        android:background="@color/darkred"
+                        />
+
+                </LinearLayout>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_weight="1">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:onClick="@{handlers.btnin}"
+                    >
+                    <TextView
+                        android:id="@+id/imgin"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:textSize="18sp"
+                        android:fontFamily="@font/ralewaybold"
+                        android:textColor="@color/gray"
+                        android:text="@string/in"
+                        android:gravity="center"
+                        />
+                    <TextView
+                        android:id="@+id/txtin"
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:textColor="@color/white"
+                        android:fontFamily="@font/ralewaymedium"
+                        android:gravity="center"
+                        android:background="@android:color/transparent"
+
+                        />
+
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/linconfirm"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="3dp"
+                    android:background="@color/darkBlack"
+                    android:layout_marginRight="2dp"
+                    android:layout_marginLeft="2dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginBottom="5dp"
+                    />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_weight="1">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:onClick="@{handlers.btnout}"
+                    >
+                    <TextView
+                        android:id="@+id/imgout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:textSize="18sp"
+                        android:fontFamily="@font/ralewaybold"
+                        android:textColor="@color/gray"
+                        android:text="@string/out"
+                        android:gravity="center"
+                        />
+
+                    <TextView
+                        android:id="@+id/txtout"
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:textColor="@color/white"
+                        android:fontFamily="@font/ralewaymedium"
+                        android:gravity="center"
+                        android:background="@android:color/transparent"
+
+                        />
+
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="10dp"
+            android:layout_margin="10dp"
+            android:background="@color/gray"
+
+            >
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/details"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/ralewaymedium"
+                    android:textSize="14sp"
+                    android:gravity="left"
+                    />
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+
+                >
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/points"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/ralewaymedium"
+                    android:textSize="14sp"
+                    android:layout_centerInParent="true"
+                    />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+
+                >
+                <TextView
+                    android:id="@+id/txtavaliable"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/avaliable"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/ralewaymedium"
+                    android:textSize="14sp"
+                    android:layout_centerInParent="true"
+
+                    />
+            </RelativeLayout>
+
+        </LinearLayout>
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rec_pointshistory"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="10dp"
+
+                    />
+    </LinearLayout>
 </android.support.design.widget.CoordinatorLayout>
 
 </layout>

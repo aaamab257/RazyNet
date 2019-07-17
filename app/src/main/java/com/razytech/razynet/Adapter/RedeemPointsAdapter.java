@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.razytech.razynet.R;
+import com.razytech.razynet.Utils.StaticMethods;
 import com.razytech.razynet.data.beans.RedeemPointsResponse;
 import com.razytech.razynet.databinding.RowredeempointsBinding;
 
@@ -51,7 +52,7 @@ public class RedeemPointsAdapter extends RecyclerView.Adapter<RedeemPointsAdapte
     @Override
     public void onBindViewHolder(RedeemPointsAdapter.MyViewHolder holder, final int position) {
         holder.binding.setHandlers (itemlist.get(position));
-        //   StaticMethods.LoadImage(context,holder.binding.countryPhoto,itemlist.get(position).getImage(),holder.binding.progress);
+       StaticMethods.LoadImage(context,holder.binding.countryPhoto,itemlist.get(position).getImageUrl(),holder.binding.progress);
         holder.binding.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

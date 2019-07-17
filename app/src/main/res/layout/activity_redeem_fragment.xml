@@ -17,6 +17,17 @@
     android:id="@+id/coorredeem"
     android:padding="10dp"
     >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+    <include layout="@layout/error_layout_view"
+        android:id="@+id/error_layout_view"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        />
+
 
     <FrameLayout
         android:id="@+id/framedata"
@@ -38,5 +49,6 @@
         />
     </android.support.v4.widget.SwipeRefreshLayout>
     </FrameLayout>
+    </LinearLayout>
 </android.support.design.widget.CoordinatorLayout>
 </layout>

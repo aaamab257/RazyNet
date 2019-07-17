@@ -6,8 +6,10 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.razytech.razynet.R;
+import com.razytech.razynet.Utils.AppConstant;
 import com.razytech.razynet.Utils.IntentUtiles;
 import com.razytech.razynet.baseClasses.BaseActivity;
+import com.razytech.razynet.data.beans.VerifyCodeResponse;
 import com.razytech.razynet.databinding.ActivityVerifyCodeBinding;
 import com.razytech.razynet.gui.mainpage.MainpageActivity;
 import com.razytech.razynet.gui.register.RegisterActivity;
@@ -36,6 +38,7 @@ public class VerifyCodeActivity extends BaseActivity<ActivityVerifyCodeBinding  
 
     private void inilizeVaribles() {
         viewModel.attachView(this);
+
     }
 
     @Override
@@ -50,17 +53,30 @@ public class VerifyCodeActivity extends BaseActivity<ActivityVerifyCodeBinding  
     public int getBindingVariable() {
         return 0;
     }
+
     @Override
     public void OpenRegister() {
-        IntentUtiles.openActivityInNewStack(VerifyCodeActivity.this, RegisterActivity.class);
+        Bundle bundle  =  new Bundle();
+        bundle.putString(AppConstant.TokenKey,"");
+        bundle.putString(AppConstant.phoneKey,"");
+        IntentUtiles.openActivityWithBundleInNewStack(VerifyCodeActivity.this, RegisterActivity.class ,  bundle);
     }
+
+    @Override
+    public void SaveVerifyData(VerifyCodeResponse response) {
+        Bundle bundle  =  new Bundle();
+        bundle.putString(AppConstant.TokenKey,response.getToken());
+        bundle.putString(AppConstant.phoneKey,response.getPhone());
+        IntentUtiles.openActivityWithBundleInNewStack(VerifyCodeActivity.this, RegisterActivity.class ,  bundle);
+    }
+
     public class MyClickHandlers {
         Context context;
         public MyClickHandlers(Context context) {
             this.context = context;
         }
         public void btnEnterCode(View view) {
-            viewModel.vaildatedata(VerifyCodeActivity.this  ,  binding.coorverify  , binding.loginCodeET.getText().toString());
+           viewModel.vaildatedata(VerifyCodeActivity.this  ,  binding.coorverify  ,VerifyCodeActivity.this  , binding.loginCodeET.getText().toString());
         }
     }
 }

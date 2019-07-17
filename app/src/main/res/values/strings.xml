@@ -18,8 +18,12 @@
     <string name="female_btn">Female</string>
     <string name="enter_invitation_code">Enter Invitation Code</string>
     <string name="upload_nid_image">Upload  NID Image</string>
+    <string name="upload_user_image">Upload  User Image</string>
     <string name="enter_btn">Enter</string>
+    <string name="upload_btn">Upload</string>
+    <string name="move_btn">MOVE</string>
     <string name="add_btn">ADD</string>
+    <string name="skip_btn">Skip</string>
     <string name="city">City</string>
     <string name="area">Area</string>
     <string name="addwallet">Add Wallet</string>
@@ -35,20 +39,45 @@
     <string name="invitation_code_txt">Invitation Code</string>
     <string name="cropimage">Crop Image</string>
     <string name="invitation_expired_txt">Your invitation code has expired. Please contact with your friend to invite you again.</string>
-
+    <string name="savechanges">Save Changes</string>
+    <string name="updatechanges">Update Profile</string>
     <string name="redeem">Redeem</string>
     <string name="transfer">Transfer</string>
-    <string name="points">Point</string>
+    <string name="points">Points</string>
+    <string name="details">Details</string>
+    <string name="avaliable">Avaliable</string>
+    <string name="pointhistory">Point History</string>
     <string name="choosewallet">Choose Wallet</string>
     <string name="choosepoint">Choose Point</string>
     <string name="confirm">Confirm</string>
     <string name="next">NEXT</string>
     <string name="back">BACK</string>
     <string name="home">HOME</string>
-
-
+    <string name="avaliablenow">Avaliable now :</string>
     <string name="confirmtxt">When you press the Confirm button, points will be deducted from your account </string>
     <string name="confirmtxtsuccess">Points sent successfully </string>
+    <string name="in">IN</string>
+    <string name="all">ALL</string>
+    <string name="out">OUT</string>
+    <string name="day">DAY</string>
+    <string name="hour">HOUR</string>
+    <string name="min">MIN</string>
+    <string name="fillalldata">Please Fill All Information :  </string>
+    <string name="remain">Remaining</string>
+    <string name="toexpired">To Expired</string>
+    <string name="sorry">Sorry</string>
+    <string name="yourinvitation">Your inventation code has expired  please contact with your friend to invite  you again</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="ok">OK</string>
+    <string name="logout">LOGOUT</string>
+    <string name="selectcity">Please select your City</string>
+    <string name="selectarea">Please select your Area</string>
+    <string name="cityfirst">you should choose City First</string>
+    <string name="verifycodesuccess">Verification Code </string>
+    <string name="Walletsuccess">Wallet Create Successfully</string>
+    <string name="movetext">Move in Other Wallet</string>
+    <string name="tryagain">Try Again</string>
 
 
     <!-- empty filds -->
@@ -58,6 +87,11 @@
     <string name="emptyinvcode">Your Invitation Code is Empty</string>
     <string name="emptyConfPassword">Your Confirm Password is Empty</string>
     <string name="emptynumberphone">Your Phone Number is Empty</string>
+    <string name="emptypoints">Your Points is Empty</string>
+    <string name="emptyCity">Your choose  City</string>
+    <string name="emptyArea">Your choose  Area</string>
+    <string name="emptychooisewallet">You should chooise Target Wallet</string>
+
 
     <!--errors-->
     <string name="tryagaing">Error occured, Please try again!</string>
@@ -65,6 +99,7 @@
     <string name="Passworddonotmatch">Password does not match the confirm password.</string>
     <string name="invaildnumberphone">Invalid Phone Number </string>
     <string name="donothaveenoughpoints">You Donot have enough points</string>
+    <string name="donothavechilds">No Child Found</string>
 
     <!--Crop -->
     <string name="crop_image_activity_title"></string>

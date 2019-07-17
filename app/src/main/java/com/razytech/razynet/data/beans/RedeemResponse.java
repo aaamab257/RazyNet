@@ -8,15 +8,20 @@ import com.google.gson.annotations.SerializedName;
 public class RedeemResponse {
 
     @SerializedName("id")
-    private String id;
-    @SerializedName("companyname")
+    private int id;
+    @SerializedName("name")
     private String companyname;
+    @SerializedName("isActive")
+    private boolean isActive;
+    @SerializedName("imageUrl")
+    private String imageUrl;
 
-    public String getId() {
+
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -26,5 +31,21 @@ public class RedeemResponse {
 
     public void setCompanyname(String companyname) {
         this.companyname = companyname;
+    }
+
+    public boolean isActive() {
+        return isActive;
+    }
+
+    public void setActive(boolean active) {
+        isActive = active;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 }

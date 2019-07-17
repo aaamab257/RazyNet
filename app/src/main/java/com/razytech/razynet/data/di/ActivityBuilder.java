@@ -4,6 +4,8 @@ import com.razytech.razynet.gui.mainpage.MainpageActivity;
 import com.razytech.razynet.gui.mainpage.MainpageActivityModule;
 import com.razytech.razynet.gui.register.RegisterActivity;
 import com.razytech.razynet.gui.register.RegisterActivityModule;
+import com.razytech.razynet.gui.remainingpage.RemainingActivity;
+import com.razytech.razynet.gui.remainingpage.RemainingActivityModule;
 import com.razytech.razynet.gui.splash.SplashActivity;
 import com.razytech.razynet.gui.splash.SplashActivityModule;
 import com.razytech.razynet.gui.verificationcode.VerifyCodeActivity;
@@ -31,5 +33,6 @@ public abstract class ActivityBuilder {
     @ContributesAndroidInjector(modules = MainpageActivityModule.class)
     abstract MainpageActivity bindMainpageActivity();
 
-
+    @ContributesAndroidInjector(modules = RemainingActivityModule.class)
+    abstract RemainingActivity bindRemainingActivity();
 }

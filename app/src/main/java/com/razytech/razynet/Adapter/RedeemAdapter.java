@@ -52,7 +52,7 @@ public class RedeemAdapter extends RecyclerView.Adapter<RedeemAdapter.MyViewHold
     @Override
     public void onBindViewHolder(RedeemAdapter.MyViewHolder holder, final int position) {
         holder.binding.setHandlers (itemlist.get(position));
-     //   StaticMethods.LoadImage(context,holder.binding.countryPhoto,itemlist.get(position).getImage(),holder.binding.progress);
+      StaticMethods.LoadImage(context,holder.binding.countryPhoto,itemlist.get(position).getImageUrl(),holder.binding.progress);
         holder.binding.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

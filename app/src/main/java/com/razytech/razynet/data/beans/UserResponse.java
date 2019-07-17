@@ -6,69 +6,111 @@ import com.google.gson.annotations.SerializedName;
  * Created by A.Noby on 4/7/2019.
  */
 public class UserResponse {
-    @SerializedName("firstname")
-    private String firstname;
-    @SerializedName("lastname")
-    private String lastname;
-    @SerializedName("email")
-    private String email;
-    @SerializedName("username")
-    private String username;
-    @SerializedName("image")
-    private String image;
-    @SerializedName("phone")
-    private int phone;
-    @SerializedName("Token")
+
+//
+//             "displayName": "new1",
+//            "balance": 1000.00,
+//            "approved": false,
+//            "isStarWallet": false,
+//            "childernsCount": 2,
+//            "levelsCount": 0,
+//            "userImageUrl": null,
+//            "cityId": "1",
+//            "areaId": "1",
+//            "mobileNo": "01128818457",
+//            "userId": "55655940-20ee-410e-8e50-8915e0670912",
+//            "incrementPermission": true,
+//            "token": null
+
+    @SerializedName("displayName")
+    private String displayName;
+    @SerializedName("balance")
+    private double balance;
+    @SerializedName("approved")
+    private boolean approved;
+    @SerializedName("isStarWallet")
+    private boolean isStarWallet;
+    @SerializedName("userImageUrl")
+    private String idImageUrl;
+    @SerializedName("childernsCount")
+    private int childsCount;
+    @SerializedName("levelsCount")
+    private int levelsCount;
+    @SerializedName("cityId")
+    private String cityId;
+    @SerializedName("areaId")
+    private String areaId;
+    @SerializedName("userId")
+    private String userId;
+    @SerializedName("incrementPermission")
+    private boolean incrementPermission;
+    @SerializedName("mobileNo")
+    private String phone;
+   @SerializedName("token")
     private String Token ;
 
-    public  String DeliveryAddress =  "";
 
-
-    public String getFirstname() {
-        return firstname;
+    public String getDisplayName() {
+        return displayName;
     }
 
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
+    public void setDisplayName(String displayName) {
+        this.displayName = displayName;
     }
 
-    public String getLastname() {
-        return lastname;
+    public double getBalance() {
+        return balance;
     }
 
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
+    public void setBalance(double balance) {
+        this.balance = balance;
     }
 
-    public String getEmail() {
-        return email;
+    public boolean isApproved() {
+        return approved;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setApproved(boolean approved) {
+        this.approved = approved;
     }
 
-    public String getUsername() {
-        return username;
+    public boolean isStarWallet() {
+        return isStarWallet;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setStarWallet(boolean starWallet) {
+        isStarWallet = starWallet;
     }
 
-    public String getImage() {
-        return image;
+    public String getIdImageUrl() {
+        return idImageUrl;
     }
 
-    public void setImage(String image) {
-        this.image = image;
+    public void setIdImageUrl(String idImageUrl) {
+        this.idImageUrl = idImageUrl;
     }
 
-    public int getPhone() {
+    public int getChildsCount() {
+        return childsCount;
+    }
+
+    public void setChildsCount(int childsCount) {
+        this.childsCount = childsCount;
+    }
+
+    public int getLevelsCount() {
+        return levelsCount;
+    }
+
+    public void setLevelsCount(int levelsCount) {
+        this.levelsCount = levelsCount;
+    }
+
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(int phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 
@@ -80,4 +122,35 @@ public class UserResponse {
         Token = token;
     }
 
+    public String getCityId() {
+        return cityId;
+    }
+
+    public void setCityId(String cityId) {
+        this.cityId = cityId;
+    }
+
+    public String getAreaId() {
+        return areaId;
+    }
+
+    public void setAreaId(String areaId) {
+        this.areaId = areaId;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    public boolean isIncrementPermission() {
+        return incrementPermission;
+    }
+
+    public void setIncrementPermission(boolean incrementPermission) {
+        this.incrementPermission = incrementPermission;
+    }
 }

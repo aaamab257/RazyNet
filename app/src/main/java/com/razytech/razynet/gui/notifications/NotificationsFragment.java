@@ -1,25 +1,30 @@
 package com.razytech.razynet.gui.notifications;
 
-import android.content.Context;
 import android.databinding.DataBindingUtil;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.razytech.razynet.Adapter.NotificationsAdapter;
 import com.razytech.razynet.R;
+import com.razytech.razynet.Utils.AppConstant;
 import com.razytech.razynet.baseClasses.BaseFragment;
+import com.razytech.razynet.data.beans.NotificationsResponse;
 import com.razytech.razynet.databinding.ActivityNotificationFragmentBinding;
-import com.razytech.razynet.databinding.ActivityTreeFragmentBinding;
-import com.razytech.razynet.gui.maintransaction.MainTransactionFragment;
+import com.razytech.razynet.gui.mainpage.MainpageActivity;
 
-public class NotificationsFragment extends BaseFragment implements NotificationsView {
+import java.util.List;
+
+public class NotificationsFragment extends BaseFragment implements NotificationsView ,  NotificationsAdapter.NotificationsListener {
 
 
     View view ;
     ActivityNotificationFragmentBinding binding ;
-    MyClickHandlers handlers  ;
+    NotificationsAdapter adapter ;
     NotificationsModelView  modelView  ;
 
     @Override
@@ -27,23 +32,54 @@ public class NotificationsFragment extends BaseFragment implements Notifications
         binding = DataBindingUtil.inflate(inflater,R.layout.activity_notification_fragment, container, false);
         //  setUserVisibleHint(false);
         view = binding.getRoot();
-        handlers =  new MyClickHandlers(getActivity());
-        binding.setHandlers(handlers);
+
         inilizeVariables();
         return  view;
     }
 
     private void inilizeVariables() {
+        ((MainpageActivity)getActivity()).setViewHandling("128"  ,"3"  ,false  );
         modelView =  new NotificationsModelView();
         modelView.attachView(this);
+        binding.swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                refreshdata();
+            }
+        });
+        CheckloadingData();
     }
 
-    public class MyClickHandlers {
-        Context context;
-        public MyClickHandlers(Context context) {
-            this.context = context;
+    private void CheckloadingData() {
+        if (AppConstant.notificationsResponses == null)
+            modelView.loadingNotificationData(binding.coornotification,getActivity(),false);
+        else {
+            LoadingnotificationData(AppConstant.notificationsResponses);
         }
-        public void Radiomale(View view) {
+    }
+    private void refreshdata(){
+        binding.swipeRefreshLayout.setRefreshing(true);
+        modelView.loadingNotificationData(binding.coornotification,getActivity(),true);
+    }
+
+    @Override
+    public void LoadingnotificationData(List<NotificationsResponse> notificationsRes) {
+        hide_refreshView();
+        AppConstant.notificationsResponses =  notificationsRes ;
+        binding.recNotificationlist.setLayoutManager(new LinearLayoutManager(getActivity()));
+        adapter =  new NotificationsAdapter(getActivity(),notificationsRes,this);
+        binding.recNotificationlist.setAdapter(adapter);
+    }
+
+    @Override
+    public void hide_refreshView() {
+        if (binding.swipeRefreshLayout.isRefreshing()) {
+            binding.swipeRefreshLayout.setRefreshing(false);
         }
+    }
+
+    @Override
+    public void onnotificationClicked(NotificationsResponse post) {
+
     }
 }

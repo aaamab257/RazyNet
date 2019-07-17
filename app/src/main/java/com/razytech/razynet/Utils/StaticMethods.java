@@ -300,7 +300,8 @@ public class StaticMethods {
                                 if (progressBar != null)
                                     progressBar.setVisibility(View.GONE);
                                 imageView.setVisibility(View.VISIBLE);
-                                imageView.setImageResource(R.mipmap.avatar);
+                                imageView.setBackgroundColor(context.getResources().getColor(R.color.white));
+                                imageView.setImageResource(R.mipmap.no_child_found);
                             }
                         });
             }

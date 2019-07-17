@@ -3,7 +3,7 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#E5161B</color>
-
+    <color name="Black">#000000</color>
     <color name="darkBlack">#0D0C0C</color>
     <color name="lightBlack">#171616</color>
     <color name="white">#FFFFFF</color>
@@ -12,4 +12,6 @@
     <color name="lightPink">#E41D59</color>
     <color name="green">#318807</color>
     <color name="gray">#464242</color>
+    <color name="hintcolor">#ABEBE6E6</color>
+
 </resources>

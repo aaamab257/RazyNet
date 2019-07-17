@@ -2,6 +2,7 @@ package com.razytech.razynet.gui.splash;
 
 import android.content.Context;
 
+import com.razytech.razynet.Utils.AppConstant;
 import com.razytech.razynet.baseClasses.BaseViewModel;
 import com.razytech.razynet.data.prefs.PrefUtils;
 
@@ -13,7 +14,10 @@ import com.razytech.razynet.data.prefs.PrefUtils;
  void activityFinishedSplashTimer (Context context ){
 
   if (PrefUtils.getUserformation(context)){
-   view.openHomeActivity();
+   if (AppConstant.userResponse.isApproved())
+    view.openHomeActivity();
+   else
+    view.openRemainPage();
   }else{
    view.openVerifyPage();
   }

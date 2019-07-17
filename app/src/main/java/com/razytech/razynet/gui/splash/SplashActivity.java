@@ -9,6 +9,7 @@ import com.razytech.razynet.Utils.IntentUtiles;
 import com.razytech.razynet.baseClasses.BaseActivity;
 import com.razytech.razynet.databinding.ActivitySplashBinding;
 import com.razytech.razynet.gui.mainpage.MainpageActivity;
+import com.razytech.razynet.gui.remainingpage.RemainingActivity;
 import com.razytech.razynet.gui.verificationcode.VerifyCodeActivity;
 
 import javax.inject.Inject;
@@ -68,6 +69,12 @@ public class SplashActivity extends BaseActivity<ActivitySplashBinding ,   Splas
     public void openVerifyPage() {
         IntentUtiles.openActivityInNewStack(SplashActivity.this, VerifyCodeActivity.class);
     }
+
+    @Override
+    public void openRemainPage() {
+        IntentUtiles.openActivityInNewStack(SplashActivity.this, RemainingActivity.class);
+    }
+
     @Override
     public void openHomeActivity() {
         IntentUtiles.openActivityInNewStack(SplashActivity.this, MainpageActivity.class);

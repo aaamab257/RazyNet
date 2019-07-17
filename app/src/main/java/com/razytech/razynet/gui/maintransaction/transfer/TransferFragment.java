@@ -4,16 +4,23 @@ import android.content.Context;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.razytech.razynet.Adapter.ChildAdpater;
 import com.razytech.razynet.R;
+import com.razytech.razynet.Utils.AppConstant;
 import com.razytech.razynet.baseClasses.BaseFragment;
+import com.razytech.razynet.data.beans.ChildResponse;
+import com.razytech.razynet.data.prefs.PrefUtils;
 import com.razytech.razynet.databinding.ActivityRedeemFragmentBinding;
 import com.razytech.razynet.databinding.ActivityTransferFragmentBinding;
 import com.razytech.razynet.gui.homepage.HomeFragment;
 import com.razytech.razynet.gui.mainpage.MainpageActivity;
+
+import java.util.List;
 
 import static com.razytech.razynet.Utils.AppConstant.HOME_page;
 import static com.razytech.razynet.Utils.AppConstant.TRANSFERCONFIRMFINAL_page;
@@ -23,14 +30,18 @@ import static com.razytech.razynet.Utils.AppConstant.TRANSFERWALLET_page;
 import static com.razytech.razynet.Utils.AppConstant.TRANSFER_page;
 import static com.razytech.razynet.Utils.AppConstant.TREE_page;
 
-public class TransferFragment extends BaseFragment  implements  TransferView {
+public class TransferFragment extends BaseFragment  implements  TransferView ,ChildAdpater.ChildListener {
 
 
-    View view ;
-    ActivityTransferFragmentBinding binding ;
-    TransferModelView modelView   ;
-    MyClickHandlers handlers  ;
-    public  String points = "";
+    View view;
+    ActivityTransferFragmentBinding binding;
+    TransferModelView modelView;
+    MyClickHandlers handlers;
+    public String points = "";
+
+    ChildAdpater adpater;
+    ChildResponse childRespon = null  ;
+    String phonenumber =  ""  ;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -44,12 +55,19 @@ public class TransferFragment extends BaseFragment  implements  TransferView {
     }
 
     private void inilizeVariables() {
-        ((MainpageActivity)getActivity()).setViewHandling("128"  ,"3"  , true , false );
+        ((MainpageActivity)getActivity()).setViewHandling(AppConstant.userResponse.getBalance()+""  ,AppConstant.userResponse.getChildsCount()+"" , true , false );
         modelView =  new TransferModelView();
         modelView.attachView(this);
         SetStepsHandlingView(TRANSFERWALLET_page);
         binding.transferwallet.btnNext.setOnClickListener((View) ->{
-         modelView.setbtnNextWallet(binding.transferwallet.coorwallet ,  getActivity() ,binding.transferwallet.createAccPhoneET.getText().toString());
+            if (childRespon != null)
+                phonenumber = childRespon.getMobileNo();
+//            else
+//                phonenumber = binding.transferwallet.createAccPhoneET.getText().toString();
+         modelView.setbtnNextWallet(binding.transferwallet.coorwallet ,  getActivity() ,phonenumber);
+        });
+        binding.transferwallet.imgSearch.setOnClickListener((View) ->{
+            modelView.GetChildsData(binding.transferwallet.coorwallet ,  getActivity() ,binding.transferwallet.createAccPhoneET.getText().toString());
         });
         binding.transferpoints.btnNext.setOnClickListener((View) ->{
           modelView.setbtnPoints(binding.transferwallet.coorwallet ,  getActivity() ,binding.transferpoints.createAccPointsET.getText().toString(),true);
@@ -84,7 +102,7 @@ public class TransferFragment extends BaseFragment  implements  TransferView {
                 binding.transferpoints.coorpoints.setVisibility(View.GONE);
                 binding.tranferconfirm.coorconfirm.setVisibility(View.GONE);
                 binding.transferfinalconfirm.coorfinalconfirm.setVisibility(View.GONE);
-
+                CheckloadingData();
                 break;
             case TRANSFERPOINTS_page:
                 //TRANSFERPOINTS_page Fragment
@@ -125,9 +143,55 @@ public class TransferFragment extends BaseFragment  implements  TransferView {
         }
     }
 
+    private void CheckloadingData() {
+        if (AppConstant.childResponses == null)
+            modelView.loadingChildsData(binding.coortransfer,getActivity());
+        else {
+            LoadingchildData(AppConstant.childResponses);
+        }
+    }
+
     @Override
     public void SetPointValue(String Points) {
         points =  Points  ;
+    }
+
+    @Override
+    public void LoadingchildData(List<ChildResponse> childRespo) {
+        show_errorView(false,  "" );
+        childRespon = null ;
+        AppConstant.childResponses =  childRespo ;
+        binding.transferwallet.rectransfer.setLayoutManager(new LinearLayoutManager(getActivity()));
+        adpater =  new ChildAdpater(getActivity(),childRespo,this ,  false);
+        binding.transferwallet.rectransfer.setAdapter(adpater);
+
+    }
+
+    @Override
+    public void show_errorView(boolean Isshow, String error) {
+        if (Isshow){
+           binding.errorLayoutView.setViewerror(Isshow);
+           binding.errorLayoutView.setErrortxt(error);
+           binding.errorLayoutView.btnTryAgain.setOnClickListener((View)->{
+               CheckloadingData();
+           });
+        }else {
+            binding.errorLayoutView.setViewerror(Isshow);
+        }
+    }
+
+    @Override
+    public void UpdatePoints(double Points) {
+       // points =  Points+"" ;
+        ((MainpageActivity)getActivity()).UpdatePointsHandling(Points+"");
+        AppConstant.userResponse.setBalance(Points);
+        AppConstant.userResponse.setToken(AppConstant.userResponse.getToken());
+        PrefUtils.saveUserinformation(getActivity(),AppConstant.userResponse,PrefUtils.User_Singin);
+    }
+
+    @Override
+    public void onChildClicked(ChildResponse post) {
+        childRespon =  post ;
     }
 
     public class MyClickHandlers {
@@ -136,6 +200,8 @@ public class TransferFragment extends BaseFragment  implements  TransferView {
             this.context = context;
         }
         public void Radiomale(View view) {
+
+
         }
     }
 }

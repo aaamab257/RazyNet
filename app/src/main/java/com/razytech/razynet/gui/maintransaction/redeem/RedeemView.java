@@ -12,4 +12,5 @@ import java.util.List;
 
    void   LoadingReddemData (List<RedeemResponse>  redeemResponses );
    void  hide_refreshView();
+   void show_errorView(boolean Isshow , String error);
 }

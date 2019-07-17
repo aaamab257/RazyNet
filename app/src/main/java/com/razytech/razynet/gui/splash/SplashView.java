@@ -7,6 +7,7 @@ import com.razytech.razynet.baseClasses.BaseView;
  */
  interface SplashView extends BaseView  {
  void openVerifyPage();
+ void openRemainPage();
  void openHomeActivity();
  void startSplashViewTimer();
  void stopSplashViewTimer();
