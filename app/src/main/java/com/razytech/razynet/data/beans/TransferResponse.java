@@ -7,7 +7,7 @@ import com.google.gson.annotations.SerializedName;
  */
 public class TransferResponse {
 
-    @SerializedName("updatedBalance")
+    @SerializedName("updatedPoints")
     private double updatedBalance;
 
 

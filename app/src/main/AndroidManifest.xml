@@ -16,7 +16,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
+        <activity android:name=".gui.loginpage.LoginActivity"></activity>
         <activity android:name=".gui.remainingpage.RemainingActivity" />
         <activity
             android:name=".gui.splash.SplashActivity"
@@ -36,14 +36,12 @@
         <activity
             android:name=".gui.verificationcode.VerifyCodeActivity"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".CustomViews.crop.CropImageActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".CustomViews.crop.ImagePickerActivity"
             android:screenOrientation="portrait" />
-
     </application>
 
 </manifest>

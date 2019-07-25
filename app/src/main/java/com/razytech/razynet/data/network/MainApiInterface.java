@@ -8,7 +8,10 @@ import com.razytech.razynet.data.beans.InviteResponse;
 import com.razytech.razynet.data.beans.NotificationsResponse;
 import com.razytech.razynet.data.beans.RedeemPointsResponse;
 import com.razytech.razynet.data.beans.RedeemResponse;
+import com.razytech.razynet.data.beans.RedeemUpdateResponse;
+import com.razytech.razynet.data.beans.RemainingResponse;
 import com.razytech.razynet.data.beans.TransferResponse;
+import com.razytech.razynet.data.beans.UploadNidResponse;
 import com.razytech.razynet.data.beans.UserResponse;
 import com.razytech.razynet.data.beans.VerifyCodeResponse;
 
@@ -88,5 +91,52 @@ public interface MainApiInterface {
     // 12
     @POST("Wallet/TransferPoints")
     Observable<MainResponse<TransferResponse>> TransferPage(@Header("Authorization") String auth, @Body RequestBody RequestBody );
+
+    // 13
+    @PUT("Wallet/SuspendedCountDown")
+    Observable<MainResponse<RemainingResponse>> RemainingPage(@Header("Authorization") String auth );
+
+
+    // 14
+    @Multipart
+    @POST("Wallet/UploadIdenityImage")
+    Observable<MainResponse<UploadNidResponse>> UploadNidImagePage(@Header("Authorization") String auth
+            , @Part MultipartBody.Part image, @Part("IdentityNumber") RequestBody DisplayName);
+
+
+    // 15
+    @POST("Wallet/AvailableWallets")
+    Observable<MainResponse<List<ChildResponse>>> GetAvailablePage(@Header("Authorization") String auth
+                                                                 , @Body RequestBody RequestBody );
+
+
+    // 16
+    @PUT("Wallet/MoveChildWallet")
+    Observable<MainResponse<TransferResponse>> MovePage(@Header("Authorization") String auth
+                                                             , @Body RequestBody RequestBody);
+
+
+    // 17
+    @Multipart
+    @POST("Wallet/UpdateProfile")
+    Observable<MainResponse<UserResponse>> UpdateProfilePage(@Header("Authorization") String auth,
+                                                      @Part MultipartBody.Part image, @Part("DisplayName") RequestBody DisplayName,
+                                                      @Part("CityId") RequestBody CityId, @Part("AreaId") RequestBody AreaId);
+
+    // 18
+    @POST("User/LoginMobile")
+    Observable<MainResponse<UserResponse>> LoginPage(@Body RequestBody RequestBody);
+
+
+    // 19
+    @POST("User/ConfirmPassword")
+    Observable<MainResponse<UserResponse>> ConfirmPasswordPage(@Header("Authorization") String auth
+            ,@Body RequestBody RequestBody);
+
+    // 20
+    @POST("Product/Execute")
+    Observable<MainResponse<RedeemUpdateResponse>> RedeemUpdatePage(@Header("Authorization") String auth
+            , @Body RequestBody RequestBody);
+
 
 }

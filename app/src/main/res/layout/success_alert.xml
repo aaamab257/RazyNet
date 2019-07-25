@@ -83,7 +83,6 @@
                 android:layout_height="90dp"
                 android:src="@mipmap/done"
                 android:layout_gravity="top|center"
-
                 />
         </FrameLayout>
 

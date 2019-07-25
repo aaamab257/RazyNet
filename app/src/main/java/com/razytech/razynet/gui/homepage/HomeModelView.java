@@ -46,6 +46,7 @@ import okhttp3.RequestBody;
             view.hideloadingviewBase();
             if (connectionResponse.data.success ) {
              AppConstant.homeResponse = connectionResponse.data.data;
+             AppConstant.refreshhome  =  false;
              view.LoadWalletSystem(connectionResponse.data.data.getTopWallets());
              view.LoadWallet(connectionResponse.data.data.getTopChildrens());
              view.UpdateUserData(connectionResponse.data.data.getWallet());

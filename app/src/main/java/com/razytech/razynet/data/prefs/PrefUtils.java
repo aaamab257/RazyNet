@@ -19,7 +19,7 @@ public class PrefUtils {
             Country_List = "countrylist", Country_Selected = "Countryselected";
 
     public static final int  User_Singin = 1 ,
-            User_Singout = 0 ;
+            User_Singout = 0 ,  User_Verify = 2 ;
 
 
     public static void saveOpenStatus(boolean indexlang, Context context) {
@@ -67,6 +67,11 @@ public class PrefUtils {
         SharedPreferences.Editor editor = sharedpreferences.edit();
         editor.putInt(Status_User,User_Singout);
         editor.commit();
+    }
+
+    public static  int User_Status(Context context){
+        SharedPreferences sharedpreferences = context.getSharedPreferences(App_RazyNet, Context.MODE_PRIVATE);
+        return   sharedpreferences.getInt(Status_User, User_Verify);
     }
 
 

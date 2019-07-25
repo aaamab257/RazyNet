@@ -90,6 +90,7 @@ import static com.razytech.razynet.Utils.AppConstant.TRANSFERWALLET_page;
  }
 
  void setbtnHome(CoordinatorLayout coordinatorLayout  , Context context  ){
+         AppConstant.refreshhome =  true ;
         ((MainpageActivity)context).displayView(HOME_page);
     }
     void  loadingChildsData(CoordinatorLayout coordinatorLayout, Context context ){

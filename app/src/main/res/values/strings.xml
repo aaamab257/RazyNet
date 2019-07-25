@@ -27,6 +27,7 @@
     <string name="city">City</string>
     <string name="area">Area</string>
     <string name="addwallet">Add Wallet</string>
+    <string name="loginpage">Login Page</string>
     <string name="yourwallet">Your Wallet :-</string>
     <string name="topwallet">Top Wallet in System :-</string>
     <string name="walletlevel"><font size="20">Wallet </font> <font size="11">(Level)</font></string>
@@ -71,10 +72,12 @@
     <string name="no">No</string>
     <string name="ok">OK</string>
     <string name="logout">LOGOUT</string>
+    <string name="areyousureexit">Are you sure logout ?</string>
     <string name="selectcity">Please select your City</string>
     <string name="selectarea">Please select your Area</string>
     <string name="cityfirst">you should choose City First</string>
     <string name="verifycodesuccess">Verification Code </string>
+    <string name="verify">Verify </string>
     <string name="Walletsuccess">Wallet Create Successfully</string>
     <string name="movetext">Move in Other Wallet</string>
     <string name="tryagain">Try Again</string>
@@ -91,7 +94,7 @@
     <string name="emptyCity">Your choose  City</string>
     <string name="emptyArea">Your choose  Area</string>
     <string name="emptychooisewallet">You should chooise Target Wallet</string>
-
+    <string name="emptyImage">You should  upload Image</string>
 
     <!--errors-->
     <string name="tryagaing">Error occured, Please try again!</string>

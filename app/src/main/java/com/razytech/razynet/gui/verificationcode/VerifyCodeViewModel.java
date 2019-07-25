@@ -48,9 +48,9 @@ import okhttp3.RequestBody;
    view.showErrorMessageBase(context, context.getString(R.string.emptyinvcode));
    return;
   }
-    if (Invitationcode.equals("123456"))
-       view.OpenRegister();
-    else
+//    if (Invitationcode.equals("123456"))
+//       view.OpenRegister();
+//    else
       loadData(context,coordinatorLayout,activity,Invitationcode);
  }
 

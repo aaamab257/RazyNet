@@ -5,11 +5,13 @@ import android.databinding.DataBindingUtil;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.razytech.razynet.Adapter.ChildAdpater;
+import com.razytech.razynet.Adapter.TopWalletAdapter;
 import com.razytech.razynet.R;
 import com.razytech.razynet.Utils.AppConstant;
 import com.razytech.razynet.baseClasses.BaseFragment;
@@ -22,54 +24,72 @@ import com.razytech.razynet.gui.register.RegisterActivity;
 
 import java.util.List;
 
-public class HomeFragment extends BaseFragment implements   HomeView , ChildAdpater.ChildListener{
+import static com.razytech.razynet.Utils.AppConstant.CHILDDETAILS_page;
+import static com.razytech.razynet.Utils.AppConstant.ChildChilds;
+import static com.razytech.razynet.Utils.AppConstant.ChildId;
+import static com.razytech.razynet.Utils.AppConstant.ChildImage;
+import static com.razytech.razynet.Utils.AppConstant.ChildMoved;
+import static com.razytech.razynet.Utils.AppConstant.ChildName;
+import static com.razytech.razynet.Utils.AppConstant.REDEEMPOINTS_page;
+import static com.razytech.razynet.Utils.AppConstant.RedeemidKey;
+import static com.razytech.razynet.Utils.AppConstant.RedeemnameKey;
+
+public class HomeFragment extends BaseFragment implements   HomeView , ChildAdpater.ChildListener , TopWalletAdapter.TopWalletListener{
 
 
     View view ;
     ActivityHomeFragmentBinding binding ;
     HomeModelView modelView   ;
     ChildAdpater adpater;
+    TopWalletAdapter Topadpater;
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = DataBindingUtil.inflate(inflater,R.layout.activity_home_fragment, container, false);
-      //  setUserVisibleHint(false);
         view = binding.getRoot();
         inilizeVariables();
         return  view;
     }
 
     private void inilizeVariables() {
-//        AppConstant.userResponse.setBalance(1000.00);
-//        AppConstant.userResponse.setToken("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiMDExMjg4MTg0NTciLCJzdWIiOiIwMTEyODgxODQ1NyIsImp0aSI6ImQ2N2YwMDllLWY0N2YtNGMzOS04MWIyLTY2NzNmMjAwODM3MiIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWVpZGVudGlmaWVyIjoiNTU2NTU5NDAtMjBlZS00MTBlLThlNTAtODkxNWUwNjcwOTEyIiwiZXhwIjoxNTY1NDM4NzMxLCJpc3MiOiJSYXpOZXQuY29tIiwiYXVkIjoiUmF6TmV0LmNvbSJ9.4zQEif5GgTB1uax7EC_czfJGKSgNx2qB-WV_mfiMNJ4");
         ((MainpageActivity)getActivity()).setViewHandling("" ,""  , false );
-        binding.setLevel(AppConstant.userResponse.getLevelsCount()+"");
-        binding.setPoints(AppConstant.userResponse.getBalance()+"");
-        binding.setWallet(AppConstant.userResponse.getChildsCount()+"");
+        fillData();
         modelView =  new HomeModelView();
         modelView.attachView(this);
 
         CheckloadingData();
     }
+   void fillData(){
+        binding.setLevel(AppConstant.userResponse.getLevelsCount()+"");
+        binding.setPoints(AppConstant.userResponse.getBalance()+"");
+        binding.setWallet(AppConstant.userResponse.getChildsCount()+"");
+    }
 
     private void CheckloadingData() {
-       if (AppConstant.homeResponse != null){
-           LoadWalletSystem(AppConstant.homeResponse.getTopWallets());
-           LoadWallet(AppConstant.homeResponse.getTopChildrens());
-       }else{
-           modelView.loadingHomeData(binding.coorhome  ,  getActivity());
-       }
+        if (!AppConstant.refreshhome) {
+            if (AppConstant.homeResponse != null) {
+                LoadWalletSystem(AppConstant.homeResponse.getTopWallets());
+                LoadWallet(AppConstant.homeResponse.getTopChildrens());
+            } else
+                modelView.loadingHomeData(binding.coorhome, getActivity());
+        }else
+                modelView.loadingHomeData(binding.coorhome, getActivity());
     }
 
     @Override
     public void LoadWalletSystem(List<ChildResponse> topsystem ) {
-        if (topsystem != null && !topsystem.isEmpty()) {
-        showerrorlayoutTopsystem(false,  "" );
-        AppConstant.topsystem =  topsystem ;
-        binding.recTopuser.setLayoutManager(new LinearLayoutManager(getActivity()));
-        adpater =  new ChildAdpater(getActivity(),AppConstant.topsystem,this ,  true , false);
-        binding.recTopuser.setAdapter(adpater);
+        if (topsystem != null ) {
+            if(!topsystem.isEmpty()) {
+                showerrorlayoutTopsystem(false, "");
+                Log.e("topsystem", "" + topsystem.size());
+                AppConstant.topsystem = topsystem;
+                LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
+                binding.recTopuser.setLayoutManager(layoutManager);
+                Topadpater = new TopWalletAdapter(getActivity(), topsystem, this,false , false);
+                binding.recTopuser.setAdapter(Topadpater);
+            }else
+                showerrorlayoutTopsystem(true, getActivity().getString(R.string.donothavechilds));
     } else {
         showerrorlayoutTopsystem(true, getActivity().getString(R.string.donothavechilds));
     }
@@ -77,14 +97,17 @@ public class HomeFragment extends BaseFragment implements   HomeView , ChildAdpa
 
     @Override
     public void LoadWallet(List<ChildResponse> topchilds) {
-        if (topchilds != null  && !topchilds.isEmpty()) {
-
-            showerrorlayoutTopsystem(false, "");
-            AppConstant.topchilds = topchilds;
-            binding.recTopwallet.setLayoutManager(new LinearLayoutManager(getActivity()));
-            adpater = new ChildAdpater(getActivity(), AppConstant.topchilds, this, false);
-            binding.recTopwallet.setAdapter(adpater);
-        } else {
+        if (topchilds != null ) {
+            if(!topchilds.isEmpty()) {
+                showerrorlayoutchilds(false, "");
+                //Log.e("topsystem",""+topchilds.size());
+                AppConstant.topchilds = topchilds;
+                binding.recTopwallet.setLayoutManager(new LinearLayoutManager(getActivity()));
+                adpater = new ChildAdpater(getActivity(), topchilds, this, true, false);
+                binding.recTopwallet.setAdapter(adpater);
+            }else
+                showerrorlayoutchilds(true, getActivity().getString(R.string.donothavechilds));
+            } else {
             showerrorlayoutchilds(true, getActivity().getString(R.string.donothavechilds));
         }
     }
@@ -93,6 +116,7 @@ public class HomeFragment extends BaseFragment implements   HomeView , ChildAdpa
     public void UpdateUserData(UserResponse userResponse) {
         userResponse.setToken(AppConstant.userResponse.getToken());
         AppConstant.userResponse =  userResponse  ;
+        fillData();
         PrefUtils.saveUserinformation(getActivity(),userResponse,PrefUtils.User_Singin);
     }
 
@@ -120,6 +144,17 @@ public class HomeFragment extends BaseFragment implements   HomeView , ChildAdpa
 
     @Override
     public void onChildClicked(ChildResponse post) {
+        Bundle bundle = new Bundle();
+        bundle.putString(ChildId,post.getWalletId());
+        bundle.putString(ChildName,post.getName());
+        bundle.putString(ChildChilds,post.getChildCounts()+"");
+        bundle.putString(ChildImage,post.getImageUrl());
+        bundle.putBoolean(ChildMoved,post.isMoved());
+        ((MainpageActivity)getActivity()).setBundlevalue(bundle , CHILDDETAILS_page);
+    }
+
+    @Override
+    public void onWalletClicked(ChildResponse post) {
 
     }
 

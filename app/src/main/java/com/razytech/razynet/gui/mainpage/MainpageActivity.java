@@ -12,11 +12,13 @@ import com.razytech.razynet.Utils.AppConstant;
 import com.razytech.razynet.baseClasses.BaseActivity;
 import com.razytech.razynet.databinding.ActivityMainpageBinding;
 import com.razytech.razynet.gui.addwallet.AddWalletFragment;
+import com.razytech.razynet.gui.childDetails.ChildDetailsFragment;
 import com.razytech.razynet.gui.homepage.HomeFragment;
 import com.razytech.razynet.gui.maintransaction.MainTransactionFragment;
 import com.razytech.razynet.gui.maintransaction.redeem.RedeemListFragment;
 import com.razytech.razynet.gui.maintransaction.redeempoints.RedeemListPointsFragment;
 import com.razytech.razynet.gui.maintransaction.transfer.TransferFragment;
+import com.razytech.razynet.gui.movepage.MovepageFragment;
 import com.razytech.razynet.gui.notifications.NotificationsFragment;
 import com.razytech.razynet.gui.pointhistory.PointsHistoryFragment;
 import com.razytech.razynet.gui.porfile.ProfileFragment;
@@ -30,6 +32,7 @@ import static com.razytech.razynet.Utils.AppConstant.ADDWALLET_PAGE;
 import static com.razytech.razynet.Utils.AppConstant.CHILDDETAILS_page;
 import static com.razytech.razynet.Utils.AppConstant.HOME_page;
 import static com.razytech.razynet.Utils.AppConstant.MAINTRANSACTION_page;
+import static com.razytech.razynet.Utils.AppConstant.MOVE_page;
 import static com.razytech.razynet.Utils.AppConstant.NOTIFICATION_page;
 import static com.razytech.razynet.Utils.AppConstant.POINTS_page;
 import static com.razytech.razynet.Utils.AppConstant.PROFILE_page;
@@ -54,7 +57,10 @@ public class MainpageActivity extends BaseActivity<ActivityMainpageBinding , Mai
 
     Bundle bundle =  null  ;
     FragmentManager fragmentManager ;
+    MovepageFragment movepageFragment ;
     RedeemListPointsFragment redeemListPointsFragment ;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -102,6 +108,9 @@ public class MainpageActivity extends BaseActivity<ActivityMainpageBinding , Mai
         return 0;
     }
 
+    public void displayView(int position , boolean refresh){
+        displayView(position);
+    }
 
     public void displayView(int position) {
         selectedPosition = position;
@@ -183,12 +192,11 @@ public class MainpageActivity extends BaseActivity<ActivityMainpageBinding , Mai
 
             case UPDATEPROFILE_page:
                 //UPDATEPROFILE_page Fragment
-                BottomBarMethod(UPDATEPROFILE_page);
                 selectedPosition = UPDATEPROFILE_page;
+                BottomBarMethod(UPDATEPROFILE_page);
                 fragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
                 fragmentTransaction.replace(R.id.main_content, new UpdateProfileFragment());
-                break;
-
+                  break;
             case REDEEMPOINTS_page:
                 //REDEEMPOINTS_page Fragment
                 selectedPosition = REDEEMPOINTS_page;
@@ -199,6 +207,24 @@ public class MainpageActivity extends BaseActivity<ActivityMainpageBinding , Mai
                 break;
 
 
+            case CHILDDETAILS_page:
+                //CHILDDETAILS_page Fragment
+                selectedPosition = CHILDDETAILS_page;
+                fragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                ChildDetailsFragment childDetailsFragment =  new ChildDetailsFragment();
+                childDetailsFragment.setArguments(bundle);
+                fragmentTransaction.replace(R.id.main_content, childDetailsFragment);
+                break;
+
+
+            case MOVE_page:
+                //MOVE_page Fragment
+                selectedPosition = MOVE_page;
+                fragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                movepageFragment =  new MovepageFragment();
+                movepageFragment.setArguments(bundle);
+                fragmentTransaction.add(R.id.main_content, movepageFragment);
+                break;
         }
         fragmentTransaction.commit();
     }
@@ -212,6 +238,16 @@ public class MainpageActivity extends BaseActivity<ActivityMainpageBinding , Mai
         }
         else if(selectedPosition == REDEEMPOINTS_page ) {
             displayView(REDEEM_page);
+        }
+        else if(selectedPosition == MOVE_page ) {
+           // displayView(CHILDDETAILS_page);
+            selectedPosition =CHILDDETAILS_page;
+            getSupportFragmentManager().beginTransaction().remove(movepageFragment).commit();
+        }
+        else if(selectedPosition == UPDATEPROFILE_page ) {
+             displayView(PROFILE_page);
+            //selectedPosition =PROFILE_page;
+            //getSupportFragmentManager().beginTransaction().remove(updateProfileFragment).commit();
         }
         else if(selectedPosition == TRANSFERPOINTS_page || selectedPosition == TRANSFERCONFIRM_page || selectedPosition == TRANSFERCONFIRMFINAL_page) {
             //displayView(REDEEM_page);

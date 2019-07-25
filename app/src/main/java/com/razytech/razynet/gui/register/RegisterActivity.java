@@ -186,6 +186,7 @@ public class RegisterActivity extends BaseActivity<ActivityRegisterBinding,  Reg
         if (arrayType  == Citytxt){
             if (position !=  -1  ) {
                 // langposition = position;
+                areaId =  -1 ;
                 cityId =  AppConstant.cityResponses.get(position).getId()  ;
                 binding.txtcity.setText(AppConstant.cityResponses.get(position).getCityName());
                 modelView.loadAreasData(RegisterActivity.this ,  binding.coorregister , cityId+""  , token );

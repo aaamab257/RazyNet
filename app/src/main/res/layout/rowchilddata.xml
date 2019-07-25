@@ -85,7 +85,7 @@
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="10dp"
                     android:layout_marginRight="10dp"
-                    android:background="@mipmap/choose_point_active"
+                    android:background="@mipmap/wallet_small"
                     android:padding="5dp" />
 
                 <TextView
@@ -97,7 +97,7 @@
                     android:layout_toLeftOf="@+id/imgpoints"
                     android:fontFamily="@font/ralewayregular"
                     android:gravity="center"
-                    android:text="@{handlers.balance+``}"
+                    android:text="@{handlers.childCounts+``}"
                     android:textColor="@color/green"
                     android:textSize="12sp" />
 

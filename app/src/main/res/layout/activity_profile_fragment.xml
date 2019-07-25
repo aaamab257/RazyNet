@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <layout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -43,7 +42,7 @@
                 android:layout_height="120dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="20dp"
-                android:src="@drawable/img_upload"
+                android:src="@drawable/avatar_profile"
                 android:padding="15dp"
                 android:background="@drawable/create_acc_img_border"
 
@@ -227,6 +226,7 @@
                 android:onClick="@{handlers.btn_logout}"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="40dp"
+
                 />
 
         </LinearLayout>

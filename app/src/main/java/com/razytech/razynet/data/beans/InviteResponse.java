@@ -10,11 +10,24 @@ public class InviteResponse {
     @SerializedName("activationCode")
     private String activationCode;
 
+    @SerializedName("updatedPoints")
+    private double updatedPoints;
+
+
+
     public String getActivationCode() {
         return activationCode;
     }
 
     public void setActivationCode(String activationCode) {
         this.activationCode = activationCode;
+    }
+
+    public double getBalance() {
+        return updatedPoints;
+    }
+
+    public void setBalance(double updatedPoints) {
+        this.updatedPoints = updatedPoints;
     }
 }

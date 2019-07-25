@@ -57,7 +57,13 @@ public  final class AppConstant {
             BTN_OUT =3;
     // inten keys
     public final static String RedeemidKey  =  "redeemid"
-            ,RedeemnameKey  =  "redeemname", TokenKey  =  "token",phoneKey  =  "phonekey"   ;
+            ,RedeemnameKey  =  "redeemname",
+            TokenKey  =  "token",phoneKey  =  "phonekey",
+            ChildId  =  "childid",ChildName  =  "childname",
+            ChildChilds  =  "childnumber",ChildMoved  =  "childmoved"
+            ,ChildImage  =  "childimage";
+
+    public static boolean refreshhome =  false ;
 
     public final static String Tokenbar =  "Bearer" ;
 
@@ -72,5 +78,8 @@ public  final class AppConstant {
     public static HomeResponse homeResponse = null ;
     public static List<ChildResponse> topsystem = null ;
     public static List<ChildResponse> topchilds = null ;
+
+
+
 
 }

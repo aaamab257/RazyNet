@@ -1,5 +1,7 @@
 package com.razytech.razynet.data.di;
 
+import com.razytech.razynet.gui.loginpage.LoginActivity;
+import com.razytech.razynet.gui.loginpage.LoginActivityModule;
 import com.razytech.razynet.gui.mainpage.MainpageActivity;
 import com.razytech.razynet.gui.mainpage.MainpageActivityModule;
 import com.razytech.razynet.gui.register.RegisterActivity;
@@ -35,4 +37,7 @@ public abstract class ActivityBuilder {
 
     @ContributesAndroidInjector(modules = RemainingActivityModule.class)
     abstract RemainingActivity bindRemainingActivity();
+
+    @ContributesAndroidInjector(modules = LoginActivityModule.class)
+    abstract LoginActivity bindLoginActivity();
 }

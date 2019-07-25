@@ -37,7 +37,8 @@ import okhttp3.RequestBody;
 
 
 
- void loadCitiesData (Context context , CoordinatorLayout coordinatorLayout ,  String Token){
+ void loadCitiesData (Context context , CoordinatorLayout coordinatorLayout ,
+                      String Token){
   boolean internetAvailable = StaticMethods.isConnectingToInternet(context);
   if (!internetAvailable) {
    view.showNoNetworkConnectionBase(coordinatorLayout,context);
@@ -92,7 +93,8 @@ import okhttp3.RequestBody;
 
 
 
- void vaildatedata(Context context, CoordinatorLayout coordinatorLayout , String UserName,
+ void vaildatedata(Context context, CoordinatorLayout coordinatorLayout ,
+                   String UserName,
                    String nid, String password ,String confpassword,int cityId  ,int AreaId
          ,File file ,  String Token) {
 
@@ -105,7 +107,7 @@ import okhttp3.RequestBody;
      if (Validator.isTextEmpty(UserName)) {
          view.showErrorMessageBase(coordinatorLayout,context, context.getString(R.string.emptyuserName));
          return;
-     }
+       }
   else  if (Validator.isTextEmpty(nid)) {
    view.showErrorMessageBase(coordinatorLayout,context, context.getString(R.string.emptynid));
    return;

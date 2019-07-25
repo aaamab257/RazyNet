@@ -19,7 +19,11 @@ import com.razytech.razynet.data.prefs.PrefUtils;
    else
     view.openRemainPage();
   }else{
-   view.openVerifyPage();
+   int status =  PrefUtils.User_Status(context);
+   if (status ==  PrefUtils.User_Verify)
+     view.openVerifyPage();
+   else if (status ==  PrefUtils.User_Singout)
+     view.openLoginPage();
   }
  }
 

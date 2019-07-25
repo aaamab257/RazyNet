@@ -8,12 +8,216 @@
         <variable
             name="handlers"
             type="com.razytech.razynet.gui.updateprofile.UpdateProfileFragment.MyClickHandlers"/>
+
+
+        <variable
+            name="user"
+            type="com.razytech.razynet.data.beans.UserResponse"/>
     </data>
 <android.support.design.widget.CoordinatorLayout
     android:id="@+id/coorupdateprofile"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/lightBlack"
     tools:context=".gui.updateprofile.UpdateProfileFragment">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:paddingLeft="30dp"
+            android:paddingRight="30dp">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/create_acc_img"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:src="@drawable/avatar_profile"
+                android:padding="15dp"
+                android:background="@drawable/create_acc_img_border"
+                android:onClick="@{handlers.UpdateImage}"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/upload_user_image"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                android:fontFamily="@font/ralewayregular"
+                />
+
+            <EditText
+                android:id="@+id/create_acc_username_ET"
+                style="@style/CreateAccEditTextStyle"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:inputType="text"
+                android:hint="@{user.displayName}"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/ralewaymedium"
+                android:enabled="true"
+                />
+
+            <EditText
+                android:id="@+id/create_acc_phone_ET"
+                style="@style/CreateAccEditTextStyle"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:inputType="phone"
+                android:hint="@{user.phone}"
+                android:fontFamily="@font/ralewaymedium"
+                android:enabled="false"
+                />
+
+            <EditText
+                android:id="@+id/create_acc_email_ET"
+                style="@style/CreateAccEditTextStyle"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:inputType="number"
+                android:hint="@string/create_acc_nid_hint"
+                android:fontFamily="@font/ralewaymedium"
+                android:enabled="false"
+                android:visibility="gone"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp"
+                android:orientation="horizontal"
+                >
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/edit_text_bg"
+                    android:layout_margin="10dp"
+                    android:padding="15dp"
+                    android:onClick="@{handlers.btn_city}"
+                    >
+                    <TextView
+                        android:id="@+id/txtcity"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{user.cityId}"
+                        android:textColor="@color/white"
+                        android:textSize="14sp"
+                        android:fontFamily="@font/ralewayregular"
+                        android:layout_centerInParent="true"
+                        />
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_margin="10dp"
+                    android:padding="15dp"
+                    android:background="@drawable/edit_text_bg"
+                    android:onClick="@{handlers.btn_area}"
+                    >
+                    <TextView
+                        android:id="@+id/txtarea"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{user.areaId}"
+                        android:textColor="@color/white"
+                        android:textSize="14sp"
+                        android:fontFamily="@font/ralewayregular"
+                        android:layout_centerInParent="true"
+                        />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp"
+                android:orientation="horizontal"
+                android:visibility="gone"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/gender"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    android:id="@+id/txtgender"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:fontFamily="@font/ralewaymedium"
+                    android:layout_gravity="center"
+                    />
+
+                <RadioGroup
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_gravity="center"
+                    >
+
+                    <RadioButton
+                        android:id="@+id/male_RB"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        android:text="@string/male_btn"
+                        android:textColor="@color/white"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:fontFamily="@font/ralewaymedium"
+                        />
+
+                    <RadioButton
+                        android:id="@+id/female_RB"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:text="@string/female_btn"
+                        android:textColor="@color/white"
+                        android:fontFamily="@font/ralewaymedium"
+                        />
+
+                </RadioGroup>
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/enter_code_btn"
+                android:layout_width="@dimen/width_btn"
+                android:layout_height="@dimen/height_btn"
+                android:layout_gravity="center"
+                android:background="@drawable/btn_bg"
+                android:text="@string/updatechanges"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:fontFamily="@font/ralewaybold"
+                android:onClick="@{handlers.btn_UpdateProfile}"
+                android:layout_marginTop="30dp"
+
+                />
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
 
 </android.support.design.widget.CoordinatorLayout>
 </layout>

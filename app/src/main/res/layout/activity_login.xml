@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="handlers"
+            type="com.razytech.razynet.gui.loginpage.LoginActivity.MyClickHandlers" />
+    </data>
+
+
+<android.support.design.widget.CoordinatorLayout
+    android:id="@+id/coorlogin"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".gui.loginpage.LoginActivity"
+    android:background="@color/lightBlack">
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingHorizontal="30dp"
+        tools:context=".CodeFragment">
+
+        <ImageView
+            android:layout_width="180dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:src="@mipmap/logo_inside" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="180dp"
+                android:layout_height="180dp"
+                android:layout_marginVertical="20dp"
+                android:src="@mipmap/lock" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/loginpage"
+                android:textColor="@color/white"
+                android:textSize="17sp"
+                android:fontFamily="@font/ralewaymedium"
+                />
+
+            <EditText
+                android:id="@+id/create_acc_phone_ET"
+                style="@style/CreateAccEditTextStyle"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:inputType="phone"
+                android:hint="@string/create_acc_phone_hint"
+                android:fontFamily="@font/ralewaymedium"
+
+                />
+            <EditText
+                android:id="@+id/create_acc_password_ET"
+                style="@style/CreateAccEditTextStyle"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:inputType="textPassword"
+                android:hint="@string/create_acc_password_hint"
+                android:fontFamily="@font/ralewaymedium"
+
+                />
+
+
+            <Button
+                android:id="@+id/enter_code_btn"
+                android:layout_width="@dimen/width_btn"
+                android:layout_height="@dimen/height_btn"
+                android:layout_gravity="center"
+                android:background="@drawable/btn_bg"
+                android:text="@string/enter_btn"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:fontFamily="@font/ralewaybold"
+                 android:onClick="@{handlers.btnLogin}"
+                 android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:orientation="horizontal"
+                android:visibility="gone"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_marginRight="5dp"
+                    android:text="@string/forgot_your_txt"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/ralewaymedium"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/invitation_code_txt"
+                    android:textColor="@color/darkPink" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+
+
+
+
+
+    </LinearLayout>
+</ScrollView>
+</android.support.design.widget.CoordinatorLayout>
+</layout>

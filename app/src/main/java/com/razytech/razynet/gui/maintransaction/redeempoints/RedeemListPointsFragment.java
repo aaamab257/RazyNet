@@ -13,18 +13,24 @@ import com.razytech.razynet.R;
 import com.razytech.razynet.Utils.AppConstant;
 import com.razytech.razynet.baseClasses.BaseFragment;
 import com.razytech.razynet.data.beans.RedeemPointsResponse;
+import com.razytech.razynet.data.prefs.PrefUtils;
 import com.razytech.razynet.databinding.ActivityRedeemListPointsBinding;
 import com.razytech.razynet.gui.mainpage.MainpageActivity;
+import com.razytech.razynet.gui.passwordconfirm.PasswordModelView;
+import com.razytech.razynet.gui.passwordconfirm.PasswordView;
 
 import java.util.List;
 
-public class RedeemListPointsFragment extends BaseFragment implements RedeemListPointsView ,  RedeemPointsAdapter.RedeemListener{
+public class RedeemListPointsFragment extends BaseFragment implements RedeemListPointsView ,  RedeemPointsAdapter.RedeemListener , PasswordView {
 
     View view ;
     ActivityRedeemListPointsBinding binding ;
     RedeemListPointsModelView modelView   ;
     RedeemPointsAdapter adapter ;
    String redeem_id =  ""  , redeem_name =  "" ;
+    PasswordModelView passwordModelView ;
+    RedeemPointsResponse redeemPointsResponse =  null ;
+
 
 
     @Override
@@ -44,7 +50,7 @@ public class RedeemListPointsFragment extends BaseFragment implements RedeemList
         redeem_name =  getArguments().getString(AppConstant.RedeemnameKey) ;
         binding.setRedeemname(redeem_name);
         ((MainpageActivity)getActivity()).setViewHandling(""  ,""  , true , false );
-
+        passwordModelView =  new PasswordModelView(getActivity() , getActivity() ,this,binding.coorredeempoints);
         binding.swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -55,11 +61,11 @@ public class RedeemListPointsFragment extends BaseFragment implements RedeemList
     }
 
     private void CheckloadingData() {
-            modelView.loadingRedeemData(binding.coorredeempoints,getActivity(),false, redeem_id);
+            modelView.loadingRedeemData(binding.coorredeempoints,getActivity(), redeem_id);
     }
     private void refreshdata(){
         binding.swipeRefreshLayout.setRefreshing(true);
-        modelView.loadingRedeemData(binding.coorredeempoints,getActivity(),true , redeem_id);
+        modelView.loadingRedeemData(binding.coorredeempoints,getActivity() , redeem_id);
     }
 
     @Override
@@ -92,7 +98,23 @@ public class RedeemListPointsFragment extends BaseFragment implements RedeemList
     }
 
     @Override
-    public void onredeemClicked(RedeemPointsResponse post) {
+    public void After_redeemProduct(double updatePoints) {
+        AppConstant.refreshhome =  true ;
+        ((MainpageActivity)getActivity()).UpdatePointsHandling(updatePoints+"");
+        AppConstant.userResponse.setBalance(updatePoints);
+        AppConstant.userResponse.setToken(AppConstant.userResponse.getToken());
+        PrefUtils.saveUserinformation(getActivity(),AppConstant.userResponse,PrefUtils.User_Singin);
+    }
 
+    @Override
+    public void onredeemClicked(RedeemPointsResponse post) {
+        redeemPointsResponse  =  post ;
+        passwordModelView.ShowAlertDialoug();
+    }
+
+    @Override
+    public void VaildPassword() {
+      if(redeemPointsResponse != null)
+          modelView.RedeemPoint(binding.coorredeempoints , getActivity()  ,redeemPointsResponse.getId()+"",  redeemPointsResponse.getValue() );
     }
 }

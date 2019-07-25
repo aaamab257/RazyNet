@@ -13,4 +13,5 @@ import java.util.List;
  void   LoadingReddemData (List<RedeemPointsResponse> redeemResponses );
  void  hide_refreshView();
  void show_errorView(boolean Isshow , String error);
+ void After_redeemProduct(double updatePoints);
 }

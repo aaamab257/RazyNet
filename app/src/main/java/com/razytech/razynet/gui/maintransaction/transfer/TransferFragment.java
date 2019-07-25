@@ -19,6 +19,8 @@ import com.razytech.razynet.databinding.ActivityRedeemFragmentBinding;
 import com.razytech.razynet.databinding.ActivityTransferFragmentBinding;
 import com.razytech.razynet.gui.homepage.HomeFragment;
 import com.razytech.razynet.gui.mainpage.MainpageActivity;
+import com.razytech.razynet.gui.passwordconfirm.PasswordModelView;
+import com.razytech.razynet.gui.passwordconfirm.PasswordView;
 
 import java.util.List;
 
@@ -30,7 +32,8 @@ import static com.razytech.razynet.Utils.AppConstant.TRANSFERWALLET_page;
 import static com.razytech.razynet.Utils.AppConstant.TRANSFER_page;
 import static com.razytech.razynet.Utils.AppConstant.TREE_page;
 
-public class TransferFragment extends BaseFragment  implements  TransferView ,ChildAdpater.ChildListener {
+public class TransferFragment extends BaseFragment  implements  TransferView
+        ,ChildAdpater.ChildListener , PasswordView {
 
 
     View view;
@@ -38,10 +41,10 @@ public class TransferFragment extends BaseFragment  implements  TransferView ,Ch
     TransferModelView modelView;
     MyClickHandlers handlers;
     public String points = "";
-
     ChildAdpater adpater;
     ChildResponse childRespon = null  ;
     String phonenumber =  ""  ;
+    PasswordModelView passwordModelView  ;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -59,6 +62,7 @@ public class TransferFragment extends BaseFragment  implements  TransferView ,Ch
         modelView =  new TransferModelView();
         modelView.attachView(this);
         SetStepsHandlingView(TRANSFERWALLET_page);
+        passwordModelView =  new PasswordModelView(getActivity() , getActivity() ,this,binding.coortransfer);
         binding.transferwallet.btnNext.setOnClickListener((View) ->{
             if (childRespon != null)
                 phonenumber = childRespon.getMobileNo();
@@ -77,7 +81,7 @@ public class TransferFragment extends BaseFragment  implements  TransferView ,Ch
         });
 
         binding.tranferconfirm.btnConfirm.setOnClickListener((View) ->{
-            modelView.setbtnConfirm(binding.transferwallet.coorwallet ,  getActivity(),true);
+            passwordModelView.ShowAlertDialoug();
         });
         binding.tranferconfirm.btnBack.setOnClickListener((View) ->{
             modelView.setbtnConfirm(binding.transferwallet.coorwallet ,  getActivity(),false);
@@ -170,11 +174,11 @@ public class TransferFragment extends BaseFragment  implements  TransferView ,Ch
     @Override
     public void show_errorView(boolean Isshow, String error) {
         if (Isshow){
-           binding.errorLayoutView.setViewerror(Isshow);
-           binding.errorLayoutView.setErrortxt(error);
-           binding.errorLayoutView.btnTryAgain.setOnClickListener((View)->{
-               CheckloadingData();
-           });
+            binding.errorLayoutView.setViewerror(Isshow);
+            binding.errorLayoutView.setErrortxt(error);
+            binding.errorLayoutView.btnTryAgain.setOnClickListener((View)->{
+                CheckloadingData();
+            });
         }else {
             binding.errorLayoutView.setViewerror(Isshow);
         }
@@ -192,6 +196,11 @@ public class TransferFragment extends BaseFragment  implements  TransferView ,Ch
     @Override
     public void onChildClicked(ChildResponse post) {
         childRespon =  post ;
+    }
+
+    @Override
+    public void VaildPassword() {
+        modelView.setbtnConfirm(binding.transferwallet.coorwallet ,  getActivity(),true);
     }
 
     public class MyClickHandlers {

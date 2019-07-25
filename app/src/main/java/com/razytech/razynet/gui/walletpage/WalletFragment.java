@@ -72,7 +72,7 @@ public class WalletFragment extends BaseFragment implements WalletView  ,  Child
         //hide_refreshView();
         AppConstant.childResponses =  childRespo ;
         binding.recUserdatalist.setLayoutManager(new LinearLayoutManager(getActivity()));
-        adpater =  new ChildAdpater(getActivity(),childRespo,this  ,  true);
+        adpater =  new ChildAdpater(getActivity(),childRespo,this  ,  true ,false);
         binding.recUserdatalist.setAdapter(adpater);
     }
 

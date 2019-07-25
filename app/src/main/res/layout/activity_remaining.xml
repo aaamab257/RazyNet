@@ -5,9 +5,22 @@ xmlns:app="http://schemas.android.com/apk/res-auto"
 xmlns:tools="http://schemas.android.com/tools">
 
 <data>
+    <import type="android.view.View"/>
+    <variable
+        name="iserror"
+        type="java.lang.Boolean"/>
+    <variable
+        name="iswait"
+        type="java.lang.Boolean"/>
+    <variable
+        name="waittxt"
+        type="java.lang.String"/>
     <variable
         name="handlers"
         type="com.razytech.razynet.gui.remainingpage.RemainingActivity.MyClickHandlers" />
+    <variable
+        name="data"
+        type="com.razytech.razynet.data.beans.RemainingResponse" />
 </data>
 
 <android.support.design.widget.CoordinatorLayout
@@ -15,6 +28,7 @@ xmlns:tools="http://schemas.android.com/tools">
     android:layout_height="match_parent"
     tools:context=".gui.remainingpage.RemainingActivity"
     android:id="@+id/coorremain"
+    android:background="@color/lightBlack"
     >
     <ScrollView
         android:layout_width="match_parent"
@@ -23,7 +37,7 @@ xmlns:tools="http://schemas.android.com/tools">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/lightBlack"
+
         android:orientation="vertical"
         android:paddingHorizontal="30dp"
         tools:context=".CodeFragment">
@@ -32,20 +46,7 @@ xmlns:tools="http://schemas.android.com/tools">
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <ImageView
-                android:id="@+id/imgback"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentLeft="true"
-                android:layout_centerVertical="true"
-                android:layout_marginStart="0dp"
-                android:layout_marginLeft="0dp"
-                android:layout_marginTop="10dp"
-                android:src="@mipmap/back"
-                android:onClick="@{handlers.btnback}"
-                android:visibility="gone"
-                />
+
 
             <ImageView
             android:layout_width="180dp"
@@ -57,12 +58,19 @@ xmlns:tools="http://schemas.android.com/tools">
             />
 
         </RelativeLayout>
+        <include
+            android:id="@+id/error_layout_view"
+            layout="@layout/error_layout_view"
+            android:visibility="@{iserror == true ? View.VISIBLE : View.GONE}"
+            />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center_horizontal"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:visibility="@{iserror == true ? View.GONE : View.VISIBLE}"
+            >
 
 
             <LinearLayout
@@ -95,7 +103,7 @@ xmlns:tools="http://schemas.android.com/tools">
                             android:layout_gravity="center"
                             android:fontFamily="@font/ralewaybold"
                             android:gravity="center"
-                            android:text="2"
+                            android:text="@{data.days+``}"
                             android:textColor="@color/white"
                             android:textSize="22sp" />
 
@@ -133,7 +141,7 @@ xmlns:tools="http://schemas.android.com/tools">
                             android:layout_gravity="center"
                             android:fontFamily="@font/ralewaybold"
                             android:gravity="center"
-                            android:text="23"
+                            android:text="@{data.hours+``}"
                             android:textColor="@color/white"
                             android:textSize="22sp" />
 
@@ -179,7 +187,7 @@ xmlns:tools="http://schemas.android.com/tools">
                             android:layout_gravity="center"
                             android:fontFamily="@font/ralewaybold"
                             android:gravity="center"
-                            android:text="40"
+                            android:text="@{data.minutes+``}"
                             android:textColor="@color/white"
                             android:textSize="22sp" />
 
@@ -239,6 +247,28 @@ xmlns:tools="http://schemas.android.com/tools">
 
 
                     <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:fontFamily="@font/ralewaybold"
+                        android:text="@{waittxt}"
+                        android:textColor="@color/white"
+                        android:textSize="20sp"
+                        android:visibility="@{iswait == true ? View.VISIBLE : View.GONE}"
+                        android:layout_marginBottom="20dp"
+                        android:layout_marginTop="10dp"
+                        />
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:id="@+id/linupload"
+                            android:visibility="@{iswait == true ? View.GONE : View.VISIBLE}"
+                            >
+                    <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
@@ -249,7 +279,7 @@ xmlns:tools="http://schemas.android.com/tools">
                         android:textSize="17sp" />
 
                     <EditText
-                        android:id="@+id/create_acc_email_ET"
+                        android:id="@+id/create_NID_ET"
                         style="@style/CreateAccEditTextStyle"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
@@ -296,31 +326,33 @@ xmlns:tools="http://schemas.android.com/tools">
                     <Button
                         android:id="@+id/enter_code_btn"
                         android:layout_width="@dimen/width_btn"
-                        android:layout_height="@dimen/height_btn"
+                        android:layout_height="50dp"
                         android:layout_gravity="center"
                         android:layout_marginTop="20dp"
-
-                        android:background="@color/gray"
+                        android:background="@drawable/btn_bg_gray"
                         android:fontFamily="@font/ralewaybold"
-                        android:onClick="@{handlers.btnEnter}"
+                        android:onClick="@{handlers.btnUpload}"
                         android:text="@string/upload_btn"
                         android:textAllCaps="false"
                         android:textColor="@color/white"
                         android:textSize="20sp" />
+                        </LinearLayout>
                     <Button
                         android:id="@+id/skip_btn"
                         android:layout_width="@dimen/width_btn"
-                        android:layout_height="@dimen/height_btn"
+                        android:layout_height="50dp"
                         android:layout_gravity="center"
                         android:layout_marginTop="10dp"
                         android:layout_marginBottom="20dp"
-                        android:background="@color/gray"
+                        android:background="@drawable/btn_bg_gray"
                         android:fontFamily="@font/ralewaybold"
                         android:onClick="@{handlers.btnSkip}"
                         android:text="@string/skip_btn"
                         android:textAllCaps="false"
                         android:textColor="@color/white"
-                        android:textSize="20sp" />
+                        android:textSize="20sp"
+                        android:visibility="@{data.suspended == true ? View.GONE : View.VISIBLE}" />
+
 
 
                 </LinearLayout>

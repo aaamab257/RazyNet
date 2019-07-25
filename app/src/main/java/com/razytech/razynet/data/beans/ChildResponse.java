@@ -19,7 +19,7 @@ public class ChildResponse {
     private String parentId;
     @SerializedName("mobileNo")
     private String mobileNo;
-    @SerializedName("imageUrl")
+    @SerializedName("userImageUrl")
     private String imageUrl;
     @SerializedName("balance")
     private double balance;

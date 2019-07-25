@@ -166,6 +166,9 @@
                 android:fontFamily="@font/ralewaybold"
                 android:layout_centerInParent="true"
                 />
+            <include
+                android:id="@+id/error_layout"
+                layout="@layout/error_layout_view"/>
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/rec_wallet"

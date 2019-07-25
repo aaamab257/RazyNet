@@ -3,6 +3,8 @@ package com.razytech.razynet.data.network;
 import android.support.annotation.NonNull;
 
 import com.razytech.razynet.data.beans.MultiPartImage;
+import com.razytech.razynet.data.beans.MultiPartNid;
+import com.razytech.razynet.data.beans.MultiPartUpdate;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -85,6 +87,88 @@ public class MainApiBody {
         JSONObject params=new JSONObject();
         params.put("phoneNumber", PhoneNumber);
         params.put("points", points);
+        return requestBody(params);
+    }
+
+    public static MultiPartNid UploadNidBoby(String NIDNumber , File file) throws JSONException {
+        RequestBody NIDNumberreq=null  ;
+        MultipartBody.Part imagereq =null ;
+        if(file != null) {
+            RequestBody reqFile = RequestBody.create(MediaType.parse("image/*"), file);
+            imagereq = MultipartBody.Part.createFormData("IdentityImage", file.getName(), reqFile);
+        }
+        if(NIDNumber != null) {
+            NIDNumberreq = RequestBody.create(MediaType.parse(JSON_TYPE), NIDNumber); }
+
+
+        MultiPartNid multiPartImage =new MultiPartNid() ;
+        multiPartImage.imagereq = imagereq ;
+        multiPartImage.NIDNumberreq = NIDNumberreq ;
+        return multiPartImage;
+    }
+
+
+    public static RequestBody GetAvailableBoby(String WalletId ) throws JSONException {
+        JSONObject params=new JSONObject();
+        params.put("walletId", WalletId);
+        return requestBody(params);
+    }
+//    {
+//        "newRootWalletId": "string",
+//            "childWalletId": "string"
+//    }
+public static RequestBody MoveBoby(String WalletId  , String newRoot) throws JSONException {
+    JSONObject params=new JSONObject();
+    params.put("newRootWalletId", newRoot);
+    params.put("childWalletId", WalletId);
+    return requestBody(params);
+}
+
+
+    public static MultiPartUpdate UpdateBoby(String UserName, String CityId, String AreaId, File file) throws JSONException {
+
+        RequestBody CityIdreq=null ,AreaIdreq = null , UserNamereq  = null  ;
+
+        MultipartBody.Part imagereq =null ;
+        if(file != null) {
+            RequestBody reqFile = RequestBody.create(MediaType.parse("image/*"), file);
+            imagereq = MultipartBody.Part.createFormData("UserImageUrl", file.getName(), reqFile);
+        }
+        if(UserName != null) {
+            UserNamereq = RequestBody.create(MediaType.parse(JSON_TYPE), UserName); }
+        if(CityId != null) {
+            CityIdreq = RequestBody.create(MediaType.parse(JSON_TYPE), CityId);
+        }
+        if(AreaId != null) {
+            AreaIdreq = RequestBody.create(MediaType.parse(JSON_TYPE), AreaId);
+        }
+
+
+        MultiPartUpdate multiPartImage =new MultiPartUpdate() ;
+        multiPartImage.imagereq = imagereq ;
+        multiPartImage.CityIdreq = CityIdreq ;
+        multiPartImage.AreaIdreq = AreaIdreq ;
+        multiPartImage.Namereq = UserNamereq ;
+        return multiPartImage;
+    }
+
+
+    public static RequestBody LoginBoby(String PhoneNumber  , String Password ) throws JSONException {
+        JSONObject params=new JSONObject();
+        params.put("phone", PhoneNumber);
+        params.put("password", Password);
+        return requestBody(params);
+    }
+
+    public static RequestBody PasswordBoby(String Password ) throws JSONException {
+        JSONObject params=new JSONObject();
+        params.put("password", Password);
+        return requestBody(params);
+    }
+
+    public static RequestBody RedeemPointBoby(String id ) throws JSONException {
+        JSONObject params=new JSONObject();
+        params.put("id", id);
         return requestBody(params);
     }
 

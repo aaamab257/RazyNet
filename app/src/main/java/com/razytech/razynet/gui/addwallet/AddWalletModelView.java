@@ -69,7 +69,7 @@ import okhttp3.RequestBody;
            public void onSuccess(ConnectionResponse<MainResponse<InviteResponse>> connectionResponse) {
             view.hideloadingviewBase();
             if (connectionResponse.data.success ) {
-             ShowAlertDialoug(context ,  activity ,connectionResponse.data.data.getActivationCode());
+             ShowAlertDialoug(context ,  activity ,connectionResponse.data.data.getActivationCode() , connectionResponse.data.data.getBalance());
             } else {
              view.showErrorMessageBase(coordinatorLayout,context,connectionResponse.data.message);
             }
@@ -85,7 +85,7 @@ import okhttp3.RequestBody;
  }
 
 
- void ShowAlertDialoug(Context context , Activity activity  , String message){
+ void ShowAlertDialoug(Context context , Activity activity  , String message,  double balance){
   AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(context);
   LayoutInflater inflater = activity.getLayoutInflater();
   View dialogView = inflater.inflate(R.layout.success_alert, null);
@@ -97,7 +97,7 @@ import okhttp3.RequestBody;
   txtmessage.setText(message);
   alertDialog.getWindow().getAttributes().windowAnimations = R.style.DialogTheme;
   btnok.setOnClickListener((View) ->{
-   view.SuccessData(message);
+   view.SuccessData(message ,balance);
    alertDialog.dismiss();
   });
   alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));

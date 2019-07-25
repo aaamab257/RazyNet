@@ -13,7 +13,10 @@ import com.razytech.razynet.data.beans.InviteResponse;
 import com.razytech.razynet.data.beans.NotificationsResponse;
 import com.razytech.razynet.data.beans.RedeemPointsResponse;
 import com.razytech.razynet.data.beans.RedeemResponse;
+import com.razytech.razynet.data.beans.RedeemUpdateResponse;
+import com.razytech.razynet.data.beans.RemainingResponse;
 import com.razytech.razynet.data.beans.TransferResponse;
+import com.razytech.razynet.data.beans.UploadNidResponse;
 import com.razytech.razynet.data.beans.UserResponse;
 import com.razytech.razynet.data.beans.VerifyCodeResponse;
 import com.razytech.razynet.gui.verificationcode.VerifyCodeActivity;
@@ -310,6 +313,169 @@ public class MainApi {
 
                 });
     }
+
+
+    public static void Remainingapi(String token
+            , final ConnectionListener<MainResponse<RemainingResponse>> connectionListener) {
+        getApi().RemainingPage(token ).subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<MainResponse<RemainingResponse>>() {
+                    @Override
+                    public void onError(Throwable e) { connectionListener.onFail(e); }
+                    @Override
+                    public void onComplete() { }
+                    @Override
+                    public void onSubscribe(Disposable d) { }
+                    @Override
+                    public void onNext(MainResponse<RemainingResponse> aBoolean) {
+                        ConnectionResponse<MainResponse<RemainingResponse>> response = new ConnectionResponse<>();
+                        response.data = aBoolean;
+                        connectionListener.onSuccess(response);
+                    }
+
+                });
+    }
+
+    public static void UploadNidImageapi(String auth  , MultipartBody.Part fileToUpload, RequestBody NidNumber,
+                                   final ConnectionListener<MainResponse<UploadNidResponse>> connectionListener) {
+        getApi().UploadNidImagePage(auth ,fileToUpload,NidNumber).subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<MainResponse<UploadNidResponse>>() {
+                    @Override
+                    public void onError(Throwable e) { connectionListener.onFail(e); }
+                    @Override
+                    public void onComplete() { }
+                    @Override
+                    public void onSubscribe(Disposable d) { }
+                    @Override
+                    public void onNext(MainResponse<UploadNidResponse> userResponse) {
+                        ConnectionResponse<MainResponse<UploadNidResponse>> response = new ConnectionResponse<>();
+                        response.data = userResponse;
+                        connectionListener.onSuccess(response);
+                    }
+                }); }
+
+
+
+    public static void AvailableChildapi(String auth,RequestBody body  , final ConnectionListener<MainResponse<List<ChildResponse>>> connectionListener) {
+        getApi().GetAvailablePage(auth,body).subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<MainResponse<List<ChildResponse>>>() {
+                    @Override
+                    public void onError(Throwable e) { connectionListener.onFail(e); }
+                    @Override
+                    public void onComplete() { }
+                    @Override
+                    public void onSubscribe(Disposable d) { }
+                    @Override
+                    public void onNext(MainResponse<List<ChildResponse>> userResponse) {
+                        ConnectionResponse<MainResponse<List<ChildResponse>>> response = new ConnectionResponse<>();
+                        response.data = userResponse;
+                        connectionListener.onSuccess(response);
+                    }
+                }); }
+
+    public static void Updateapi(String auth  , MultipartBody.Part fileToUpload, RequestBody username,
+                                 RequestBody cityid, RequestBody areaid,
+                                   final ConnectionListener<MainResponse<UserResponse>> connectionListener) {
+        getApi().UpdateProfilePage(auth ,fileToUpload,username,cityid,areaid).subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<MainResponse<UserResponse>>() {
+                    @Override
+                    public void onError(Throwable e) { connectionListener.onFail(e); }
+                    @Override
+                    public void onComplete() { }
+                    @Override
+                    public void onSubscribe(Disposable d) { }
+                    @Override
+                    public void onNext(MainResponse<UserResponse> userResponse) {
+                        ConnectionResponse<MainResponse<UserResponse>> response = new ConnectionResponse<>();
+                        response.data = userResponse;
+                        connectionListener.onSuccess(response);
+                    }
+                }); }
+
+
+
+    public static void Moveapi(String auth,RequestBody body  , final ConnectionListener<MainResponse<TransferResponse>> connectionListener) {
+        getApi().MovePage(auth,body).subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<MainResponse<TransferResponse>>() {
+                    @Override
+                    public void onError(Throwable e) { connectionListener.onFail(e); }
+                    @Override
+                    public void onComplete() { }
+                    @Override
+                    public void onSubscribe(Disposable d) { }
+                    @Override
+                    public void onNext(MainResponse<TransferResponse> userResponse) {
+                        ConnectionResponse<MainResponse<TransferResponse>> response = new ConnectionResponse<>();
+                        response.data = userResponse;
+                        connectionListener.onSuccess(response);
+                    }
+                }); }
+
+
+    public static void Loginapi(RequestBody  body,
+                                 final ConnectionListener<MainResponse<UserResponse>> connectionListener) {
+        getApi().LoginPage(body).subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<MainResponse<UserResponse>>() {
+                    @Override
+                    public void onError(Throwable e) { connectionListener.onFail(e); }
+                    @Override
+                    public void onComplete() { }
+                    @Override
+                    public void onSubscribe(Disposable d) { }
+                    @Override
+                    public void onNext(MainResponse<UserResponse> userResponse) {
+                        ConnectionResponse<MainResponse<UserResponse>> response = new ConnectionResponse<>();
+                        response.data = userResponse;
+                        connectionListener.onSuccess(response);
+                    }
+                }); }
+
+
+    public static void ConfirmPasswordapi(String  token, RequestBody  body,
+                                final ConnectionListener<MainResponse<UserResponse>> connectionListener) {
+        getApi().ConfirmPasswordPage(token,body).subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<MainResponse<UserResponse>>() {
+                    @Override
+                    public void onError(Throwable e) { connectionListener.onFail(e); }
+                    @Override
+                    public void onComplete() { }
+                    @Override
+                    public void onSubscribe(Disposable d) { }
+                    @Override
+                    public void onNext(MainResponse<UserResponse> userResponse) {
+                        ConnectionResponse<MainResponse<UserResponse>> response = new ConnectionResponse<>();
+                        response.data = userResponse;
+                        connectionListener.onSuccess(response);
+                    }
+                }); }
+
+
+
+    public static void RedeemUpdateapi(String  token, RequestBody  body,
+                                          final ConnectionListener<MainResponse<RedeemUpdateResponse>> connectionListener) {
+        getApi().RedeemUpdatePage(token,body).subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<MainResponse<RedeemUpdateResponse>>() {
+                    @Override
+                    public void onError(Throwable e) { connectionListener.onFail(e); }
+                    @Override
+                    public void onComplete() { }
+                    @Override
+                    public void onSubscribe(Disposable d) { }
+                    @Override
+                    public void onNext(MainResponse<RedeemUpdateResponse> userResponse) {
+                        ConnectionResponse<MainResponse<RedeemUpdateResponse>> response = new ConnectionResponse<>();
+                        response.data = userResponse;
+                        connectionListener.onSuccess(response);
+                    }
+                }); }
+
 
 
 }

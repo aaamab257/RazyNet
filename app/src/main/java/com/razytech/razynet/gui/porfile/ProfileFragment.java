@@ -16,10 +16,16 @@ import com.bumptech.glide.Glide;
 import com.razytech.razynet.CustomViews.crop.ImagePickerActivity;
 import com.razytech.razynet.R;
 import com.razytech.razynet.Utils.AppConstant;
+import com.razytech.razynet.Utils.IntentUtiles;
+import com.razytech.razynet.Utils.StaticMethods;
+import com.razytech.razynet.Utils.dialogutil.AppDialog;
+import com.razytech.razynet.Utils.dialogutil.DialogUtil;
 import com.razytech.razynet.Utils.takeimage.TakeImageReceiveView;
 import com.razytech.razynet.Utils.takeimage.TakeImageUtiles;
 import com.razytech.razynet.baseClasses.BaseFragment;
+import com.razytech.razynet.data.prefs.PrefUtils;
 import com.razytech.razynet.databinding.ActivityProfileFragmentBinding;
+import com.razytech.razynet.gui.loginpage.LoginActivity;
 import com.razytech.razynet.gui.mainpage.MainpageActivity;
 import com.razytech.razynet.gui.maintransaction.redeem.RedeemListFragment;
 import com.razytech.razynet.gui.register.RegisterActivity;
@@ -27,12 +33,13 @@ import com.razytech.razynet.gui.register.RegisterActivity;
 import java.io.File;
 
 import static com.razytech.razynet.Utils.AppConstant.REQUEST_PICK_IMAGE;
+import static com.razytech.razynet.Utils.AppConstant.UPDATEPROFILE_page;
 import static com.razytech.razynet.Utils.StaticMethods.checkCameraPermission;
 import static com.razytech.razynet.Utils.takeimage.TakeImageUtiles.CreateFile;
 import static com.razytech.razynet.Utils.takeimage.TakeImageUtiles.getImageUri;
 import static com.razytech.razynet.Utils.takeimage.TakeImageUtiles.getRealPathFromURI;
 
-public class ProfileFragment extends BaseFragment implements   ProfileView , TakeImageReceiveView {
+public class ProfileFragment extends BaseFragment implements   ProfileView {
 
     View view ;
     ActivityProfileFragmentBinding binding ;
@@ -60,58 +67,14 @@ public class ProfileFragment extends BaseFragment implements   ProfileView , Tak
         ((MainpageActivity)getActivity()).setViewHandling(""  ,""  , true , false );
         modelView =  new ProfileModelView();
         modelView.attachView(this);
-        imageUtiles =  new TakeImageUtiles(this) ;
+
         filldata();
     }
 
     private void filldata() {
+        binding.setUser(AppConstant.userResponse);
+        StaticMethods.LoadImage(getActivity(), binding.createAccImg,AppConstant.userResponse.getIdImageUrl(),null);
 
-    }
-
-    @Override
-    public void AftergettingImage(Bitmap bitmap, byte[] array, String fileName, File FilePath) {
-        if(isFILE) {
-            String completePath = Environment.getExternalStorageDirectory() + "/" + fileName;
-            File file = new File(completePath);
-            Uri imageUri = Uri.fromFile(file);
-            Glide.with(this)
-                    .load(imageUri)
-                    .into(binding.createAccImg);
-            //  requestPhoto = bitmap;
-        }
-        image = fileName;
-    }
-
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == Activity.RESULT_OK) {
-
-            if (requestCode == REQUEST_PICK_IMAGE) {
-                String imagePath = data.getStringExtra("image_path");
-                isFILE = false;
-                Bitmap photo =  imageUtiles.getImageFromStorage(imagePath);
-                binding.createAccImg.setImageBitmap(photo);
-                Uri tempUri = getImageUri(getActivity(), photo);
-                File finalFile = new File(getRealPathFromURI(getActivity(),tempUri));
-                // requestPhoto =photo ;
-                filePath =finalFile;
-                imageUtiles.onCaptureImageResult(photo,getActivity(),getActivity());
-            }else  if (requestCode == AppConstant.SELECT_FILE) {
-                isFILE = true;
-                imageUtiles.onCaptureImageResult(data,getActivity(),getActivity());
-                filePath =    CreateFile(getActivity(),data);
-            } else if (requestCode == AppConstant.REQUEST_CAMERA) {
-                isFILE = false;
-                Bitmap photo = (Bitmap) data.getExtras().get("data");
-                binding.createAccImg.setImageBitmap(photo);
-                Uri tempUri = getImageUri(getActivity(), photo);
-                File finalFile = new File(getRealPathFromURI(getActivity(),tempUri));
-                // requestPhoto =photo ;
-                filePath =finalFile;
-                imageUtiles.onCaptureImageResult(data,getActivity(),getActivity());
-            }
-        }
     }
 
 
@@ -122,22 +85,28 @@ public class ProfileFragment extends BaseFragment implements   ProfileView , Tak
             this.context = context;
         }
 
-        public void btn_city(View view) {
-        }
-        public void btn_area(View view) {
-        }
-        public void btn_UpdateProfile(View view) {
-//          modelView.vaildatedata(RegisterActivity.this , binding.coorregister , binding.createAccUsernameET.getText().toString()  , binding.createAccPhoneET.getText().toString()  , binding.createAccNidET.getText().toString()  ,
-//                  binding.createAccPasswordET.getText().toString()  , binding.createAccConfpasswordET.getText().toString()  ,genderID+"",filePath,array);
 
+        public void btn_UpdateProfile(View view) {
+            ((MainpageActivity)getActivity()).displayView(UPDATEPROFILE_page);
         }
 
         public void btn_logout(View view) {
+            DialogUtil.showTwoActionDialog(getActivity(),R.string.logout,R.string.areyousureexit,
+                    DialogUtil.ImageInfoIcon,new AppDialog.RightButtonClickListener() {
+                        @Override
+                        public void onRightButtonClick(android.support.v7.app.AlertDialog alertDialog) {
+                            logout();
+                        }
+                    }, null);
         }
 
     }
-    public void pickImage() {
-        if (checkCameraPermission(getActivity(),getActivity()))
-            startActivityForResult(new Intent(getActivity(), ImagePickerActivity.class), REQUEST_PICK_IMAGE);
+
+    private  void logout (){
+        StaticMethods.ClearChash();
+        PrefUtils.SignOut_User(getActivity());
+        AppConstant.userResponse = null ;
+        IntentUtiles.openActivityInNewStack(getActivity(), LoginActivity.class);
     }
+
 }

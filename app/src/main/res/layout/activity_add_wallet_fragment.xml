@@ -19,6 +19,7 @@
     android:layout_height="match_parent"
     tools:context=".gui.addwallet.AddWalletFragment"
     android:background="@color/lightBlack">
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">

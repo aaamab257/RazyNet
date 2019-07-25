@@ -8,6 +8,7 @@ import com.razytech.razynet.R;
 import com.razytech.razynet.Utils.IntentUtiles;
 import com.razytech.razynet.baseClasses.BaseActivity;
 import com.razytech.razynet.databinding.ActivitySplashBinding;
+import com.razytech.razynet.gui.loginpage.LoginActivity;
 import com.razytech.razynet.gui.mainpage.MainpageActivity;
 import com.razytech.razynet.gui.remainingpage.RemainingActivity;
 import com.razytech.razynet.gui.verificationcode.VerifyCodeActivity;
@@ -73,6 +74,11 @@ public class SplashActivity extends BaseActivity<ActivitySplashBinding ,   Splas
     @Override
     public void openRemainPage() {
         IntentUtiles.openActivityInNewStack(SplashActivity.this, RemainingActivity.class);
+    }
+
+    @Override
+    public void openLoginPage() {
+        IntentUtiles.openActivityInNewStack(SplashActivity.this, LoginActivity.class);
     }
 
     @Override
