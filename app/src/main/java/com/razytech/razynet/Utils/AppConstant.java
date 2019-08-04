@@ -61,7 +61,7 @@ public  final class AppConstant {
             TokenKey  =  "token",phoneKey  =  "phonekey",
             ChildId  =  "childid",ChildName  =  "childname",
             ChildChilds  =  "childnumber",ChildMoved  =  "childmoved"
-            ,ChildImage  =  "childimage";
+            ,ChildImage  =  "childimage" ,OpenNotification  =  "opennotification";
 
     public static boolean refreshhome =  false ;
 

@@ -21,9 +21,7 @@ import dmax.dialog.SpotsDialog;
 /**
  * Created by A.Noby on 4/7/2019.
  */
-public  abstract class BaseActivity<T extends ViewDataBinding,
-        V extends BaseViewModel> extends AppCompatActivity
-        implements BaseView{
+public  abstract class BaseActivity  <T extends ViewDataBinding, V extends BaseViewModel> extends AppCompatActivity implements BaseView{
 
     SpotsDialog dialog;
     private T mViewDataBinding;

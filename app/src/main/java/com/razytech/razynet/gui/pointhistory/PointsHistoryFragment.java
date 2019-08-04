@@ -83,30 +83,30 @@ public class PointsHistoryFragment extends BaseFragment  implements  PointsHisto
         switch (TabPosition) {
             case BTN_All:
                 binding.imgall.setTextColor(getResources().getColor(R.color.white));
-                binding.txtall.setTextColor(getResources().getColor(R.color.darkred));
+                binding.txtall.setBackgroundColor(getResources().getColor(R.color.darkred));
                 binding.imgin.setTextColor(getResources().getColor(R.color.gray));
-                binding.txtin.setTextColor(Color.TRANSPARENT);
+                binding.txtin.setBackgroundColor(Color.TRANSPARENT);
                 binding.imgout.setTextColor(getResources().getColor(R.color.gray));
-                binding.txtout.setTextColor(Color.TRANSPARENT);
+                binding.txtout.setBackgroundColor(Color.TRANSPARENT);
                // LoadingPointsData(AppConstant.pointsResponses);
                 adapter.filter(BTN_All , AppConstant.pointsResponses);
                 break;
             case BTN_IN:
                 binding.imgall.setTextColor(getResources().getColor(R.color.gray));
-                binding.txtall.setTextColor(Color.TRANSPARENT);
+                binding.txtall.setBackgroundColor(Color.TRANSPARENT);
                 binding.imgin.setTextColor(getResources().getColor(R.color.white));
-                binding.txtin.setTextColor(getResources().getColor(R.color.darkred));
+                binding.txtin.setBackgroundColor(getResources().getColor(R.color.darkred));
                 binding.imgout.setTextColor(getResources().getColor(R.color.gray));
-                binding.txtout.setTextColor(Color.TRANSPARENT);
+                binding.txtout.setBackgroundColor(Color.TRANSPARENT);
                 adapter.filter(BTN_IN , AppConstant.pointsResponses);
                 break;
             case BTN_OUT:
                 binding.imgall.setTextColor(getResources().getColor(R.color.gray));
-                binding.txtall.setTextColor(Color.TRANSPARENT);
+                binding.txtall.setBackgroundColor(Color.TRANSPARENT);
                 binding.imgin.setTextColor(getResources().getColor(R.color.gray));
-                binding.txtin.setTextColor(Color.TRANSPARENT);
+                binding.txtin.setBackgroundColor(Color.TRANSPARENT);
                 binding.imgout.setTextColor(getResources().getColor(R.color.white));
-                binding.txtout.setTextColor(getResources().getColor(R.color.darkred));
+                binding.txtout.setBackgroundColor(getResources().getColor(R.color.darkred));
                 adapter.filter(BTN_OUT , AppConstant.pointsResponses);
                 break;
         }

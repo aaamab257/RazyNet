@@ -164,7 +164,7 @@ public class TransferFragment extends BaseFragment  implements  TransferView
     public void LoadingchildData(List<ChildResponse> childRespo) {
         show_errorView(false,  "" );
         childRespon = null ;
-        AppConstant.childResponses =  childRespo ;
+
         binding.transferwallet.rectransfer.setLayoutManager(new LinearLayoutManager(getActivity()));
         adpater =  new ChildAdpater(getActivity(),childRespo,this ,  false);
         binding.transferwallet.rectransfer.setAdapter(adpater);

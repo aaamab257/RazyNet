@@ -73,8 +73,8 @@ public class ProfileFragment extends BaseFragment implements   ProfileView {
 
     private void filldata() {
         binding.setUser(AppConstant.userResponse);
-        StaticMethods.LoadImage(getActivity(), binding.createAccImg,AppConstant.userResponse.getIdImageUrl(),null);
-
+         StaticMethods.LoadImage(getActivity(), binding.createAccImg,AppConstant.userResponse.getIdImageUrl(),null);
+        ((MainpageActivity)getActivity()).UpdatePointsHandling(AppConstant.userResponse.getBalance()+"");
     }
 
 

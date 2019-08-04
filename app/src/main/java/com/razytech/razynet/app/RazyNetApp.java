@@ -19,9 +19,7 @@ import dagger.android.HasActivityInjector;
 /**
  * Created by A.Noby on 4/7/2019.
  */
-public class RazyNetApp extends Application implements HasActivityInjector
-
-{
+public class RazyNetApp extends Application implements HasActivityInjector {
 
     @Inject
     DispatchingAndroidInjector<Activity> activityDispatchingAndroidInjector;

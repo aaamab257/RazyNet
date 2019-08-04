@@ -16,4 +16,5 @@ import java.util.List;
   void UpdateUserData(UserResponse userResponse);
   void showerrorlayoutTopsystem(boolean show  ,String errortxt);
   void showerrorlayoutchilds(boolean show  ,String errortxt);
+  void logout();
 }

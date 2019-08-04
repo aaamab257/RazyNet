@@ -10,15 +10,21 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.firebase.iid.FirebaseInstanceId;
 import com.razytech.razynet.Adapter.ChildAdpater;
 import com.razytech.razynet.Adapter.TopWalletAdapter;
 import com.razytech.razynet.R;
 import com.razytech.razynet.Utils.AppConstant;
+import com.razytech.razynet.Utils.IntentUtiles;
+import com.razytech.razynet.Utils.StaticMethods;
+import com.razytech.razynet.Utils.dialogutil.AppDialog;
+import com.razytech.razynet.Utils.dialogutil.DialogUtil;
 import com.razytech.razynet.baseClasses.BaseFragment;
 import com.razytech.razynet.data.beans.ChildResponse;
 import com.razytech.razynet.data.beans.UserResponse;
 import com.razytech.razynet.data.prefs.PrefUtils;
 import com.razytech.razynet.databinding.ActivityHomeFragmentBinding;
+import com.razytech.razynet.gui.loginpage.LoginActivity;
 import com.razytech.razynet.gui.mainpage.MainpageActivity;
 import com.razytech.razynet.gui.register.RegisterActivity;
 
@@ -57,14 +63,17 @@ public class HomeFragment extends BaseFragment implements   HomeView , ChildAdpa
         fillData();
         modelView =  new HomeModelView();
         modelView.attachView(this);
-
+        String token =  FirebaseInstanceId.getInstance().getToken().toString();
+        Log.e("FirebaseInstanceId",token);
         CheckloadingData();
     }
    void fillData(){
         binding.setLevel(AppConstant.userResponse.getLevelsCount()+"");
         binding.setPoints(AppConstant.userResponse.getBalance()+"");
         binding.setWallet(AppConstant.userResponse.getChildsCount()+"");
-    }
+        StaticMethods.LoadImage(getActivity(), binding.createAccImg,AppConstant.userResponse.getIdImageUrl(),null);
+
+   }
 
     private void CheckloadingData() {
         if (!AppConstant.refreshhome) {
@@ -141,6 +150,16 @@ public class HomeFragment extends BaseFragment implements   HomeView , ChildAdpa
             binding.errorwallet.setViewerror(show);
         }
     }
+
+    @Override
+    public void logout() {
+        StaticMethods.ClearChash();
+        PrefUtils.SignOut_User(getActivity());
+        AppConstant.userResponse = null ;
+        IntentUtiles.openActivityInNewStack(getActivity(), LoginActivity.class);
+    }
+
+
 
     @Override
     public void onChildClicked(ChildResponse post) {

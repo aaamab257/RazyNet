@@ -114,6 +114,7 @@ import static com.razytech.razynet.Utils.AppConstant.TRANSFERWALLET_page;
                     public void onSuccess(ConnectionResponse<MainResponse<List<ChildResponse>>> connectionResponse) {
                         view.hideloadingviewBase();
                         if (connectionResponse.data.success ) {
+                            AppConstant.childResponses =  connectionResponse.data.data ;
                             view.LoadingchildData(connectionResponse.data.data);
                         } else {
                             view.show_errorView(true,connectionResponse.data.message);

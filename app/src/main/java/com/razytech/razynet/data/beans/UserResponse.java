@@ -40,6 +40,10 @@ public class UserResponse {
     private String cityId;
     @SerializedName("areaId")
     private String areaId;
+    @SerializedName("city")
+    private String city;
+    @SerializedName("area")
+    private String area;
     @SerializedName("userId")
     private String userId;
     @SerializedName("incrementPermission")
@@ -48,6 +52,8 @@ public class UserResponse {
     private String phone;
    @SerializedName("token")
     private String Token ;
+
+
 
 
     public String getDisplayName() {
@@ -152,5 +158,21 @@ public class UserResponse {
 
     public void setIncrementPermission(boolean incrementPermission) {
         this.incrementPermission = incrementPermission;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getArea() {
+        return area;
+    }
+
+    public void setArea(String area) {
+        this.area = area;
     }
 }

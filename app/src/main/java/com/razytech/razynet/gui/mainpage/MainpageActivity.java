@@ -9,6 +9,7 @@ import android.view.View;
 
 import com.razytech.razynet.R;
 import com.razytech.razynet.Utils.AppConstant;
+import com.razytech.razynet.Utils.StaticMethods;
 import com.razytech.razynet.baseClasses.BaseActivity;
 import com.razytech.razynet.databinding.ActivityMainpageBinding;
 import com.razytech.razynet.gui.addwallet.AddWalletFragment;
@@ -262,16 +263,19 @@ public class MainpageActivity extends BaseActivity<ActivityMainpageBinding , Mai
         binding.toolbarpublic.setWalletsnumber(AppConstant.userResponse.getChildsCount()+"");
         binding.toolbarpublic.setShowback(showback);
         binding.setShowbottombar(bottombar);
+        StaticMethods.LoadImage(MainpageActivity.this, binding.toolbarpublic.imgProfile,AppConstant.userResponse.getIdImageUrl(),null);
+
     }
     public  void setViewHandling(String PointsString ,String wallet  ,boolean showback){
         binding.toolbarpublic.setPointsnumber(AppConstant.userResponse.getBalance()+"");
         binding.toolbarpublic.setWalletsnumber(AppConstant.userResponse.getChildsCount()+"");
         binding.toolbarpublic.setShowback(showback);
         binding.setShowbottombar(true);
+        StaticMethods.LoadImage(MainpageActivity.this, binding.toolbarpublic.imgProfile,AppConstant.userResponse.getIdImageUrl(),null);
     }
     public  void UpdatePointsHandling(String PointsString   ){
         binding.toolbarpublic.setPointsnumber(PointsString);
-
+        StaticMethods.LoadImage(MainpageActivity.this, binding.toolbarpublic.imgProfile,AppConstant.userResponse.getIdImageUrl(),null);
     }
 
 

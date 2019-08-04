@@ -44,20 +44,27 @@ import okhttp3.RequestBody;
            @Override
            public void onSuccess(ConnectionResponse<MainResponse<HomeResponse>> connectionResponse) {
             view.hideloadingviewBase();
-            if (connectionResponse.data.success ) {
-             AppConstant.homeResponse = connectionResponse.data.data;
-             AppConstant.refreshhome  =  false;
-             view.LoadWalletSystem(connectionResponse.data.data.getTopWallets());
-             view.LoadWallet(connectionResponse.data.data.getTopChildrens());
-             view.UpdateUserData(connectionResponse.data.data.getWallet());
-            } else {
-             view.showerrorlayoutTopsystem(true,connectionResponse.data.message);
-             view.showerrorlayoutchilds(true,connectionResponse.data.message);
+            if(connectionResponse.data.statusCode == 401) {
+                view.logout();
+            }else {
+                if (connectionResponse.data.success) {
+                    AppConstant.homeResponse = connectionResponse.data.data;
+                    AppConstant.refreshhome = false;
+                    view.LoadWalletSystem(connectionResponse.data.data.getTopWallets());
+                    view.LoadWallet(connectionResponse.data.data.getTopChildrens());
+                    view.UpdateUserData(connectionResponse.data.data.getWallet());
+                } else {
+                    view.showerrorlayoutTopsystem(true, connectionResponse.data.message);
+                    view.showerrorlayoutchilds(true, connectionResponse.data.message);
+                }
             }
            }
            @Override
            public void onFail(Throwable throwable) {
             view.hideloadingviewBase();
+               if(throwable.getMessage().contains("401")){
+                   view.logout();
+               }
             //  view.showErrorMessageBase(coordinatorLayout,context,context.getString(R.string.tryagaing));
             view.showerrorlayoutTopsystem(true,context.getString(R.string.tryagaing));
             view.showerrorlayoutchilds(true,context.getString(R.string.tryagaing));

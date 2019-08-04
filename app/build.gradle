@@ -64,6 +64,12 @@ dependencies {
     implementation 'com.android.support.constraint:constraint-layout:1.1.3'
     testImplementation "junit:junit:$rootProject.junitVersion"
 
+    // map and notification lib
+    implementation "com.google.firebase:firebase-messaging:$rootProject.firebaseVersion"
+    implementation "com.google.android.gms:play-services:$rootProject.firebaseVersion"
+    implementation "com.google.android.gms:play-services-gcm:$rootProject.firebaseVersion"
+    implementation "com.google.android.gms:play-services-analytics:$rootProject.firebaseVersion"
+
     //  constrains layout
     implementation "com.android.support.constraint:constraint-layout:$rootProject.layoutconstrains"
 
@@ -100,3 +106,4 @@ dependencies {
     implementation 'com.theartofdev.edmodo:android-image-cropper:1.2.1'
 
 }
+apply plugin: 'com.google.gms.google-services'

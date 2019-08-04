@@ -42,6 +42,7 @@
     <string name="invitation_expired_txt">Your invitation code has expired. Please contact with your friend to invite you again.</string>
     <string name="savechanges">Save Changes</string>
     <string name="updatechanges">Update Profile</string>
+    <string name="save">Save</string>
     <string name="redeem">Redeem</string>
     <string name="transfer">Transfer</string>
     <string name="points">Points</string>
