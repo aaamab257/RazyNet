@@ -11,6 +11,7 @@ import com.razytech.razynet.Utils.IntentUtiles;
 import com.razytech.razynet.baseClasses.BaseActivity;
 import com.razytech.razynet.data.beans.VerifyCodeResponse;
 import com.razytech.razynet.databinding.ActivityVerifyCodeBinding;
+import com.razytech.razynet.gui.loginpage.LoginActivity;
 import com.razytech.razynet.gui.mainpage.MainpageActivity;
 import com.razytech.razynet.gui.register.RegisterActivity;
 import com.razytech.razynet.gui.splash.SplashActivity;
@@ -40,7 +41,6 @@ public class VerifyCodeActivity extends BaseActivity<ActivityVerifyCodeBinding  
         viewModel.attachView(this);
 
     }
-
     @Override
     public int getLayoutId() {
         return R.layout.activity_verify_code;
@@ -77,6 +77,9 @@ public class VerifyCodeActivity extends BaseActivity<ActivityVerifyCodeBinding  
         }
         public void btnEnterCode(View view) {
            viewModel.vaildatedata(VerifyCodeActivity.this  ,  binding.coorverify  ,VerifyCodeActivity.this  , binding.loginCodeET.getText().toString());
+        }
+        public void btnloginpage(View view) {
+            IntentUtiles.openActivityInNewStack(VerifyCodeActivity.this, LoginActivity.class );
         }
     }
 }

@@ -6,6 +6,7 @@ import com.razytech.razynet.data.beans.CityResponse;
 import com.razytech.razynet.data.beans.HomeResponse;
 import com.razytech.razynet.data.beans.InviteResponse;
 import com.razytech.razynet.data.beans.NotificationsResponse;
+import com.razytech.razynet.data.beans.PointHistoryResponse;
 import com.razytech.razynet.data.beans.RedeemPointsResponse;
 import com.razytech.razynet.data.beans.RedeemResponse;
 import com.razytech.razynet.data.beans.RedeemUpdateResponse;
@@ -137,6 +138,11 @@ public interface MainApiInterface {
     @POST("Product/Execute")
     Observable<MainResponse<RedeemUpdateResponse>> RedeemUpdatePage(@Header("Authorization") String auth
             , @Body RequestBody RequestBody);
+
+
+    // 21
+    @GET("Point/PointHistory")
+    Observable<MainResponse<List<PointHistoryResponse>>> PointHistoryPage(@Header("Authorization") String auth);
 
 
 }

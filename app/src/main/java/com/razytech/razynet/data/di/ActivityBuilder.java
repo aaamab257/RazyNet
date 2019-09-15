@@ -1,5 +1,7 @@
 package com.razytech.razynet.data.di;
 
+import com.razytech.razynet.gui.forgetpassword.ForgetPasswordActivity;
+import com.razytech.razynet.gui.forgetpassword.ForgetPasswordActivityModule;
 import com.razytech.razynet.gui.loginpage.LoginActivity;
 import com.razytech.razynet.gui.loginpage.LoginActivityModule;
 import com.razytech.razynet.gui.mainpage.MainpageActivity;
@@ -40,4 +42,8 @@ public abstract class ActivityBuilder {
 
     @ContributesAndroidInjector(modules = LoginActivityModule.class)
     abstract LoginActivity bindLoginActivity();
+
+
+    @ContributesAndroidInjector(modules = ForgetPasswordActivityModule.class)
+    abstract ForgetPasswordActivity bindForgetPasswordActivity();
 }

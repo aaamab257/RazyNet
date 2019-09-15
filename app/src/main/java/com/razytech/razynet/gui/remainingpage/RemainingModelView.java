@@ -53,6 +53,9 @@ import java.io.File;
            @Override
            public void onFail(Throwable throwable) {
             view.hideloadingviewBase();
+               if(throwable.getMessage().contains("401")){
+                   view.logout();
+               }
           //  view.showErrorMessageBase(coordinatorLayout,context,context.getString(R.string.tryagaing));
             //Log.e("error", throwable.toString());
            view.show_errorView(true , context.getString(R.string.tryagaing));
@@ -108,6 +111,9 @@ import java.io.File;
                     @Override
                     public void onFail(Throwable throwable) {
                         view.hideloadingviewBase();
+                        if(throwable.getMessage().contains("401")){
+                            view.logout();
+                        }
                         view.showErrorMessageBase(coordinatorLayout,context,context.getString(R.string.tryagaing));
                         Log.e("error", throwable.toString());
                     }

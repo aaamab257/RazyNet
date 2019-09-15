@@ -12,6 +12,7 @@ import com.razytech.razynet.baseClasses.BaseActivity;
 import com.razytech.razynet.data.beans.UserResponse;
 import com.razytech.razynet.data.prefs.PrefUtils;
 import com.razytech.razynet.databinding.ActivityLoginBinding;
+import com.razytech.razynet.gui.forgetpassword.ForgetPasswordActivity;
 import com.razytech.razynet.gui.mainpage.MainpageActivity;
 import com.razytech.razynet.gui.register.RegisterActivity;
 import com.razytech.razynet.gui.verificationcode.VerifyCodeActivity;
@@ -69,6 +70,12 @@ public class LoginActivity extends BaseActivity<ActivityLoginBinding ,  LoginMod
         }
         public void btnLogin(View view) {
             modelView.loginData(LoginActivity.this  ,  binding.coorlogin   , binding.createAccPhoneET.getText().toString() ,binding.createAccPasswordET.getText().toString());
+        }
+        public void btnforget(View view) {
+            IntentUtiles.openActivity(LoginActivity.this, ForgetPasswordActivity.class);
+        }
+        public void btninvitation(View view) {
+            IntentUtiles.openActivityInNewStack(LoginActivity.this, VerifyCodeActivity.class);
         }
     }
 }

@@ -10,4 +10,5 @@ import com.razytech.razynet.data.beans.RemainingResponse;
   void SetRemainingData(RemainingResponse remainingResponse ,  String Message  );
   void show_errorView(boolean Isshow , String error);
   void UpdateUserStatus(String messsage);
+  void logout();
 }

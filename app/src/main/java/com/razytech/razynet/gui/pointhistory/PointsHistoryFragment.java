@@ -4,32 +4,21 @@ import android.content.Context;
 import android.databinding.DataBindingUtil;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
-import com.razytech.razynet.Adapter.ChildAdpater;
-import com.razytech.razynet.Adapter.NotificationsAdapter;
 import com.razytech.razynet.Adapter.PointsAdapter;
 import com.razytech.razynet.R;
 import com.razytech.razynet.Utils.AppConstant;
 import com.razytech.razynet.baseClasses.BaseFragment;
-import com.razytech.razynet.data.beans.ChildResponse;
-import com.razytech.razynet.data.beans.NotificationsResponse;
-import com.razytech.razynet.data.beans.PointsResponse;
+import com.razytech.razynet.data.beans.PointHistoryResponse;
 import com.razytech.razynet.databinding.ActivityPointsHistoryFragmentBinding;
 import com.razytech.razynet.gui.mainpage.MainpageActivity;
-
 import java.util.List;
-
 import static com.razytech.razynet.Utils.AppConstant.BTN_All;
 import static com.razytech.razynet.Utils.AppConstant.BTN_IN;
 import static com.razytech.razynet.Utils.AppConstant.BTN_OUT;
-import static com.razytech.razynet.Utils.AppConstant.TRANSFERWALLET_page;
 
 public class PointsHistoryFragment extends BaseFragment  implements  PointsHistoryView ,  PointsAdapter.PointsListener{
 
@@ -70,11 +59,25 @@ public class PointsHistoryFragment extends BaseFragment  implements  PointsHisto
     }
 
     @Override
-    public void LoadingPointsData(List<PointsResponse> pointsResponses) {
+    public void LoadingPointsData(List<PointHistoryResponse> pointsResponses) {
+        show_errorView(false,  "" );
         binding.recPointshistory.setLayoutManager(new LinearLayoutManager(getActivity()));
         adapter =  new PointsAdapter(getActivity(),pointsResponses,this ,  tabPosition);
         binding.recPointshistory.setAdapter(adapter);
-        Log.e("itemlistsize22", ""+AppConstant.pointsResponses.size());
+    //   Log.e("itemlistsize22", ""+AppConstant.pointsResponses.size());
+    }
+
+    @Override
+    public void show_errorView(boolean Isshow, String error) {
+        if (Isshow){
+            binding.errorLayoutView.setViewerror(Isshow);
+            binding.errorLayoutView.setErrortxt(error);
+            binding.errorLayoutView.btnTryAgain.setOnClickListener((View)->{
+                CheckloadingData();
+            });
+        }else {
+            binding.errorLayoutView.setViewerror(Isshow);
+        }
     }
 
 
@@ -92,6 +95,7 @@ public class PointsHistoryFragment extends BaseFragment  implements  PointsHisto
                 adapter.filter(BTN_All , AppConstant.pointsResponses);
                 break;
             case BTN_IN:
+
                 binding.imgall.setTextColor(getResources().getColor(R.color.gray));
                 binding.txtall.setBackgroundColor(Color.TRANSPARENT);
                 binding.imgin.setTextColor(getResources().getColor(R.color.white));
@@ -113,7 +117,7 @@ public class PointsHistoryFragment extends BaseFragment  implements  PointsHisto
     }
 
     @Override
-    public void onItemClicked(PointsResponse post) {
+    public void onItemClicked(PointHistoryResponse post) {
 
     }
 

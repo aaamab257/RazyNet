@@ -1,5 +1,7 @@
 package com.razytech.razynet.gui.homepage;
 
+import android.arch.lifecycle.LiveData;
+import android.arch.lifecycle.MutableLiveData;
 import android.content.Context;
 import android.support.design.widget.CoordinatorLayout;
 import android.util.Log;
@@ -27,9 +29,20 @@ import okhttp3.RequestBody;
 /**
  * Created by A.Noby on 6/10/2019.
  */
- class HomeModelView extends BaseViewModel<HomeView> {
+public class HomeModelView extends BaseViewModel<HomeView> {
 
- void  loadingHomeData(CoordinatorLayout coordinatorLayout, Context context ){
+    private MutableLiveData<MainResponse<HomeResponse>> users;
+    public LiveData<MainResponse<HomeResponse>> getUsers(CoordinatorLayout coordinatorLayout, Context context) {
+        if (users == null) {
+            users = new MutableLiveData<MainResponse<HomeResponse>>();
+            loadingHomeData(coordinatorLayout , context);
+        }
+        return users;
+    }
+
+
+
+    public void  loadingHomeData(CoordinatorLayout coordinatorLayout, Context context ){
   boolean internetAvailable = StaticMethods.isConnectingToInternet(context);
   if (!internetAvailable) {
    view.showNoNetworkConnectionBase(coordinatorLayout,context);

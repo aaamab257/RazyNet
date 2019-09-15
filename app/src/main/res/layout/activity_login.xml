@@ -99,24 +99,31 @@
                 android:layout_height="wrap_content"
                 android:gravity="right"
                 android:orientation="horizontal"
-                android:visibility="gone"
                 >
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="end"
-                    android:layout_marginRight="5dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginLeft="10dp"
                     android:text="@string/forgot_your_txt"
                     android:textColor="@color/white"
-                    android:fontFamily="@font/ralewaymedium"
+                    android:fontFamily="@font/ralewaybold"
+                    android:textSize="18sp"
+                    android:onClick="@{handlers.btnforget}"
+                    android:visibility="gone"
                     />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/invitation_code_txt"
-                    android:textColor="@color/darkPink" />
+                    android:textColor="@color/darkPink"
+                    android:fontFamily="@font/ralewaybold"
+                    android:textSize="18sp"
+                    android:onClick="@{handlers.btninvitation}"
+                    />
 
             </LinearLayout>
 

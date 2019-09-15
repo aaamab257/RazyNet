@@ -33,6 +33,7 @@ public class AddWalletFragment extends BaseFragment  implements  AddWalletView ,
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = DataBindingUtil.inflate(inflater,R.layout.activity_add_wallet_fragment, container, false);
         view = binding.getRoot();
+        hideKeyboard();
         handlers = new MyClickHandlers(getActivity());
         binding.setHandlers(handlers);
         inilizeVariables();
@@ -45,6 +46,7 @@ public class AddWalletFragment extends BaseFragment  implements  AddWalletView ,
     }
     @Override
     public void SuccessData(String VerificationCode , double updatepoints) {
+        hideKeyboard();
         ((MainpageActivity)getActivity()).UpdatePointsHandling(updatepoints + "");
         AppConstant.userResponse.setBalance(updatepoints);
         AppConstant.userResponse.setToken(AppConstant.userResponse.getToken());
@@ -64,6 +66,7 @@ public class AddWalletFragment extends BaseFragment  implements  AddWalletView ,
             this.context = context;
         }
         public void btnAdd(View view) {
+            hideKeyboard();
             if (PasswordVaild)
               modelView.vaildatedata(getActivity() ,  binding.cooraddwallet  ,  getActivity(),binding.createAccPhoneET.getText().toString());
             else

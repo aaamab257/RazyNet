@@ -62,6 +62,7 @@ public class RegisterActivity extends BaseActivity<ActivityRegisterBinding,  Reg
     DialogUtil dialogUtil ;
     List<String>  CitiesNames  ,  AreaNames  ;
     String   Citytxt =  "city" ,  Areatxt =  "area" ,image = "" ,  phone = "" ,  token =  "";
+    boolean backhandle =  false ,  isAccept =  false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,6 +84,7 @@ public class RegisterActivity extends BaseActivity<ActivityRegisterBinding,  Reg
             phone = getIntent().getExtras().getString(AppConstant.phoneKey);
         }
         binding.createAccPhoneET.setText(phone);
+        show_Terms(false);
     }
     @Override
     public int getLayoutId() {
@@ -201,13 +203,33 @@ public class RegisterActivity extends BaseActivity<ActivityRegisterBinding,  Reg
             }
         }
     }
+    private  void show_Terms(boolean isShow){
+        backhandle = isShow ;
+    binding.setShowterms(isShow);
+    }
 
+    @Override
+    public void onBackPressed() {
+        if (backhandle){
+            show_Terms(false);
+        }else
+        super.onBackPressed();
+
+    }
 
     public class MyClickHandlers {
         Context context;
         public MyClickHandlers(Context context) {
             this.context = context;
         }
+
+        public void btn_terms(View view) {
+            show_Terms(true);
+        }
+        public void btn_accept(View view) {
+            isAccept = binding.chaccept.isChecked();
+        }
+
 
         public void btn_city(View view) {
             if (AppConstant.cityResponses != null)
@@ -228,10 +250,11 @@ public class RegisterActivity extends BaseActivity<ActivityRegisterBinding,  Reg
 
 
         public void btnEnterCode(View view) {
+            hideKeyboard();
           modelView.vaildatedata(RegisterActivity.this , binding.coorregister ,
                   binding.createAccUsernameET.getText().toString()    , binding.createAccNidET.getText().toString()  ,
                   binding.createAccPasswordET.getText().toString()
-                  , binding.createAccConfpasswordET.getText().toString()  ,cityId ,  areaId ,filePath ,  token);
+                  , binding.createAccConfpasswordET.getText().toString()  ,cityId ,  areaId ,filePath ,  token ,  isAccept);
 
            //  OpenMainPage();
         }
@@ -239,6 +262,7 @@ public class RegisterActivity extends BaseActivity<ActivityRegisterBinding,  Reg
             pickImage();
         }
     }
+
     public void pickImage() {
         if (checkCameraPermission(RegisterActivity.this ,RegisterActivity.this))
             startActivityForResult(new Intent(this, ImagePickerActivity.class), REQUEST_PICK_IMAGE);

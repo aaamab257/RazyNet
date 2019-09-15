@@ -15,11 +15,14 @@ import com.razytech.razynet.CustomViews.crop.ImagePickerActivity;
 import com.razytech.razynet.R;
 import com.razytech.razynet.Utils.AppConstant;
 import com.razytech.razynet.Utils.IntentUtiles;
+import com.razytech.razynet.Utils.StaticMethods;
 import com.razytech.razynet.Utils.takeimage.TakeImageReceiveView;
 import com.razytech.razynet.Utils.takeimage.TakeImageUtiles;
 import com.razytech.razynet.baseClasses.BaseActivity;
 import com.razytech.razynet.data.beans.RemainingResponse;
+import com.razytech.razynet.data.prefs.PrefUtils;
 import com.razytech.razynet.databinding.ActivityRemainingBinding;
+import com.razytech.razynet.gui.loginpage.LoginActivity;
 import com.razytech.razynet.gui.mainpage.MainpageActivity;
 import com.razytech.razynet.gui.register.RegisterActivity;
 import com.razytech.razynet.gui.splash.SplashActivity;
@@ -104,6 +107,13 @@ public class RemainingActivity extends BaseActivity<ActivityRemainingBinding
         binding.setWaittxt(messsage);
 
     }
+
+    @Override
+    public void logout() {
+        StaticMethods.ClearChash();
+        PrefUtils.SignOut_User(RemainingActivity.this);
+        AppConstant.userResponse = null ;
+        IntentUtiles.openActivityInNewStack(RemainingActivity.this, LoginActivity.class);    }
 
     @Override
     public void AftergettingImage(Bitmap bitmap, byte[] array, String fileName, File FilePath) {

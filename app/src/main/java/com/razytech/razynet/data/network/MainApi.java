@@ -11,6 +11,7 @@ import com.razytech.razynet.data.beans.CityResponse;
 import com.razytech.razynet.data.beans.HomeResponse;
 import com.razytech.razynet.data.beans.InviteResponse;
 import com.razytech.razynet.data.beans.NotificationsResponse;
+import com.razytech.razynet.data.beans.PointHistoryResponse;
 import com.razytech.razynet.data.beans.RedeemPointsResponse;
 import com.razytech.razynet.data.beans.RedeemResponse;
 import com.razytech.razynet.data.beans.RedeemUpdateResponse;
@@ -475,6 +476,28 @@ public class MainApi {
                         connectionListener.onSuccess(response);
                     }
                 }); }
+
+
+    public static void PointHistoryapi(String token
+            , final ConnectionListener<MainResponse<List<PointHistoryResponse>>> connectionListener) {
+        getApi().PointHistoryPage(token).subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<MainResponse<List<PointHistoryResponse>>>() {
+                    @Override
+                    public void onError(Throwable e) { connectionListener.onFail(e); }
+                    @Override
+                    public void onComplete() { }
+                    @Override
+                    public void onSubscribe(Disposable d) { }
+                    @Override
+                    public void onNext(MainResponse<List<PointHistoryResponse>> aBoolean) {
+                        ConnectionResponse<MainResponse<List<PointHistoryResponse>>> response = new ConnectionResponse<>();
+                        response.data = aBoolean;
+                        connectionListener.onSuccess(response);
+                    }
+
+                });
+    }
 
 
 

@@ -6,7 +6,7 @@
         <import type="android.view.View"/>
         <variable
             name="handlers"
-            type="com.razytech.razynet.data.beans.PointsResponse"
+            type="com.razytech.razynet.data.beans.PointHistoryResponse"
 
             />
 
@@ -35,7 +35,7 @@
                     android:id="@+id/txttitle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@{handlers.title}"
+                    android:text="@{handlers.description}"
                     android:textColor="@color/white"
                     android:fontFamily="@font/ralewaymedium"
                     android:textSize="14sp"
@@ -46,7 +46,7 @@
                     android:id="@+id/txtdate"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@{handlers.date}"
+                    android:text="@{handlers.trDateTime}"
                     android:textColor="@color/gray"
                     android:fontFamily="@font/ralewaymedium"
                     android:textSize="14sp"
@@ -64,23 +64,26 @@
                     android:id="@+id/txtpoints"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@{handlers.points}"
-                    android:textColor="@{handlers.isin == true ? @color/green : @color/darkred }"
+                    android:text="@{handlers.amount+``}"
+                    android:textColor="@{handlers.trDir == 1 ? @color/green : @color/darkred }"
                     android:fontFamily="@font/ralewaybold"
                     android:textSize="14sp"
                     android:layout_centerInParent="true"
+                    android:gravity="center"
                     />
             </RelativeLayout>
 
             <RelativeLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1">
+                android:layout_weight="1"
+                android:visibility="gone"
+                >
                 <TextView
                     android:id="@+id/txtavaliable"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@{handlers.avapoints}"
+                    android:text=""
                     android:textColor="@color/white"
                     android:fontFamily="@font/ralewaybold"
                     android:textSize="14sp"

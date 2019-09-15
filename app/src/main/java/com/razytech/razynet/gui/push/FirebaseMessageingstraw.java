@@ -46,15 +46,15 @@ public class FirebaseMessageingstraw extends FirebaseMessagingService {
 //       Log.e(TAG,"body : "+remoteMessage.getData().get("Type"));
 //      //  Log.e(TAG, "Message Notification Body: " + remoteMessage.getNotification().getBody()  +"    "+remoteMessage.getNotification().getTitle());
 //
-        sendNotification(remoteMessage.getNotification().getBody());
+        sendNotification(remoteMessage.getNotification().getTitle(),remoteMessage.getNotification().getBody());
     }
 
-    private void sendNotification( String messageBody) {
+    private void sendNotification(String messageTitle, String messageBody) {
 
         NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(
                 this);
 
-        mBuilder.setContentTitle("New Notification");
+        mBuilder.setContentTitle(messageTitle);
         mBuilder.setContentText(messageBody);
         mBuilder.setStyle(new NotificationCompat.BigTextStyle()
                 .bigText(messageBody));
@@ -68,7 +68,7 @@ public class FirebaseMessageingstraw extends FirebaseMessagingService {
         mBuilder.setSound(alarmSound);
 try {
           //  Log.e("pushnotification","1  "+type);
-            Intent resultIntent = new Intent(this, SplashActivity.class);
+            Intent resultIntent = new Intent(this, MainpageActivity.class);
             resultIntent.putExtra(AppConstant.OpenNotification, "notification");
 
             TaskStackBuilder stackBuilder = TaskStackBuilder.create(this);

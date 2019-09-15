@@ -27,7 +27,7 @@ public class ChildResponse {
     private boolean approved;
     @SerializedName("isMoved")
     private boolean isMoved;
-    @SerializedName("childCounts")
+    @SerializedName("childernsCount")
     private int childCounts;
 
 

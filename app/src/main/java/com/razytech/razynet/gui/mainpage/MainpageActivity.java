@@ -24,6 +24,7 @@ import com.razytech.razynet.gui.notifications.NotificationsFragment;
 import com.razytech.razynet.gui.pointhistory.PointsHistoryFragment;
 import com.razytech.razynet.gui.porfile.ProfileFragment;
 import com.razytech.razynet.gui.register.RegisterActivity;
+import com.razytech.razynet.gui.testfragment.TestFragment;
 import com.razytech.razynet.gui.treepage.TreeFragment;
 import com.razytech.razynet.gui.updateprofile.UpdateProfileFragment;
 import com.razytech.razynet.gui.walletpage.WalletFragment;
@@ -39,6 +40,7 @@ import static com.razytech.razynet.Utils.AppConstant.POINTS_page;
 import static com.razytech.razynet.Utils.AppConstant.PROFILE_page;
 import static com.razytech.razynet.Utils.AppConstant.REDEEMPOINTS_page;
 import static com.razytech.razynet.Utils.AppConstant.REDEEM_page;
+import static com.razytech.razynet.Utils.AppConstant.TEST_page;
 import static com.razytech.razynet.Utils.AppConstant.TRANSFERCONFIRMFINAL_page;
 import static com.razytech.razynet.Utils.AppConstant.TRANSFERCONFIRM_page;
 import static com.razytech.razynet.Utils.AppConstant.TRANSFERPOINTS_page;
@@ -74,6 +76,7 @@ public class MainpageActivity extends BaseActivity<ActivityMainpageBinding , Mai
 
     private void inilizeVaribles() {
         modelView.attachView(this);
+        //displayView(TEST_page);
         displayView(HOME_page);
         binding.toolbarpublic.imgback.setOnClickListener((View) ->{
             onBackPressed();
@@ -226,9 +229,18 @@ public class MainpageActivity extends BaseActivity<ActivityMainpageBinding , Mai
                 movepageFragment.setArguments(bundle);
                 fragmentTransaction.add(R.id.main_content, movepageFragment);
                 break;
+
+            case TEST_page:
+                //TEST_page Fragment
+                selectedPosition = TEST_page;
+                fragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                fragmentTransaction.replace(R.id.main_content, new TestFragment());
+                break;
+
         }
         fragmentTransaction.commit();
     }
+
     @Override
     public void onBackPressed() {
         if (selectedPosition >= TREE_page  && selectedPosition <= PROFILE_page ||selectedPosition == CHILDDETAILS_page ) {

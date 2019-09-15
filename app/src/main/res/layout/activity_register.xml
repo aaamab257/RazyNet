@@ -5,6 +5,11 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+        <import type="android.view.View"/>
+
+        <variable
+            name="showterms"
+            type="java.lang.Boolean"/>
         <variable
             name="handlers"
             type="com.razytech.razynet.gui.register.RegisterActivity.MyClickHandlers" />
@@ -18,9 +23,17 @@
     android:id="@+id/coorregister"
     android:background="@color/lightBlack"
     >
+        <include
+            layout="@layout/terms_conditions"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="@{showterms == true ? View.VISIBLE : View.GONE}"/>
+
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:visibility="@{showterms == true ? View.GONE : View.VISIBLE}"
+            >
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -222,6 +235,42 @@
 
                 </RadioGroup>
             </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="15dp"
+                    >
+
+                    <CheckBox
+                        android:id="@+id/chaccept"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left"
+                        android:textColor="@color/white"
+                        android:textStyle="bold"
+                        android:textSize="14sp"
+                        android:text="@string/accept"
+                        android:checked="false"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:onClick="@{handlers.btn_accept}"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/terms"
+                        android:textColor="@color/darkPink"
+                        android:fontFamily="@font/ralewaybold"
+                        android:textSize="15sp"
+                        android:onClick="@{handlers.btn_terms}"
+                        android:layout_marginTop="5dp"
+                        />
+
+                </LinearLayout>
+
+
 
                 <Button
                     android:id="@+id/enter_code_btn"

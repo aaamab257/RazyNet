@@ -12,4 +12,5 @@ import java.util.List;
  interface NotificationsView  extends BaseView  {
  void   LoadingnotificationData (List<NotificationsResponse> notificationsResponses );
  void  hide_refreshView();
+
 }

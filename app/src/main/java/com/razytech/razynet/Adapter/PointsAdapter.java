@@ -10,9 +10,11 @@ import android.view.ViewGroup;
 
 import com.razytech.razynet.R;
 import com.razytech.razynet.Utils.AppConstant;
+import com.razytech.razynet.data.beans.PointHistoryResponse;
 import com.razytech.razynet.data.beans.PointsResponse;
 import com.razytech.razynet.databinding.RowpointsBinding;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
@@ -25,7 +27,7 @@ import static com.razytech.razynet.Utils.AppConstant.BTN_OUT;
  */
 public class PointsAdapter extends RecyclerView.Adapter<PointsAdapter.MyViewHolder> {
 
-    private List<PointsResponse> itemlist;
+    private List<PointHistoryResponse> itemlist;
     private LayoutInflater layoutInflater;
     private PointsAdapter.PointsListener listener;
     Context context  ;
@@ -40,28 +42,32 @@ public class PointsAdapter extends RecyclerView.Adapter<PointsAdapter.MyViewHold
             this.binding = itemBinding;
         }
     }
-    public PointsAdapter(Context context, List<PointsResponse> itemlist, PointsAdapter.PointsListener listener  , int tabPosition) {
+    public PointsAdapter(Context context, List<PointHistoryResponse> itemlist, PointsAdapter.PointsListener listener  , int tabPosition) {
         this.itemlist = itemlist;
         this.listener = listener;
         this.context =  context ;
         this.TabPosition =  tabPosition ;
     }
 
-    public void filter(int TabPos , List<PointsResponse> pointsResponses  ) {
-        itemlist.clear();
-            for (int i = 0 ; i < pointsResponses.size() ; i++) {
-                if (TabPos == BTN_All) {
-                    itemlist.add(pointsResponses.get(i));
-                } else if (TabPos == BTN_IN) {
-                    if (pointsResponses.get(i).isIsin())
-                        itemlist.add(pointsResponses.get(i));
-                } else if (TabPos == BTN_OUT) {
-                    if (!pointsResponses.get(i).isIsin())
-                        itemlist.add(pointsResponses.get(i));
-                }
-            }
-        Log.e("itemlistsize", AppConstant.pointsResponses.size() +"  "+pointsResponses.size()+"  "+itemlist.size());
-         notifyDataSetChanged();
+    public void filter(int TabPos , List<PointHistoryResponse> pointsResponses  ) {
+       if (pointsResponses != null ) {
+           if (pointsResponses.size() != 0) {
+               List<PointHistoryResponse> historyResponses = new ArrayList<>();
+               for (int i = 0; i < pointsResponses.size(); i++) {
+                   if (TabPos == BTN_All) {
+                       historyResponses.add(pointsResponses.get(i));
+                   } else if (TabPos == BTN_IN) {
+                       if (pointsResponses.get(i).getTrDir() == 1)
+                           historyResponses.add(pointsResponses.get(i));
+                   } else if (TabPos == BTN_OUT) {
+                       if (pointsResponses.get(i).getTrDir() == 2)
+                           historyResponses.add(pointsResponses.get(i));
+                   }
+               }
+               itemlist = historyResponses;
+               notifyDataSetChanged();
+           }
+       }
     }
 
     @Override
@@ -97,7 +103,7 @@ public class PointsAdapter extends RecyclerView.Adapter<PointsAdapter.MyViewHold
         });
 
     }
-    public void addItems(List<PointsResponse> items) {
+    public void addItems(List<PointHistoryResponse> items) {
         this.itemlist.addAll(items);
     }
 
@@ -106,6 +112,6 @@ public class PointsAdapter extends RecyclerView.Adapter<PointsAdapter.MyViewHold
         return itemlist.size();
     }
     public interface PointsListener {
-        void onItemClicked(PointsResponse post);
+        void onItemClicked(PointHistoryResponse post);
     }
 }

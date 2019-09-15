@@ -222,6 +222,11 @@
             </LinearLayout>
 
         </LinearLayout>
+        <include layout="@layout/error_layout_view"
+            android:id="@+id/error_layout_view"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -263,6 +268,7 @@
                     android:fontFamily="@font/ralewaymedium"
                     android:textSize="14sp"
                     android:layout_centerInParent="true"
+                    android:gravity="center"
                     />
             </RelativeLayout>
 
@@ -270,7 +276,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-
+                android:visibility="gone"
                 >
                 <TextView
                     android:id="@+id/txtavaliable"
@@ -291,7 +297,7 @@
                     android:id="@+id/rec_pointshistory"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_margin="10dp"
+                    android:layout_margin="5dp"
 
                     />
     </LinearLayout>

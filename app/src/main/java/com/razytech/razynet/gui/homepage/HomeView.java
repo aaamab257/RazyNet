@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * Created by A.Noby on 6/10/2019.
  */
- interface HomeView  extends BaseView {
+ public interface HomeView  extends BaseView {
 
   void LoadWalletSystem(List<ChildResponse> topsystem);
   void LoadWallet(List<ChildResponse> topchilds);

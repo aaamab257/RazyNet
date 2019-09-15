@@ -194,17 +194,19 @@ public class UpdateProfileFragment extends BaseFragment implements
             pickImage();
         }
         public void btn_city(View view) {
-            if (AppConstant.cityResponses != null)
-                dialogUtil.showDialogSingleChooice(getActivity(), R.string.selectcity, R.string.ok,CitiesNames, Citytxt);
-            else
+            if (CitiesNames != null) {
+                 if (CitiesNames.size() != 0)
+                dialogUtil.showDialogSingleChooice(getActivity(), R.string.selectcity, R.string.ok, CitiesNames, Citytxt);
+            }else
                 modelView.loadCitiesData(getActivity() ,  binding.coorupdateprofile, AppConstant.userResponse.getToken());
         }
         public void btn_area(View view) {
 
             if (cityId != -1) {
-                if (AppConstant.areaResponses != null)
-                    dialogUtil.showDialogSingleChooice(getActivity(), R.string.selectarea, R.string.ok,AreaNames, Areatxt);
-                else
+                if (AreaNames != null) {
+                    if (AreaNames.size() != 0)
+                    dialogUtil.showDialogSingleChooice(getActivity(), R.string.selectarea, R.string.ok, AreaNames, Areatxt);
+                } else
                     modelView.loadAreasData(getActivity() ,  binding.coorupdateprofile , cityId+"", AppConstant.userResponse.getToken() );
             }else
                 ToastUtil.showErrorToast(getActivity() ,  R.string.cityfirst);

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
+    <data>
+        <import type="android.view.View"/>
+
+        <variable
+            name="goldwallet"
+            type="java.lang.Boolean"/>
+
+        <variable
+            name="wallet"
+            type="java.lang.String"/>
+        <variable
+            name="level"
+            type="java.lang.String"/>
+        <variable
+            name="points"
+            type="java.lang.String"/>
+
+
+    </data>
+
+    <android.support.design.widget.CoordinatorLayout
+        android:id="@+id/coorhome"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/lightBlack"
+        tools:context=".gui.testfragment.TestFragment">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:orientation="vertical">
+
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:fontFamily="@font/ralewaybold"
+                    android:text="@string/yourwallet"
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
+                <include
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/errorwallet"
+                    layout="@layout/error_layout_view"
+                    android:layout_margin="10dp"
+                    />
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rec_topwallet"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="10dp" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+    </android.support.design.widget.CoordinatorLayout>
+</layout>

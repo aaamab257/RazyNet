@@ -59,6 +59,7 @@ public class HomeFragment extends BaseFragment implements   HomeView , ChildAdpa
     }
 
     private void inilizeVariables() {
+        hideKeyboard();
         ((MainpageActivity)getActivity()).setViewHandling("" ,""  , false );
         fillData();
         modelView =  new HomeModelView();
@@ -72,7 +73,6 @@ public class HomeFragment extends BaseFragment implements   HomeView , ChildAdpa
         binding.setPoints(AppConstant.userResponse.getBalance()+"");
         binding.setWallet(AppConstant.userResponse.getChildsCount()+"");
         StaticMethods.LoadImage(getActivity(), binding.createAccImg,AppConstant.userResponse.getIdImageUrl(),null);
-
    }
 
     private void CheckloadingData() {

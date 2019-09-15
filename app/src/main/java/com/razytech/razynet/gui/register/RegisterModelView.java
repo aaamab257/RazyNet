@@ -96,7 +96,7 @@ import okhttp3.RequestBody;
  void vaildatedata(Context context, CoordinatorLayout coordinatorLayout ,
                    String UserName,
                    String nid, String password ,String confpassword,int cityId  ,int AreaId
-         ,File file ,  String Token) {
+         ,File file ,  String Token ,  boolean isAccept) {
 
   boolean internetAvailable = StaticMethods.isConnectingToInternet(context);
      if (!internetAvailable) {
@@ -136,6 +136,10 @@ import okhttp3.RequestBody;
    view.showErrorMessageBase(coordinatorLayout,context, context.getString(R.string.emptyArea));
    return;
   }
+     else  if (!isAccept ) {
+      view.showErrorMessageBase(coordinatorLayout,context, context.getString(R.string.shouldaccept));
+      return;
+     }
 
   SendRegisterData(context,coordinatorLayout,UserName,nid,password,cityId+"",AreaId+"",file ,  Token);
 

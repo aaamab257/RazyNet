@@ -10,7 +10,7 @@
     tools:context=".gui.treepage.TreeFragment"
     android:id="@+id/coortree"
     android:background="@color/lightBlack"
-    android:padding="10dp"
+    android:padding="5dp"
     >
 
     <WebView android:id="@+id/webview"
