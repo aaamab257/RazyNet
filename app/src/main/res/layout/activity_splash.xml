@@ -11,6 +11,7 @@
     tools:context=".gui.splash.SplashActivity"
     android:background="@mipmap/splash_background"
     android:orientation="vertical"
+    android:layoutDirection="ltr"
     >
     <RelativeLayout
         android:layout_width="match_parent"

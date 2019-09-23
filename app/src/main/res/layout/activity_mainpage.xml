@@ -25,6 +25,7 @@
         android:layout_height="match_parent"
         android:background="@color/lightBlack"
         tools:context=".gui.mainpage.MainpageActivity"
+        android:layoutDirection="ltr"
         >
 
 

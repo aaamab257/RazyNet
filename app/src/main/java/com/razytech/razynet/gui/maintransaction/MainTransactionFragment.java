@@ -34,7 +34,7 @@ public class MainTransactionFragment extends BaseFragment {
     }
 
     private void inilizeVariables() {
-        ((MainpageActivity)getActivity()).setViewHandling("128"  ,"3"  , false );
+        ((MainpageActivity)getActivity()).setViewHandling(""  ,""  , false );
     }
 
     public class MyClickHandlers {

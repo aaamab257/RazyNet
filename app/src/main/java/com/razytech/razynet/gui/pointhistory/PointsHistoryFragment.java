@@ -1,9 +1,13 @@
 package com.razytech.razynet.gui.pointhistory;
 
+import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.databinding.DataBindingUtil;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,6 +23,8 @@ import java.util.List;
 import static com.razytech.razynet.Utils.AppConstant.BTN_All;
 import static com.razytech.razynet.Utils.AppConstant.BTN_IN;
 import static com.razytech.razynet.Utils.AppConstant.BTN_OUT;
+import static com.razytech.razynet.Utils.AppConstant.UPDATE_CHILD;
+import static com.razytech.razynet.Utils.AppConstant.UPDATE_POINTS;
 
 public class PointsHistoryFragment extends BaseFragment  implements  PointsHistoryView ,  PointsAdapter.PointsListener{
 
@@ -47,6 +53,12 @@ public class PointsHistoryFragment extends BaseFragment  implements  PointsHisto
         modelView.attachView(this);
         binding.setPointsnumber(AppConstant.userResponse.getBalance()+"");
         binding.setWalletnumber(AppConstant.userResponse.getChildsCount()+"");
+        binding.swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                refreshdata();
+            }
+        });
         CheckloadingData();
     }
 
@@ -58,13 +70,22 @@ public class PointsHistoryFragment extends BaseFragment  implements  PointsHisto
         }
     }
 
+    private void refreshdata(){
+        binding.swipeRefreshLayout.setRefreshing(true);
+        modelView.loadingPointsData(binding.coorpointhistory,getActivity(),true);
+    }
+
     @Override
     public void LoadingPointsData(List<PointHistoryResponse> pointsResponses) {
+        hide_refreshView();
         show_errorView(false,  "" );
-        binding.recPointshistory.setLayoutManager(new LinearLayoutManager(getActivity()));
-        adapter =  new PointsAdapter(getActivity(),pointsResponses,this ,  tabPosition);
-        binding.recPointshistory.setAdapter(adapter);
-    //   Log.e("itemlistsize22", ""+AppConstant.pointsResponses.size());
+        if (pointsResponses.size() != 0) {
+            binding.recPointshistory.setLayoutManager(new LinearLayoutManager(getActivity()));
+            adapter = new PointsAdapter(getActivity(), pointsResponses, this, tabPosition);
+            binding.recPointshistory.setAdapter(adapter);
+            HandlingTopBar(BTN_All );
+        }else
+            show_errorView(true ,getString(R.string.donothavepointshistory));
     }
 
     @Override
@@ -92,6 +113,7 @@ public class PointsHistoryFragment extends BaseFragment  implements  PointsHisto
                 binding.imgout.setTextColor(getResources().getColor(R.color.gray));
                 binding.txtout.setBackgroundColor(Color.TRANSPARENT);
                // LoadingPointsData(AppConstant.pointsResponses);
+                if (adapter != null)
                 adapter.filter(BTN_All , AppConstant.pointsResponses);
                 break;
             case BTN_IN:
@@ -102,6 +124,7 @@ public class PointsHistoryFragment extends BaseFragment  implements  PointsHisto
                 binding.txtin.setBackgroundColor(getResources().getColor(R.color.darkred));
                 binding.imgout.setTextColor(getResources().getColor(R.color.gray));
                 binding.txtout.setBackgroundColor(Color.TRANSPARENT);
+                if (adapter != null)
                 adapter.filter(BTN_IN , AppConstant.pointsResponses);
                 break;
             case BTN_OUT:
@@ -111,10 +134,54 @@ public class PointsHistoryFragment extends BaseFragment  implements  PointsHisto
                 binding.txtin.setBackgroundColor(Color.TRANSPARENT);
                 binding.imgout.setTextColor(getResources().getColor(R.color.white));
                 binding.txtout.setBackgroundColor(getResources().getColor(R.color.darkred));
+                if (adapter != null)
                 adapter.filter(BTN_OUT , AppConstant.pointsResponses);
                 break;
         }
     }
+
+    @Override
+    public void hide_refreshView() {
+        if (binding.swipeRefreshLayout.isRefreshing()) {
+            binding.swipeRefreshLayout.setRefreshing(false);
+        }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        try {
+            getActivity().registerReceiver(netSwitchReceiver, new IntentFilter(AppConstant.ActionString));
+        }
+        catch (Exception e){ }
+    }
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        try {
+            getActivity().unregisterReceiver(netSwitchReceiver);
+        }
+        catch (Exception e){ }
+    }
+    @Override
+    public void onPause() {
+        super.onPause();
+        try {
+            getActivity().unregisterReceiver(netSwitchReceiver);
+        }
+        catch (Exception e){ }
+    }
+
+
+    BroadcastReceiver netSwitchReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            binding.setPointsnumber(intent.getExtras().getString(UPDATE_POINTS));
+            if (intent.hasExtra(UPDATE_CHILD)){
+                binding.setWalletnumber(intent.getExtras().getString(UPDATE_CHILD));
+            }
+        }
+    };
 
     @Override
     public void onItemClicked(PointHistoryResponse post) {

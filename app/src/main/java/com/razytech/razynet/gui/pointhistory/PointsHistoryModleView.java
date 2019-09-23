@@ -17,6 +17,7 @@ import com.razytech.razynet.data.network.ConnectionListener;
 import com.razytech.razynet.data.network.ConnectionResponse;
 import com.razytech.razynet.data.network.MainApi;
 import com.razytech.razynet.data.network.MainResponse;
+import com.razytech.razynet.gui.mainpage.MainpageActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,65 +27,7 @@ import java.util.List;
  */
  class PointsHistoryModleView  extends BaseViewModel<PointsHistoryView> {
 
- List<PointsResponse> LoadingTestData(){
 
-  List<PointsResponse> redeemResponses  =  new ArrayList<>();
-  PointsResponse response =  new PointsResponse();
-  response.setId("1");
-  response.setTitle("points that add to you ");
-  response.setPoints("10");
-  response.setAvapoints("128");
-  response.setDate("18/6/2019");
-  response.setIsin(true);
-  redeemResponses.add(response);
-
-  response =  new PointsResponse();
-  response.setId("2");
-  response.setTitle("Points deducted from your points");
-  response.setPoints("20");
-  response.setAvapoints("128");
-  response.setDate("13/6/2019");
-  response.setIsin(false);
-  redeemResponses.add(response);
-
-  response =  new PointsResponse();
-  response.setId("3");
-  response.setTitle("points that add to you ");
-  response.setPoints("30");
-  response.setAvapoints("128");
-  response.setDate("13/6/2019");
-  response.setIsin(true);
-  redeemResponses.add(response);
-
-  response =  new PointsResponse();
-  response.setId("4");
-  response.setTitle("Points deducted from your points");
-  response.setPoints("40");
-  response.setAvapoints("128");
-  response.setDate("18/6/2019");
-  response.setIsin(false);
-  redeemResponses.add(response);
-
-  response =  new PointsResponse();
-  response.setId("5");
-  response.setTitle("points that add to you ");
-  response.setPoints("50");
-  response.setAvapoints("128");
-  response.setDate("12/6/2019");
-  response.setIsin(true);
-  redeemResponses.add(response);
-
-  response =  new PointsResponse();
-  response.setId("6");
-  response.setTitle("Points deducted from your points");
-  response.setPoints("60");
-  response.setAvapoints("128");
-  response.setDate("12/6/2019");
-  response.setIsin(false);
-  redeemResponses.add(response);
-
-  return redeemResponses ;
- }
 
  void  loadingPointsData(CoordinatorLayout coordinatorLayout, Context context  , boolean isrefresh){
   boolean internetAvailable = StaticMethods.isConnectingToInternet(context);
@@ -102,9 +45,13 @@ import java.util.List;
            @Override
            public void onSuccess(ConnectionResponse<MainResponse<List<PointHistoryResponse>>> connectionResponse) {
             view.hideloadingviewBase();
+            view.hide_refreshView();
             if (connectionResponse.data.success ) {
-             AppConstant.pointsResponses =  connectionResponse.data.data;
-             view.LoadingPointsData(connectionResponse.data.data);
+             if (connectionResponse.data.data != null) {
+              AppConstant.pointsResponses = connectionResponse.data.data;
+              view.LoadingPointsData(connectionResponse.data.data);
+             }else
+              view.show_errorView(true ,context.getString(R.string.donothavepointshistory));
             } else {
             // view.showErrorMessageBase(coordinatorLayout,context,connectionResponse.data.message);
               view.show_errorView(true , connectionResponse.data.message);
@@ -114,6 +61,10 @@ import java.util.List;
            @Override
            public void onFail(Throwable throwable) {
             view.hideloadingviewBase();
+            view.hide_refreshView();
+               if(throwable.getMessage().contains("401")){
+                   ((MainpageActivity)context).logout();
+               }
             view.showErrorMessageBase(coordinatorLayout,context,context.getString(R.string.tryagaing));
             Log.e("error", throwable.toString());
            }

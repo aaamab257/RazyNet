@@ -22,6 +22,7 @@
     tools:context=".gui.register.RegisterActivity"
     android:id="@+id/coorregister"
     android:background="@color/lightBlack"
+        android:layoutDirection="ltr"
     >
         <include
             layout="@layout/terms_conditions"
@@ -95,7 +96,11 @@
                     android:hint="@string/create_acc_nid_hint"
                     android:fontFamily="@font/ralewaymedium"
                     />
-
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:passwordToggleEnabled="true"
+                    app:passwordToggleTint="@color/colorAccent">
                 <EditText
                     android:id="@+id/create_acc_password_ET"
                     style="@style/CreateAccEditTextStyle"
@@ -104,9 +109,13 @@
                     android:inputType="textPassword"
                     android:hint="@string/create_acc_password_hint"
                     android:fontFamily="@font/ralewaymedium"
-
                     />
-
+                </android.support.design.widget.TextInputLayout>
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:passwordToggleEnabled="true"
+                    app:passwordToggleTint="@color/colorAccent">
                 <EditText
                     android:id="@+id/create_acc_confpassword_ET"
                     style="@style/CreateAccEditTextStyle"
@@ -116,7 +125,7 @@
                     android:hint="@string/create_acc_confpassword_hint"
 
                     />
-
+                </android.support.design.widget.TextInputLayout>
 
 
 
@@ -251,7 +260,7 @@
                         android:textColor="@color/white"
                         android:textStyle="bold"
                         android:textSize="14sp"
-                        android:text="@string/accept"
+                        android:text="@string/txtaccept"
                         android:checked="false"
                         android:layout_marginRight="10dp"
                         android:layout_marginLeft="10dp"

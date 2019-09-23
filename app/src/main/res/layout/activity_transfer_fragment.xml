@@ -15,7 +15,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/lightBlack"
-    tools:context=".gui.maintransaction.transfer.TransferFragment">
+    tools:context=".gui.maintransaction.transfer.TransferFragment"
+    android:layoutDirection="ltr">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"

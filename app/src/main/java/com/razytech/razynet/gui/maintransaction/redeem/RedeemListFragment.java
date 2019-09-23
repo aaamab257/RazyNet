@@ -37,7 +37,7 @@ public class RedeemListFragment extends BaseFragment implements  RedeemView , Re
     }
 
     private void inilizeVariables() {
-        ((MainpageActivity)getActivity()).setViewHandling("128"  ,"3"  , true , false );
+        ((MainpageActivity)getActivity()).setViewHandling(""  ,""  , true , false );
         modelView =  new RedeemModelView();
         modelView.attachView(this);
         binding.swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {

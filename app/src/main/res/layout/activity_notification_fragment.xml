@@ -16,7 +16,21 @@
     android:layout_height="match_parent"
     tools:context=".gui.notifications.NotificationsFragment"
     android:background="@color/lightBlack"
+    android:layoutDirection="ltr"
     >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include layout="@layout/error_layout_view"
+            android:id="@+id/error_layout_view"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:layout_marginBottom="20dp"
+            />
+
+
 
     <FrameLayout
         android:id="@+id/framedata"
@@ -38,7 +52,7 @@
                 />
         </android.support.v4.widget.SwipeRefreshLayout>
     </FrameLayout>
-
+    </LinearLayout>
 </android.support.design.widget.CoordinatorLayout>
 
 </layout>

@@ -5,6 +5,7 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:background="@color/lightBlack"
+    android:layoutDirection="ltr"
     >
     <TextView
         android:id="@+id/tv_dialog_title"

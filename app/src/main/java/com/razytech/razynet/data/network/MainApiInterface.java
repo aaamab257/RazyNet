@@ -58,7 +58,8 @@ public interface MainApiInterface {
     Observable<MainResponse<UserResponse>> SignUpPage(@Header("Authorization") String auth,
                                                       @Part MultipartBody.Part image, @Part("DisplayName") RequestBody DisplayName,
                                                       @Part("CityId") RequestBody CityId, @Part("AreaId") RequestBody AreaId
-                                                    , @Part("IdentityNo") RequestBody IdentityNo, @Part("Password") RequestBody Password);
+                                                    , @Part("IdentityNo") RequestBody IdentityNo, @Part("Password") RequestBody Password
+                                                    , @Part("DeviceId") RequestBody Token);
 
 
     // 5
@@ -143,6 +144,12 @@ public interface MainApiInterface {
     // 21
     @GET("Point/PointHistory")
     Observable<MainResponse<List<PointHistoryResponse>>> PointHistoryPage(@Header("Authorization") String auth);
+
+
+    // 22
+    @POST("User/ChangePassWord")
+    Observable<MainResponse<UserResponse>> ChangePasswordPage(@Header("Authorization") String auth,@Body RequestBody RequestBody);
+
 
 
 }

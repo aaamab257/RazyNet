@@ -9,6 +9,8 @@
     <string name="create_acc_phone_hint">Phone Number</string>
     <string name="create_acc_searchphone_hint">Search By Phone Number</string>
     <string name="create_acc_password_hint">Password</string>
+    <string name="oldpassword_hint">Old Password</string>
+    <string name="newpassword_hint">New Password</string>
     <string name="create_acc_confpassword_hint">Confirm Password</string>
     <string name="create_acc_nid_hint">NID Number</string>
     <string name="create_acc_email_hint">Email</string>
@@ -65,6 +67,8 @@
     <string name="day">DAY</string>
     <string name="hour">HOUR</string>
     <string name="min">MIN</string>
+
+    <string name="submit">Submit</string>
     <string name="fillalldata">Please Fill All Information :  </string>
     <string name="remain">Remaining</string>
     <string name="toexpired">To Expired</string>
@@ -85,7 +89,10 @@
     <string name="tryagain">Try Again</string>
     <string name="forgot_your_txt">Forgot Password</string>
     <string name="terms"><u>Terms and Conditions </u></string>
-    <string name="accept">Accept</string>
+    <string name="txtaccept">Accept</string>
+
+    <string name="changepassword">Change Password</string>
+
     <string name="termstitle">شروط واحكام</string>
     <string name="termsbody1">
           1.  هذه الحسابات الالكترونية و البرمجيات و التطبيقات والقواعد البيانيه المحتفظ بها االكترونياً تملكها وتشغلها شركة الرازي للخدمات التكنولوجية، وهي شركة مصرية متخصصة في مجال تقنيات المعلومات وخدماتها. ومقرها بمدينة القاهرة، جمهورية مصر العربية.\n
@@ -138,13 +145,15 @@
     <!-- empty filds -->
     <string name="emptyuserName">Your User Name is Empty</string>
     <string name="emptyPassword">Your Password is Empty</string>
+    <string name="emptyoldPassword">Your Old Password is Empty</string>
+    <string name="emptynewPassword">Your New Password is Empty</string>
     <string name="emptynid">Your NID Number is Empty</string>
     <string name="emptyinvcode">Your Invitation Code is Empty</string>
     <string name="emptyConfPassword">Your Confirm Password is Empty</string>
     <string name="emptynumberphone">Your Phone Number is Empty</string>
     <string name="emptypoints">Your Points is Empty</string>
-    <string name="emptyCity">Your choose  City</string>
-    <string name="emptyArea">Your choose  Area</string>
+    <string name="emptyCity">You should choose  City</string>
+    <string name="emptyArea">You should choose  Area</string>
     <string name="emptychooisewallet">You should chooise Target Wallet</string>
     <string name="emptyImage">You should  upload Image</string>
 
@@ -153,8 +162,11 @@
     <string name="invaildPasswordLenght">Password Length Should between 6 to 50</string>
     <string name="Passworddonotmatch">Password does not match the confirm password.</string>
     <string name="invaildnumberphone">Invalid Phone Number </string>
+    <string name="invaildnumbernid">Invalid NID Number </string>
     <string name="donothaveenoughpoints">You Donot have enough points</string>
     <string name="donothavechilds">No Child Found</string>
+    <string name="donothavenotifications">No Notifications Found</string>
+    <string name="donothavepointshistory">You Don\'t have History Transations yet </string>
     <string name="shouldaccept">You Should Accept Terms and Conditions</string>
 
     <!--Crop -->
@@ -167,10 +179,6 @@
     <string name="crop_image_menu_flip_vertically">Flip vertically</string>
     <string name="pick_image_intent_chooser_title">Select source</string>
     <string name="crop_image_activity_no_permissions">Cancelling, required permissions are not granted</string>
-
-
-
-
 
 
     <!-- Test -->

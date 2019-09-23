@@ -12,16 +12,16 @@ public class NotificationsResponse {
     private int id;
     @SerializedName("title")
     private String title;
-    @SerializedName("description")
+    @SerializedName("body")
     private String description;
     @SerializedName("read")
     private boolean read;
     @SerializedName("notificationType")
     private int notificationType;
     @SerializedName("senderId")
-    private int senderId;
+    private String senderId;
     @SerializedName("recipientId")
-    private int recipientId;
+    private String recipientId;
     @SerializedName("url")
     private String url;
     @SerializedName("template")
@@ -68,19 +68,19 @@ public class NotificationsResponse {
         this.notificationType = notificationType;
     }
 
-    public int getSenderId() {
+    public String getSenderId() {
         return senderId;
     }
 
-    public void setSenderId(int senderId) {
+    public void setSenderId(String senderId) {
         this.senderId = senderId;
     }
 
-    public int getRecipientId() {
+    public String getRecipientId() {
         return recipientId;
     }
 
-    public void setRecipientId(int recipientId) {
+    public void setRecipientId(String recipientId) {
         this.recipientId = recipientId;
     }
 

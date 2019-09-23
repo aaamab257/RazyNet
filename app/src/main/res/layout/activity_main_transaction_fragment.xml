@@ -18,6 +18,7 @@
     tools:context=".gui.maintransaction.MainTransactionFragment"
     android:id="@+id/coormaintrans"
     android:background="@color/lightBlack"
+    android:layoutDirection="ltr"
     >
     <RelativeLayout
         android:layout_width="match_parent"

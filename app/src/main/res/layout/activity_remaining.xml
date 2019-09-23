@@ -29,6 +29,7 @@ xmlns:tools="http://schemas.android.com/tools">
     tools:context=".gui.remainingpage.RemainingActivity"
     android:id="@+id/coorremain"
     android:background="@color/lightBlack"
+    android:layoutDirection="ltr"
     >
     <ScrollView
         android:layout_width="match_parent"

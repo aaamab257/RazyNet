@@ -15,6 +15,7 @@
     android:layout_height="match_parent"
     tools:context=".gui.verificationcode.VerifyCodeActivity"
     android:id="@+id/coorverify"
+    android:layoutDirection="ltr"
     >
 
     <LinearLayout
@@ -31,11 +32,12 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="20dp"
             android:src="@mipmap/logo_inside" />
-
+       <ScrollView
+           android:layout_width="match_parent"
+           android:layout_height="match_parent">
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="7"
+            android:layout_height="match_parent"
             android:gravity="center_horizontal"
             android:orientation="vertical">
 
@@ -98,22 +100,15 @@
                     android:visibility="gone"
                     />
 
+
+
             </LinearLayout>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="3"
-            android:gravity="center_horizontal"
-            android:orientation="horizontal">
 
             <Button
                 android:id="@+id/enter_code_btn"
                 android:layout_width="@dimen/width_btn"
                 android:layout_height="@dimen/height_btn"
-                android:layout_gravity="center_vertical"
+                android:layout_gravity="center"
                 android:background="@drawable/btn_bg"
                 android:text="@string/enter_btn"
                 android:textAllCaps="false"
@@ -121,10 +116,38 @@
                 android:textSize="25sp"
                 android:fontFamily="@font/ralewaybold"
                 android:onClick="@{handlers.btnEnterCode}"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="30dp"
                 />
+
 
         </LinearLayout>
 
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="0dp"-->
+<!--            android:layout_weight="3"-->
+<!--            android:gravity="center_horizontal"-->
+<!--            android:orientation="horizontal">-->
+
+<!--            <Button-->
+<!--                android:id="@+id/enter_code_btn"-->
+<!--                android:layout_width="@dimen/width_btn"-->
+<!--                android:layout_height="@dimen/height_btn"-->
+<!--                android:layout_gravity="center_vertical"-->
+<!--                android:background="@drawable/btn_bg"-->
+<!--                android:text="@string/enter_btn"-->
+<!--                android:textAllCaps="false"-->
+<!--                android:textColor="@color/white"-->
+<!--                android:textSize="25sp"-->
+<!--                android:fontFamily="@font/ralewaybold"-->
+<!--                android:onClick="@{handlers.btnEnterCode}"-->
+<!--                />-->
+
+<!--        </LinearLayout>-->
+
+
+       </ScrollView>
     </LinearLayout>
 
 </android.support.design.widget.CoordinatorLayout>

@@ -37,6 +37,9 @@ public class Validator {
     public static boolean validMobileNumber(String number) {
         return number.length() == 11  && number.matches("^[0-9]+$");
     }
+    public static boolean validNIDNumber(String number) {
+        return number.length() == 14  && number.matches("^[0-9]+$");
+    }
     public static boolean validAmountPaid(String totalamount, String paindamount) {
         double total = Double.parseDouble(totalamount);
         double paid = Double.parseDouble(paindamount);

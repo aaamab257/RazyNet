@@ -17,7 +17,7 @@
         card_view:cardUseCompatPadding="true"
         card_view:cardCornerRadius="8dp"
         card_view:cardBackgroundColor="@color/Black"
-
+        android:layoutDirection="ltr"
         >
 
         <RelativeLayout

@@ -25,6 +25,7 @@ import com.razytech.razynet.data.network.ConnectionResponse;
 import com.razytech.razynet.data.network.MainApi;
 import com.razytech.razynet.data.network.MainApiBody;
 import com.razytech.razynet.data.network.MainResponse;
+import com.razytech.razynet.gui.mainpage.MainpageActivity;
 
 import org.json.JSONException;
 
@@ -68,6 +69,9 @@ import okhttp3.RequestBody;
            @Override
            public void onFail(Throwable throwable) {
             view.hideloadingviewBase();
+               if(throwable.getMessage().contains("401")){
+                   ((MainpageActivity)context).logout();
+               }
             view.showErrorMessageBase(coordinatorLayout,context,context.getString(R.string.tryagaing));
             Log.e("error", throwable.toString());
            }
@@ -114,6 +118,9 @@ import okhttp3.RequestBody;
                     @Override
                     public void onFail(Throwable throwable) {
                         view.hideloadingviewBase();
+                        if(throwable.getMessage().contains("401")){
+                            ((MainpageActivity)context).logout();
+                        }
                         view.showErrorMessageBase(coordinatorLayout,context,context.getString(R.string.tryagaing));
                         Log.e("error", throwable.toString());
                     }

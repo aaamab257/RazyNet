@@ -61,10 +61,10 @@ import static com.razytech.razynet.Utils.AppConstant.TRANSFERWALLET_page;
    if (Validator.isTextEmpty(Points)) {
     view.showErrorMessageBase(context, context.getString(R.string.emptypoints));
     return;
-   }else if (Integer.parseInt(Points) == 0) {
+   }else if (Double.parseDouble(Points) == 0) {
        view.showErrorMessageBase(context, context.getString(R.string.donothaveenoughpoints));
        return;
-   } else if (Integer.parseInt(Points) > AppConstant.userResponse.getBalance()) {
+   } else if (Double.parseDouble(Points) > AppConstant.userResponse.getBalance()) {
     view.showErrorMessageBase(context, context.getString(R.string.donothaveenoughpoints));
     return;
    }
@@ -117,12 +117,15 @@ import static com.razytech.razynet.Utils.AppConstant.TRANSFERWALLET_page;
                             AppConstant.childResponses =  connectionResponse.data.data ;
                             view.LoadingchildData(connectionResponse.data.data);
                         } else {
-                            view.show_errorView(true,connectionResponse.data.message);
+                            view.show_Nochild(true,connectionResponse.data.message);
                         }
                     }
                     @Override
                     public void onFail(Throwable throwable) {
                         view.hideloadingviewBase();
+                        if(throwable.getMessage().contains("401")){
+                            ((MainpageActivity)context).logout();
+                        }
                       //  view.showErrorMessageBase(coordinatorLayout,context,context.getString(R.string.tryagaing));
                         view.show_errorView(true,context.getString(R.string.tryagaing));
                     }
@@ -167,6 +170,9 @@ import static com.razytech.razynet.Utils.AppConstant.TRANSFERWALLET_page;
                     @Override
                     public void onFail(Throwable throwable) {
                         view.hideloadingviewBase();
+                        if(throwable.getMessage().contains("401")){
+                            ((MainpageActivity)context).logout();
+                        }
                         view.showErrorMessageBase(coordinatorLayout,context,context.getString(R.string.tryagaing));
                         Log.e("error", throwable.toString());
                     }
@@ -195,12 +201,15 @@ import static com.razytech.razynet.Utils.AppConstant.TRANSFERWALLET_page;
                             view.SetPointValue(points);
                             view.SetStepsHandlingView(TRANSFERCONFIRMFINAL_page);
                         } else {
-                            view.showErrorMessageBase(coordinatorLayout,context,connectionResponse.data.message);
+                            view.showErrorMessageBase(context,connectionResponse.data.message);
                         }
                     }
                     @Override
                     public void onFail(Throwable throwable) {
                         view.hideloadingviewBase();
+                        if(throwable.getMessage().contains("401")){
+                            ((MainpageActivity)context).logout();
+                        }
                         view.showErrorMessageBase(coordinatorLayout,context,context.getString(R.string.tryagaing));
                     }
                 });

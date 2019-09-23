@@ -1,6 +1,9 @@
 package com.razytech.razynet.gui.homepage;
 
+import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.databinding.DataBindingUtil;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -39,6 +42,8 @@ import static com.razytech.razynet.Utils.AppConstant.ChildName;
 import static com.razytech.razynet.Utils.AppConstant.REDEEMPOINTS_page;
 import static com.razytech.razynet.Utils.AppConstant.RedeemidKey;
 import static com.razytech.razynet.Utils.AppConstant.RedeemnameKey;
+import static com.razytech.razynet.Utils.AppConstant.UPDATE_CHILD;
+import static com.razytech.razynet.Utils.AppConstant.UPDATE_POINTS;
 
 public class HomeFragment extends BaseFragment implements   HomeView , ChildAdpater.ChildListener , TopWalletAdapter.TopWalletListener{
 
@@ -171,11 +176,43 @@ public class HomeFragment extends BaseFragment implements   HomeView , ChildAdpa
         bundle.putBoolean(ChildMoved,post.isMoved());
         ((MainpageActivity)getActivity()).setBundlevalue(bundle , CHILDDETAILS_page);
     }
+    @Override
+    public void onResume() {
+        super.onResume();
+        try {
+            getActivity().registerReceiver(netSwitchReceiver, new IntentFilter(AppConstant.ActionString));
+        }
+        catch (Exception e){ }
+    }
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        try {
+            getActivity().unregisterReceiver(netSwitchReceiver);
+        }
+        catch (Exception e){ }
+    }
+    @Override
+    public void onPause() {
+        super.onPause();
+        try {
+            getActivity().unregisterReceiver(netSwitchReceiver);
+        }
+        catch (Exception e){ }
+    }
+
+    BroadcastReceiver netSwitchReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            binding.setPoints(intent.getExtras().getString(UPDATE_POINTS));
+            if (intent.hasExtra(UPDATE_CHILD)){
+                binding.setWallet(intent.getExtras().getString(UPDATE_CHILD));
+            }
+        }
+    };
 
     @Override
-    public void onWalletClicked(ChildResponse post) {
-
-    }
+    public void onWalletClicked(ChildResponse post) { }
 
     public class MyClickHandlers {
         Context context;

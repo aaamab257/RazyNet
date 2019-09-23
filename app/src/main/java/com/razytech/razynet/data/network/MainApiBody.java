@@ -2,6 +2,7 @@ package com.razytech.razynet.data.network;
 
 import android.support.annotation.NonNull;
 
+import com.google.firebase.iid.FirebaseInstanceId;
 import com.razytech.razynet.data.beans.MultiPartImage;
 import com.razytech.razynet.data.beans.MultiPartNid;
 import com.razytech.razynet.data.beans.MultiPartUpdate;
@@ -41,9 +42,9 @@ public class MainApiBody {
     }
 
     public static MultiPartImage RegisterBoby(String UserName, String CityId, String AreaId,
-                                                 String IdentityNo, String Password, File file) throws JSONException {
+                                                 String IdentityNo, String Password,String TokenDev, File file) throws JSONException {
         RequestBody CityIdreq=null ,AreaIdreq = null ,
-                IdentityNoreq = null ,Passwordreq = null , UserNamereq  = null  ;
+                IdentityNoreq = null ,Passwordreq = null , UserNamereq  = null  , Tokenreq  = null  ;
 
         MultipartBody.Part imagereq =null ;
         if(file != null) {
@@ -63,6 +64,10 @@ public class MainApiBody {
         if(Password != null) {
             Passwordreq = RequestBody.create(MediaType.parse(JSON_TYPE), Password); }
 
+
+        if(TokenDev != null) {
+            Tokenreq = RequestBody.create(MediaType.parse(JSON_TYPE), TokenDev); }
+
         MultiPartImage multiPartImage =new MultiPartImage() ;
         multiPartImage.imagereq = imagereq ;
         multiPartImage.CityIdreq = CityIdreq ;
@@ -70,6 +75,7 @@ public class MainApiBody {
         multiPartImage.IdentityNoreq = IdentityNoreq ;
         multiPartImage.Passwordreq = Passwordreq ;
         multiPartImage.UserNamereq = UserNamereq ;
+        multiPartImage.Tokenreq = Tokenreq ;
         return multiPartImage;
     }
     public static RequestBody GetChildBoby(String PhoneNumber ) throws JSONException {
@@ -157,8 +163,21 @@ public static RequestBody MoveBoby(String WalletId  , String newRoot) throws JSO
         JSONObject params=new JSONObject();
         params.put("phone", PhoneNumber);
         params.put("password", Password);
+        params.put("DeviceId", FirebaseInstanceId.getInstance().getToken().toString());
+
         return requestBody(params);
     }
+
+
+    public static RequestBody ChangePasswordBoby(String newPassword  , String oldPassword ) throws JSONException {
+        JSONObject params=new JSONObject();
+        params.put("oldPassWord", oldPassword);
+        params.put("newPassWord", newPassword);
+
+
+        return requestBody(params);
+    }
+
 
     public static RequestBody PasswordBoby(String Password ) throws JSONException {
         JSONObject params=new JSONObject();

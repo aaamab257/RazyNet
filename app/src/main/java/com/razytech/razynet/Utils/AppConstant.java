@@ -39,11 +39,12 @@ public  final class AppConstant {
             WALLET_page =6,
             PROFILE_page =7,
             UPDATEPROFILE_page =8,
-            REDEEM_page =9,
-            TRANSFER_page =10,
-            REDEEMPOINTS_page =11,
-            CHILDDETAILS_page =12,
-            MOVE_page =13,
+            CHANGEPASSWORD_page =9,
+            REDEEM_page =10,
+            TRANSFER_page =11,
+            REDEEMPOINTS_page =12,
+            CHILDDETAILS_page =13,
+            MOVE_page =14,
             TRANSFERWALLET_page =20,
             TRANSFERPOINTS_page =21,
             TRANSFERCONFIRM_page =22,
@@ -59,11 +60,12 @@ public  final class AppConstant {
             BTN_OUT =3;
     // inten keys
     public final static String RedeemidKey  =  "redeemid"
-            ,RedeemnameKey  =  "redeemname",
+            ,RedeemnameKey  =  "redeemname",UPDATE_POINTS = "updatepoints",UPDATE_CHILD = "updatechilds",
             TokenKey  =  "token",phoneKey  =  "phonekey",
             ChildId  =  "childid",ChildName  =  "childname",
             ChildChilds  =  "childnumber",ChildMoved  =  "childmoved"
-            ,ChildImage  =  "childimage" ,OpenNotification  =  "opennotification";
+            ,ChildImage  =  "childimage"
+            ,OpenNotification  =  "opennotification",ActionString = "com.android.ChangePoints";
 
     public static boolean refreshhome =  false ;
 

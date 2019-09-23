@@ -1,6 +1,9 @@
 package com.razytech.razynet.gui.walletpage;
 
+import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -20,6 +23,9 @@ import com.razytech.razynet.databinding.ActivityWalletFragmentBinding;
 import com.razytech.razynet.gui.mainpage.MainpageActivity;
 
 import java.util.List;
+
+import static com.razytech.razynet.Utils.AppConstant.UPDATE_CHILD;
+import static com.razytech.razynet.Utils.AppConstant.UPDATE_POINTS;
 
 public class WalletFragment extends BaseFragment implements WalletView  ,  ChildAdpater.ChildListener {
 
@@ -82,6 +88,42 @@ public class WalletFragment extends BaseFragment implements WalletView  ,  Child
 //            binding.swipeRefreshLayout.setRefreshing(false);
 //        }
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        try {
+            getActivity().registerReceiver(netSwitchReceiver, new IntentFilter(AppConstant.ActionString));
+        }
+        catch (Exception e){ }
+    }
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        try {
+            getActivity().unregisterReceiver(netSwitchReceiver);
+        }
+        catch (Exception e){ }
+    }
+    @Override
+    public void onPause() {
+        super.onPause();
+        try {
+            getActivity().unregisterReceiver(netSwitchReceiver);
+        }
+        catch (Exception e){ }
+    }
+
+
+    BroadcastReceiver netSwitchReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            binding.setPointsnumber(intent.getExtras().getString(UPDATE_POINTS));
+            if (intent.hasExtra(UPDATE_CHILD)){
+                binding.setWalletnumber(intent.getExtras().getString(UPDATE_CHILD));
+            }
+        }
+    };
 
     @Override
     public void onChildClicked(ChildResponse post) {

@@ -1,6 +1,9 @@
 package com.razytech.razynet.gui.mainpage;
 
+import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
@@ -9,12 +12,16 @@ import android.view.View;
 
 import com.razytech.razynet.R;
 import com.razytech.razynet.Utils.AppConstant;
+import com.razytech.razynet.Utils.IntentUtiles;
 import com.razytech.razynet.Utils.StaticMethods;
 import com.razytech.razynet.baseClasses.BaseActivity;
+import com.razytech.razynet.data.prefs.PrefUtils;
 import com.razytech.razynet.databinding.ActivityMainpageBinding;
 import com.razytech.razynet.gui.addwallet.AddWalletFragment;
+import com.razytech.razynet.gui.changepassword.ChangePasswordFragment;
 import com.razytech.razynet.gui.childDetails.ChildDetailsFragment;
 import com.razytech.razynet.gui.homepage.HomeFragment;
+import com.razytech.razynet.gui.loginpage.LoginActivity;
 import com.razytech.razynet.gui.maintransaction.MainTransactionFragment;
 import com.razytech.razynet.gui.maintransaction.redeem.RedeemListFragment;
 import com.razytech.razynet.gui.maintransaction.redeempoints.RedeemListPointsFragment;
@@ -31,6 +38,7 @@ import com.razytech.razynet.gui.walletpage.WalletFragment;
 
 import javax.inject.Inject;
 import static com.razytech.razynet.Utils.AppConstant.ADDWALLET_PAGE;
+import static com.razytech.razynet.Utils.AppConstant.CHANGEPASSWORD_page;
 import static com.razytech.razynet.Utils.AppConstant.CHILDDETAILS_page;
 import static com.razytech.razynet.Utils.AppConstant.HOME_page;
 import static com.razytech.razynet.Utils.AppConstant.MAINTRANSACTION_page;
@@ -47,6 +55,8 @@ import static com.razytech.razynet.Utils.AppConstant.TRANSFERPOINTS_page;
 import static com.razytech.razynet.Utils.AppConstant.TRANSFER_page;
 import static com.razytech.razynet.Utils.AppConstant.TREE_page;
 import static com.razytech.razynet.Utils.AppConstant.UPDATEPROFILE_page;
+import static com.razytech.razynet.Utils.AppConstant.UPDATE_CHILD;
+import static com.razytech.razynet.Utils.AppConstant.UPDATE_POINTS;
 import static com.razytech.razynet.Utils.AppConstant.WALLET_page;
 
 public class MainpageActivity extends BaseActivity<ActivityMainpageBinding , MainpageModelView>
@@ -201,6 +211,15 @@ public class MainpageActivity extends BaseActivity<ActivityMainpageBinding , Mai
                 fragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
                 fragmentTransaction.replace(R.id.main_content, new UpdateProfileFragment());
                   break;
+
+            case CHANGEPASSWORD_page:
+                //CHANGEPASSWORD_page Fragment
+                BottomBarMethod(CHANGEPASSWORD_page);
+                selectedPosition = CHANGEPASSWORD_page;
+                fragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                fragmentTransaction.replace(R.id.main_content, new ChangePasswordFragment());
+                break;
+
             case REDEEMPOINTS_page:
                 //REDEEMPOINTS_page Fragment
                 selectedPosition = REDEEMPOINTS_page;
@@ -257,7 +276,7 @@ public class MainpageActivity extends BaseActivity<ActivityMainpageBinding , Mai
             selectedPosition =CHILDDETAILS_page;
             getSupportFragmentManager().beginTransaction().remove(movepageFragment).commit();
         }
-        else if(selectedPosition == UPDATEPROFILE_page ) {
+        else if(selectedPosition == UPDATEPROFILE_page || selectedPosition == CHANGEPASSWORD_page) {
              displayView(PROFILE_page);
             //selectedPosition =PROFILE_page;
             //getSupportFragmentManager().beginTransaction().remove(updateProfileFragment).commit();
@@ -285,7 +304,17 @@ public class MainpageActivity extends BaseActivity<ActivityMainpageBinding , Mai
         binding.setShowbottombar(true);
         StaticMethods.LoadImage(MainpageActivity.this, binding.toolbarpublic.imgProfile,AppConstant.userResponse.getIdImageUrl(),null);
     }
+    public  void setViewHandling(String PointsString ,String wallet ) {
+        try {
+
+        }catch (Exception e) {}
+        binding.toolbarpublic.setPointsnumber(PointsString);
+        binding.toolbarpublic.setWalletsnumber(wallet);
+    }
     public  void UpdatePointsHandling(String PointsString   ){
+        try {
+            AppConstant.userResponse.setBalance(Double.parseDouble(PointsString));
+        }catch (Exception e) {}
         binding.toolbarpublic.setPointsnumber(PointsString);
         StaticMethods.LoadImage(MainpageActivity.this, binding.toolbarpublic.imgProfile,AppConstant.userResponse.getIdImageUrl(),null);
     }
@@ -294,6 +323,14 @@ public class MainpageActivity extends BaseActivity<ActivityMainpageBinding , Mai
     public  void setBundlevalue(Bundle bundle,int PageView){
         this.bundle=bundle;
         displayView(PageView);
+    }
+
+
+    public void logout() {
+        StaticMethods.ClearChash();
+        PrefUtils.SignOut_User(MainpageActivity.this);
+        AppConstant.userResponse = null ;
+        IntentUtiles.openActivityInNewStack(MainpageActivity.this, LoginActivity.class);
     }
 
     void BottomBarMethod(int position){
@@ -344,6 +381,43 @@ public class MainpageActivity extends BaseActivity<ActivityMainpageBinding , Mai
 
         }
     }
+
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        try {
+            registerReceiver(netSwitchReceiver, new IntentFilter(AppConstant.ActionString));
+        }
+        catch (Exception e){ }
+    }
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        try {
+            unregisterReceiver(netSwitchReceiver);
+        }
+        catch (Exception e){ }
+    }
+    @Override
+    protected void onPause() {
+        super.onPause();
+        try {
+            unregisterReceiver(netSwitchReceiver);
+        }
+        catch (Exception e){ }
+    }
+
+    BroadcastReceiver netSwitchReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            UpdatePointsHandling(intent.getExtras().getString(UPDATE_POINTS));
+            if (intent.hasExtra(UPDATE_CHILD)){
+                setViewHandling(intent.getExtras().getString(UPDATE_POINTS),intent.getExtras().getString(UPDATE_CHILD));
+            }
+        }
+    };
 
     public class MyClickHandlers {
         Context context;

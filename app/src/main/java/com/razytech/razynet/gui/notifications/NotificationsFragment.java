@@ -65,16 +65,33 @@ public class NotificationsFragment extends BaseFragment implements Notifications
     @Override
     public void LoadingnotificationData(List<NotificationsResponse> notificationsRes) {
         hide_refreshView();
-        AppConstant.notificationsResponses =  notificationsRes ;
-        binding.recNotificationlist.setLayoutManager(new LinearLayoutManager(getActivity()));
-        adapter =  new NotificationsAdapter(getActivity(),notificationsRes,this);
-        binding.recNotificationlist.setAdapter(adapter);
+        show_errorView(false,  "" );
+        if (notificationsRes.size() != 0) {
+            AppConstant.notificationsResponses = notificationsRes;
+            binding.recNotificationlist.setLayoutManager(new LinearLayoutManager(getActivity()));
+            adapter = new NotificationsAdapter(getActivity(), notificationsRes, this);
+            binding.recNotificationlist.setAdapter(adapter);
+        }else
+            show_errorView(true ,getString(R.string.donothavenotifications));
     }
 
     @Override
     public void hide_refreshView() {
         if (binding.swipeRefreshLayout.isRefreshing()) {
             binding.swipeRefreshLayout.setRefreshing(false);
+        }
+    }
+
+    @Override
+    public void show_errorView(boolean Isshow, String error) {
+        if (Isshow){
+            binding.errorLayoutView.setViewerror(Isshow);
+            binding.errorLayoutView.setErrortxt(error);
+            binding.errorLayoutView.btnTryAgain.setOnClickListener((View)->{
+                CheckloadingData();
+            });
+        }else {
+            binding.errorLayoutView.setViewerror(Isshow);
         }
     }
 

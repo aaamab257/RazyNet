@@ -5,6 +5,7 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.LinearLayoutManager;
+import android.text.InputFilter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,7 @@ import android.view.ViewGroup;
 import com.razytech.razynet.Adapter.ChildAdpater;
 import com.razytech.razynet.R;
 import com.razytech.razynet.Utils.AppConstant;
+import com.razytech.razynet.Utils.DecimalDigitsInputFilter;
 import com.razytech.razynet.baseClasses.BaseFragment;
 import com.razytech.razynet.data.beans.ChildResponse;
 import com.razytech.razynet.data.prefs.PrefUtils;
@@ -61,33 +63,41 @@ public class TransferFragment extends BaseFragment  implements  TransferView
         ((MainpageActivity)getActivity()).setViewHandling(AppConstant.userResponse.getBalance()+""  ,AppConstant.userResponse.getChildsCount()+"" , true , false );
         modelView =  new TransferModelView();
         modelView.attachView(this);
+        binding.transferpoints.createAccPointsET.setFilters(new InputFilter[] {new DecimalDigitsInputFilter(5,2)});
         SetStepsHandlingView(TRANSFERWALLET_page);
         passwordModelView =  new PasswordModelView(getActivity() , getActivity() ,this,binding.coortransfer);
         binding.transferwallet.btnNext.setOnClickListener((View) ->{
+            hideKeyboard();
             if (childRespon != null)
                 phonenumber = childRespon.getMobileNo();
-//            else
+//          else
 //                phonenumber = binding.transferwallet.createAccPhoneET.getText().toString();
          modelView.setbtnNextWallet(binding.transferwallet.coorwallet ,  getActivity() ,phonenumber);
         });
         binding.transferwallet.imgSearch.setOnClickListener((View) ->{
+            hideKeyboard();
             modelView.GetChildsData(binding.transferwallet.coorwallet ,  getActivity() ,binding.transferwallet.createAccPhoneET.getText().toString());
         });
         binding.transferpoints.btnNext.setOnClickListener((View) ->{
+            hideKeyboard();
           modelView.setbtnPoints(binding.transferwallet.coorwallet ,  getActivity() ,binding.transferpoints.createAccPointsET.getText().toString(),true);
         });
         binding.transferpoints.btnBack.setOnClickListener((View) ->{
+            hideKeyboard();
           modelView.setbtnPoints(binding.transferwallet.coorwallet ,  getActivity() ,binding.transferpoints.createAccPointsET.getText().toString(),false);
         });
 
         binding.tranferconfirm.btnConfirm.setOnClickListener((View) ->{
+            hideKeyboard();
             passwordModelView.ShowAlertDialoug();
         });
         binding.tranferconfirm.btnBack.setOnClickListener((View) ->{
+            hideKeyboard();
             modelView.setbtnConfirm(binding.transferwallet.coorwallet ,  getActivity(),false);
         });
 
         binding.transferfinalconfirm.btnHome.setOnClickListener((View) ->{
+            hideKeyboard();
             modelView.setbtnHome(binding.transferwallet.coorwallet ,  getActivity());
         });
     }
@@ -164,7 +174,7 @@ public class TransferFragment extends BaseFragment  implements  TransferView
     public void LoadingchildData(List<ChildResponse> childRespo) {
         show_errorView(false,  "" );
         childRespon = null ;
-
+        show_Nochild(false,  "" );
         binding.transferwallet.rectransfer.setLayoutManager(new LinearLayoutManager(getActivity()));
         adpater =  new ChildAdpater(getActivity(),childRespo,this ,  false);
         binding.transferwallet.rectransfer.setAdapter(adpater);
@@ -182,6 +192,17 @@ public class TransferFragment extends BaseFragment  implements  TransferView
         }else {
             binding.errorLayoutView.setViewerror(Isshow);
         }
+    }
+
+    @Override
+    public void show_Nochild(boolean Isshow, String error) {
+
+            binding.transferwallet.setNochild(Isshow);
+            binding.transferwallet.nochildView.setErrortxt(error);
+            binding.errorLayoutView.btnTryAgain.setOnClickListener((View)->{
+                CheckloadingData();
+            });
+
     }
 
     @Override

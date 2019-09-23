@@ -24,6 +24,7 @@
     android:layout_height="match_parent"
     tools:context=".gui.walletpage.WalletFragment"
     android:background="@color/lightBlack"
+    android:layoutDirection="ltr"
     >
 
     <LinearLayout

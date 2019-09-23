@@ -16,7 +16,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".gui.loginpage.LoginActivity"
-    android:background="@color/lightBlack">
+    android:background="@color/lightBlack"
+    android:layoutDirection="ltr">
 <ScrollView
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -64,8 +65,13 @@
                 android:inputType="phone"
                 android:hint="@string/create_acc_phone_hint"
                 android:fontFamily="@font/ralewaymedium"
-
                 />
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:passwordToggleEnabled="true"
+                app:passwordToggleTint="@color/colorAccent">
             <EditText
                 android:id="@+id/create_acc_password_ET"
                 style="@style/CreateAccEditTextStyle"
@@ -74,9 +80,8 @@
                 android:inputType="textPassword"
                 android:hint="@string/create_acc_password_hint"
                 android:fontFamily="@font/ralewaymedium"
-
                 />
-
+            </android.support.design.widget.TextInputLayout>
 
             <Button
                 android:id="@+id/enter_code_btn"
@@ -123,6 +128,7 @@
                     android:fontFamily="@font/ralewaybold"
                     android:textSize="18sp"
                     android:onClick="@{handlers.btninvitation}"
+                    android:layout_marginBottom="20dp"
                     />
 
             </LinearLayout>

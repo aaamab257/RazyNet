@@ -21,6 +21,7 @@
     android:id="@+id/lin_nodata"
     android:visibility="@{viewerror ? View.VISIBLE : View.GONE}"
     android:background="@color/lightBlack"
+    android:layoutDirection="ltr"
    >
         <ImageView
             android:layout_width="match_parent"

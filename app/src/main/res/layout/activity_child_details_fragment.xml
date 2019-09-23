@@ -27,6 +27,7 @@
     android:layout_height="match_parent"
     tools:context=".gui.childDetails.ChildDetailsFragment"
     android:background="@color/lightBlack"
+    android:layoutDirection="ltr"
     >
 
     <LinearLayout

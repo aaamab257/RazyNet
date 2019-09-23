@@ -5,6 +5,7 @@ import android.content.Context;
 import android.support.design.widget.CoordinatorLayout;
 import android.util.Log;
 
+import com.google.firebase.iid.FirebaseInstanceId;
 import com.razytech.razynet.R;
 import com.razytech.razynet.Utils.AppConstant;
 import com.razytech.razynet.Utils.StaticMethods;
@@ -112,6 +113,10 @@ import okhttp3.RequestBody;
    view.showErrorMessageBase(coordinatorLayout,context, context.getString(R.string.emptynid));
    return;
   }
+     else  if (!Validator.validNIDNumber(nid)) {
+      view.showErrorMessageBase(coordinatorLayout,context, context.getString(R.string.invaildnumbernid));
+      return;
+     }
   else  if (Validator.isTextEmpty(password)) {
    view.showErrorMessageBase(coordinatorLayout,context, context.getString(R.string.emptyPassword));
    return;
@@ -149,16 +154,18 @@ import okhttp3.RequestBody;
                                String UserName, String nid, String password ,
                                String cityId  , String AreaId , File file ,  String Token) {
 
+  String tokenDevice =  FirebaseInstanceId.getInstance().getToken().toString();
+
   MultiPartImage multiPartImage =null;
   try {
-   multiPartImage =   MainApiBody.RegisterBoby(UserName ,cityId , AreaId ,  nid , password, file);
+   multiPartImage =   MainApiBody.RegisterBoby(UserName ,cityId , AreaId ,  nid , password,tokenDevice ,file);
   } catch (JSONException e) {
    e.printStackTrace();
   }
   view.showloadingviewBase(context);
   String token  =  AppConstant.Tokenbar  +" "+ Token;
   MainApi.Registerapi(token,multiPartImage.imagereq,multiPartImage.UserNamereq,multiPartImage.CityIdreq
-          ,multiPartImage.AreaIdreq,multiPartImage.IdentityNoreq,multiPartImage.Passwordreq,
+          ,multiPartImage.AreaIdreq,multiPartImage.IdentityNoreq,multiPartImage.Passwordreq,multiPartImage.Tokenreq,
           new ConnectionListener<MainResponse<UserResponse>>() {
            @Override
            public void onSuccess(ConnectionResponse<MainResponse<UserResponse>> connectionResponse) {

@@ -32,6 +32,7 @@ import com.razytech.razynet.gui.register.RegisterActivity;
 
 import java.io.File;
 
+import static com.razytech.razynet.Utils.AppConstant.CHANGEPASSWORD_page;
 import static com.razytech.razynet.Utils.AppConstant.REQUEST_PICK_IMAGE;
 import static com.razytech.razynet.Utils.AppConstant.UPDATEPROFILE_page;
 import static com.razytech.razynet.Utils.StaticMethods.checkCameraPermission;
@@ -99,7 +100,9 @@ public class ProfileFragment extends BaseFragment implements   ProfileView {
                         }
                     }, null);
         }
-
+        public void btn_changepassw(View view) {
+            ((MainpageActivity)getActivity()).displayView(CHANGEPASSWORD_page);
+        }
     }
 
     private  void logout (){

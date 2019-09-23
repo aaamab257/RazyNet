@@ -134,9 +134,9 @@ public class MainApi {
     }
 
     public static void Registerapi(String auth  , MultipartBody.Part fileToUpload, RequestBody username, RequestBody cityid,
-                                      RequestBody areaid, RequestBody nid, RequestBody password,
-                                      final ConnectionListener<MainResponse<UserResponse>> connectionListener) {
-        getApi().SignUpPage(auth ,fileToUpload,username,cityid,areaid,nid,password).subscribeOn(Schedulers.io())
+                                      RequestBody areaid, RequestBody nid, RequestBody password, RequestBody token
+                                      ,final ConnectionListener<MainResponse<UserResponse>> connectionListener) {
+        getApi().SignUpPage(auth ,fileToUpload,username,cityid,areaid,nid,password,token).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<MainResponse<UserResponse>>() {
                     @Override
@@ -498,6 +498,28 @@ public class MainApi {
 
                 });
     }
+
+
+
+    public static void ChangePasswordpi(String token,RequestBody  body,
+                                final ConnectionListener<MainResponse<UserResponse>> connectionListener) {
+        getApi().ChangePasswordPage(token,body).subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<MainResponse<UserResponse>>() {
+                    @Override
+                    public void onError(Throwable e) { connectionListener.onFail(e); }
+                    @Override
+                    public void onComplete() { }
+                    @Override
+                    public void onSubscribe(Disposable d) { }
+                    @Override
+                    public void onNext(MainResponse<UserResponse> userResponse) {
+                        ConnectionResponse<MainResponse<UserResponse>> response = new ConnectionResponse<>();
+                        response.data = userResponse;
+                        connectionListener.onSuccess(response);
+                    }
+                }); }
+
 
 
 

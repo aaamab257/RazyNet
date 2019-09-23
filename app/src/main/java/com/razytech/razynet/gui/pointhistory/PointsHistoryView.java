@@ -14,4 +14,5 @@ import java.util.List;
  interface PointsHistoryView extends BaseView {
  void   LoadingPointsData (List<PointHistoryResponse> pointsResponses );
  void show_errorView(boolean show  ,String errortxt);
+ void  hide_refreshView();
 }

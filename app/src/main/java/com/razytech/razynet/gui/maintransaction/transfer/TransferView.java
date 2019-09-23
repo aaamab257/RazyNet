@@ -13,5 +13,6 @@ import java.util.List;
  void SetPointValue(String Points);
  void LoadingchildData (List<ChildResponse> childResponses );
  void show_errorView(boolean Isshow , String error);
+ void show_Nochild(boolean Isshow , String error);
  void UpdatePoints(double Points);
 }

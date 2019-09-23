@@ -36,8 +36,17 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.razytech.razynet.R;
+import com.razytech.razynet.data.beans.AreaResponse;
+import com.razytech.razynet.data.beans.ChildResponse;
+import com.razytech.razynet.data.beans.CityResponse;
+import com.razytech.razynet.data.beans.HomeResponse;
+import com.razytech.razynet.data.beans.NotificationsResponse;
+import com.razytech.razynet.data.beans.PointHistoryResponse;
+import com.razytech.razynet.data.beans.RedeemPointsResponse;
+import com.razytech.razynet.data.beans.RedeemResponse;
 import com.razytech.razynet.gui.splash.SplashActivity;
 
+import java.util.List;
 import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -319,9 +328,15 @@ public class StaticMethods {
     }
 
     public static void ClearChash() {
-//        AppConstant.findResponses =  null  ;
-//        AppConstant.offersResponses =  null  ;
-//        AppConstant.categoryResponses =  null  ;
-//        AppConstant.myShopsResponses =  null  ;
+        AppConstant.homeResponse =  null  ;
+        AppConstant.topsystem =  null  ;
+        AppConstant.topchilds =  null  ;
+        AppConstant.redeemResponses =  null  ;
+        AppConstant.redeemPointsResponses =  null  ;
+        AppConstant.notificationsResponses =  null  ;
+        AppConstant.childResponses =  null  ;
+        AppConstant.pointsResponses =  null  ;
+        AppConstant.cityResponses =  null  ;
+        AppConstant.areaResponses =  null  ;
     }
 }

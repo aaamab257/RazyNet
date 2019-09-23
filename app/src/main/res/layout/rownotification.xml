@@ -21,6 +21,7 @@
         card_view:cardBackgroundColor="@color/Black"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
+        android:layoutDirection="ltr"
         >
 
             <RelativeLayout

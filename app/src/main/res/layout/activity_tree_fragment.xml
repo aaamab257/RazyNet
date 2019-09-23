@@ -11,6 +11,7 @@
     android:id="@+id/coortree"
     android:background="@color/lightBlack"
     android:padding="5dp"
+    android:layoutDirection="ltr"
     >
 
     <WebView android:id="@+id/webview"

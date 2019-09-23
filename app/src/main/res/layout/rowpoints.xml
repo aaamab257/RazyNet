@@ -17,7 +17,8 @@
         android:layout_height="wrap_content"
         card_view:cardUseCompatPadding="true"
         card_view:cardCornerRadius="8dp"
-        card_view:cardBackgroundColor="@color/Black">
+        card_view:cardBackgroundColor="@color/Black"
+        android:layoutDirection="ltr">
 
         <LinearLayout
             android:layout_width="match_parent"
