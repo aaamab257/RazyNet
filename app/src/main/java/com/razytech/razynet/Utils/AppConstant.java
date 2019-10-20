@@ -51,6 +51,15 @@ public  final class AppConstant {
             TRANSFERCONFIRMFINAL_page =23,
             TEST_page =50;
 
+
+    public final static int
+            NORMAL_notification =1,
+            UPDATEPOINT_notification =2,
+            UPDATECHILE_notification =3,
+            STARWALLET_notification =4,
+            CANADDWALLET_notification =5;
+
+
     public final static int
             MALE =1,
             FEMALE =2;
@@ -64,8 +73,9 @@ public  final class AppConstant {
             TokenKey  =  "token",phoneKey  =  "phonekey",
             ChildId  =  "childid",ChildName  =  "childname",
             ChildChilds  =  "childnumber",ChildMoved  =  "childmoved"
-            ,ChildImage  =  "childimage"
-            ,OpenNotification  =  "opennotification",ActionString = "com.android.ChangePoints";
+            ,ChildImage  =  "childimage",StarWallet  =  "starwallet",CanaddWallet  =  "canaddwallet"
+            ,OpenNotification  =  "opennotification",
+            ActionString = "com.android.ChangePoints";
 
     public static boolean refreshhome =  false ;
 

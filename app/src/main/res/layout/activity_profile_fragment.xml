@@ -44,7 +44,7 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="20dp"
                 android:src="@drawable/avatar_profile"
-                android:padding="15dp"
+                android:padding="1dp"
                 android:background="@drawable/create_acc_img_border"
 
                 />
@@ -96,7 +96,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+
                 android:layout_marginRight="5dp"
                 android:layout_marginLeft="5dp"
                 android:orientation="horizontal"

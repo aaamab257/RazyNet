@@ -1,4 +1,4 @@
-package com.razytech.razynet.CustomViews.crop;
+package com.razytech.razynet.customviews.crop;
 
 import android.app.Activity;
 import android.content.ComponentName;

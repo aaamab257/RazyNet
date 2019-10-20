@@ -67,7 +67,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="18sp"
-                        android:text="@{handlers.value+``}"
+                        android:text="@{handlers.price+``}"
                         android:textColor="@color/green"
                         android:gravity="center"
                         android:textStyle="bold"

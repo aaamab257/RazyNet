@@ -7,20 +7,16 @@ import com.google.gson.annotations.SerializedName;
  */
 public class UserResponse {
 
-//
-//             "displayName": "new1",
-//            "balance": 1000.00,
-//            "approved": false,
-//            "isStarWallet": false,
-//            "childernsCount": 2,
-//            "levelsCount": 0,
-//            "userImageUrl": null,
-//            "cityId": "1",
-//            "areaId": "1",
-//            "mobileNo": "01128818457",
-//            "userId": "55655940-20ee-410e-8e50-8915e0670912",
-//            "incrementPermission": true,
-//            "token": null
+//"wallet":{"displayName":"Test5",
+// "balance":160.03,"approved":false,
+// "isStarWallet":false,"childernsCount":10,
+// "levelsCount":0,
+// "userImageUrl":"http://81.29.101.110:5201/Images/Wallets/596ecf39-55cb-47
+// 3d-af55-460dd5b6617d.jpg","cityId":1,"city":"Cairo",
+// "areaId":2,"area":"New Cairo","mobileNo":"01233445569",
+// "userId":"6d55a8c8-78d8-4e4e-b992-8cfbac16cb0f","isMoved"
+// :true,"token":null,"canCredit":false,"gainPoints":0.00}
+
 
     @SerializedName("displayName")
     private String displayName;
@@ -53,6 +49,10 @@ public class UserResponse {
    @SerializedName("token")
     private String Token ;
 
+    @SerializedName("gainPoints")
+    private double gainPoints;
+    @SerializedName("canCredit")
+    private boolean canCredit;
 
 
 
@@ -174,5 +174,21 @@ public class UserResponse {
 
     public void setArea(String area) {
         this.area = area;
+    }
+
+    public double getGainPoints() {
+        return gainPoints;
+    }
+
+    public void setGainPoints(double gainPoints) {
+        this.gainPoints = gainPoints;
+    }
+
+    public boolean isCanCredit() {
+        return canCredit;
+    }
+
+    public void setCanCredit(boolean canCredit) {
+        this.canCredit = canCredit;
     }
 }

@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.databinding.DataBindingUtil;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.util.Log;
@@ -20,28 +19,26 @@ import com.razytech.razynet.R;
 import com.razytech.razynet.Utils.AppConstant;
 import com.razytech.razynet.Utils.IntentUtiles;
 import com.razytech.razynet.Utils.StaticMethods;
-import com.razytech.razynet.Utils.dialogutil.AppDialog;
-import com.razytech.razynet.Utils.dialogutil.DialogUtil;
 import com.razytech.razynet.baseClasses.BaseFragment;
+import com.razytech.razynet.customviews.views.AddWalletVisibility;
+import com.razytech.razynet.customviews.views.StarWalletVisibility;
 import com.razytech.razynet.data.beans.ChildResponse;
 import com.razytech.razynet.data.beans.UserResponse;
 import com.razytech.razynet.data.prefs.PrefUtils;
 import com.razytech.razynet.databinding.ActivityHomeFragmentBinding;
 import com.razytech.razynet.gui.loginpage.LoginActivity;
 import com.razytech.razynet.gui.mainpage.MainpageActivity;
-import com.razytech.razynet.gui.register.RegisterActivity;
 
 import java.util.List;
 
 import static com.razytech.razynet.Utils.AppConstant.CHILDDETAILS_page;
+import static com.razytech.razynet.Utils.AppConstant.CanaddWallet;
 import static com.razytech.razynet.Utils.AppConstant.ChildChilds;
 import static com.razytech.razynet.Utils.AppConstant.ChildId;
 import static com.razytech.razynet.Utils.AppConstant.ChildImage;
 import static com.razytech.razynet.Utils.AppConstant.ChildMoved;
 import static com.razytech.razynet.Utils.AppConstant.ChildName;
-import static com.razytech.razynet.Utils.AppConstant.REDEEMPOINTS_page;
-import static com.razytech.razynet.Utils.AppConstant.RedeemidKey;
-import static com.razytech.razynet.Utils.AppConstant.RedeemnameKey;
+import static com.razytech.razynet.Utils.AppConstant.StarWallet;
 import static com.razytech.razynet.Utils.AppConstant.UPDATE_CHILD;
 import static com.razytech.razynet.Utils.AppConstant.UPDATE_POINTS;
 
@@ -53,7 +50,8 @@ public class HomeFragment extends BaseFragment implements   HomeView , ChildAdpa
     HomeModelView modelView   ;
     ChildAdpater adpater;
     TopWalletAdapter Topadpater;
-
+     StarWalletVisibility starWalletVisibility  ;
+    AddWalletVisibility addWalletVisibility  ;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -66,18 +64,31 @@ public class HomeFragment extends BaseFragment implements   HomeView , ChildAdpa
     private void inilizeVariables() {
         hideKeyboard();
         ((MainpageActivity)getActivity()).setViewHandling("" ,""  , false );
+        starWalletVisibility =  new StarWalletVisibility();
+        addWalletVisibility =  new AddWalletVisibility();
+        binding.setStarwalletview(starWalletVisibility);
+        binding.setAddwalletview(addWalletVisibility);
         fillData();
         modelView =  new HomeModelView();
         modelView.attachView(this);
         String token =  FirebaseInstanceId.getInstance().getToken().toString();
-        Log.e("FirebaseInstanceId",token);
-        CheckloadingData();
+       Log.e("FirebaseInstanceId",token);
+
+      CheckloadingData();
+
     }
    void fillData(){
         binding.setLevel(AppConstant.userResponse.getLevelsCount()+"");
-        binding.setPoints(AppConstant.userResponse.getBalance()+"");
+        binding.setPoints(AppConstant.userResponse.getGainPoints()+"");
         binding.setWallet(AppConstant.userResponse.getChildsCount()+"");
-        StaticMethods.LoadImage(getActivity(), binding.createAccImg,AppConstant.userResponse.getIdImageUrl(),null);
+       binding.setGoldwallet(AppConstant.userResponse.isStarWallet());
+       Log.e("FillDATA"," "+AppConstant.userResponse.isStarWallet());
+       starWalletVisibility.toggleVisibility(AppConstant.userResponse.isStarWallet());
+       addWalletVisibility.toggleVisibility(AppConstant.userResponse.isCanCredit());
+    //   starWalletVisibility.toggleVisibility(true);
+       binding.setCanaddwallet(AppConstant.userResponse.isCanCredit());
+       ((MainpageActivity)getActivity()).setViewHandling("" ,""  , false );
+       StaticMethods.LoadImage(getActivity(), binding.createAccImg,AppConstant.userResponse.getIdImageUrl(),null);
    }
 
     private void CheckloadingData() {
@@ -85,6 +96,7 @@ public class HomeFragment extends BaseFragment implements   HomeView , ChildAdpa
             if (AppConstant.homeResponse != null) {
                 LoadWalletSystem(AppConstant.homeResponse.getTopWallets());
                 LoadWallet(AppConstant.homeResponse.getTopChildrens());
+
             } else
                 modelView.loadingHomeData(binding.coorhome, getActivity());
         }else
@@ -96,7 +108,7 @@ public class HomeFragment extends BaseFragment implements   HomeView , ChildAdpa
         if (topsystem != null ) {
             if(!topsystem.isEmpty()) {
                 showerrorlayoutTopsystem(false, "");
-                Log.e("topsystem", "" + topsystem.size());
+
                 AppConstant.topsystem = topsystem;
                 LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
                 binding.recTopuser.setLayoutManager(layoutManager);
@@ -204,9 +216,19 @@ public class HomeFragment extends BaseFragment implements   HomeView , ChildAdpa
     BroadcastReceiver netSwitchReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-            binding.setPoints(intent.getExtras().getString(UPDATE_POINTS));
-            if (intent.hasExtra(UPDATE_CHILD)){
-                binding.setWallet(intent.getExtras().getString(UPDATE_CHILD));
+            Log.e("here1","");
+            if (intent.hasExtra(UPDATE_POINTS)) {
+               // binding.setPoints(intent.getExtras().getString(UPDATE_POINTS));
+                fillData();
+            }else if (intent.hasExtra(UPDATE_CHILD)){
+              //  binding.setWallet(intent.getExtras().getString(UPDATE_CHILD));
+                fillData();
+            }else if (intent.hasExtra(StarWallet) ){
+                Log.e("here2","");
+               starWalletVisibility.toggleVisibility(AppConstant.userResponse.isStarWallet());
+            }else if (intent.hasExtra(CanaddWallet)){
+                addWalletVisibility.toggleVisibility(AppConstant.userResponse.isCanCredit());
+
             }
         }
     };

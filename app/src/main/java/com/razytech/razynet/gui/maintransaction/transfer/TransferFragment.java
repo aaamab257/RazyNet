@@ -9,6 +9,8 @@ import android.text.InputFilter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 
 import com.razytech.razynet.Adapter.ChildAdpater;
 import com.razytech.razynet.R;
@@ -67,7 +69,7 @@ public class TransferFragment extends BaseFragment  implements  TransferView
         SetStepsHandlingView(TRANSFERWALLET_page);
         passwordModelView =  new PasswordModelView(getActivity() , getActivity() ,this,binding.coortransfer);
         binding.transferwallet.btnNext.setOnClickListener((View) ->{
-            hideKeyboard();
+            hideKey();
             if (childRespon != null)
                 phonenumber = childRespon.getMobileNo();
 //          else
@@ -75,29 +77,29 @@ public class TransferFragment extends BaseFragment  implements  TransferView
          modelView.setbtnNextWallet(binding.transferwallet.coorwallet ,  getActivity() ,phonenumber);
         });
         binding.transferwallet.imgSearch.setOnClickListener((View) ->{
-            hideKeyboard();
+            hideKey();
             modelView.GetChildsData(binding.transferwallet.coorwallet ,  getActivity() ,binding.transferwallet.createAccPhoneET.getText().toString());
         });
         binding.transferpoints.btnNext.setOnClickListener((View) ->{
-            hideKeyboard();
+            hideKey();
           modelView.setbtnPoints(binding.transferwallet.coorwallet ,  getActivity() ,binding.transferpoints.createAccPointsET.getText().toString(),true);
         });
         binding.transferpoints.btnBack.setOnClickListener((View) ->{
-            hideKeyboard();
+            hideKey();
           modelView.setbtnPoints(binding.transferwallet.coorwallet ,  getActivity() ,binding.transferpoints.createAccPointsET.getText().toString(),false);
         });
 
         binding.tranferconfirm.btnConfirm.setOnClickListener((View) ->{
-            hideKeyboard();
+            hideKey();
             passwordModelView.ShowAlertDialoug();
         });
         binding.tranferconfirm.btnBack.setOnClickListener((View) ->{
-            hideKeyboard();
+            hideKey();
             modelView.setbtnConfirm(binding.transferwallet.coorwallet ,  getActivity(),false);
         });
 
         binding.transferfinalconfirm.btnHome.setOnClickListener((View) ->{
-            hideKeyboard();
+            hideKey();
             modelView.setbtnHome(binding.transferwallet.coorwallet ,  getActivity());
         });
     }
@@ -179,6 +181,12 @@ public class TransferFragment extends BaseFragment  implements  TransferView
         adpater =  new ChildAdpater(getActivity(),childRespo,this ,  false);
         binding.transferwallet.rectransfer.setAdapter(adpater);
 
+    }
+    
+    void hideKey(){
+        //getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+        final InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(getView().getWindowToken(), 0);
     }
 
     @Override

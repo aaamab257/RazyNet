@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 
 import com.razytech.razynet.R;
 import com.razytech.razynet.Utils.StaticMethods;
@@ -38,6 +39,8 @@ public class BaseFragment extends Fragment implements BaseView {
 
     public  void hideKeyboard(){
         getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+//        final InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+//        imm.hideSoftInputFromWindow(getView().getWindowToken(), 0);
     }
 
     @Override

@@ -46,10 +46,10 @@
             android:name=".gui.verificationcode.VerifyCodeActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".CustomViews.crop.CropImageActivity"
+            android:name=".customviews.crop.CropImageActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".CustomViews.crop.ImagePickerActivity"
+            android:name=".customviews.crop.ImagePickerActivity"
             android:screenOrientation="portrait" />
 
         <service android:name=".gui.push.FirebaseMessageingstraw">

@@ -6,12 +6,11 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Environment;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
 import com.bumptech.glide.Glide;
-import com.razytech.razynet.CustomViews.crop.ImagePickerActivity;
+import com.razytech.razynet.customviews.crop.ImagePickerActivity;
 import com.razytech.razynet.R;
 import com.razytech.razynet.Utils.AppConstant;
 import com.razytech.razynet.Utils.IntentUtiles;
@@ -24,9 +23,6 @@ import com.razytech.razynet.data.prefs.PrefUtils;
 import com.razytech.razynet.databinding.ActivityRemainingBinding;
 import com.razytech.razynet.gui.loginpage.LoginActivity;
 import com.razytech.razynet.gui.mainpage.MainpageActivity;
-import com.razytech.razynet.gui.register.RegisterActivity;
-import com.razytech.razynet.gui.splash.SplashActivity;
-import com.razytech.razynet.gui.verificationcode.VerifyCodeActivity;
 
 import java.io.File;
 

@@ -13,7 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.bumptech.glide.Glide;
-import com.razytech.razynet.CustomViews.crop.ImagePickerActivity;
+import com.razytech.razynet.customviews.crop.ImagePickerActivity;
 import com.razytech.razynet.R;
 import com.razytech.razynet.Utils.AppConstant;
 import com.razytech.razynet.Utils.StaticMethods;
@@ -29,7 +29,6 @@ import com.razytech.razynet.data.beans.UserResponse;
 import com.razytech.razynet.data.prefs.PrefUtils;
 import com.razytech.razynet.databinding.ActivityUpdateProfileFragmentBinding;
 import com.razytech.razynet.gui.mainpage.MainpageActivity;
-import com.razytech.razynet.gui.register.RegisterActivity;
 
 import java.io.File;
 import java.util.ArrayList;

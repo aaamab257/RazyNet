@@ -80,19 +80,19 @@ import okhttp3.RequestBody;
 
 
 
-    void  RedeemPoint(CoordinatorLayout coordinatorLayout, Context context, String id ,double prroductvalue  ){
+    void  RedeemPoint(CoordinatorLayout coordinatorLayout, Context context, String id ,double prroductvalue ,String PhoneNumber  ){
         boolean internetAvailable = StaticMethods.isConnectingToInternet(context);
         if (!internetAvailable) {
             view.showNoNetworkConnectionBase(coordinatorLayout,context);
             return;
         }
-        else if (prroductvalue > AppConstant.userResponse.getBalance()){
-            view.showErrorMessageBase(context, context.getString(R.string.donothaveenoughpoints));
-            return;
-        }
+//        else if (prroductvalue > AppConstant.userResponse.getBalance()){
+//            view.showErrorMessageBase(context, context.getString(R.string.donothaveenoughpoints));
+//            return;
+//        }
         RequestBody requestBody = null;
         try {
-            requestBody = MainApiBody.RedeemPointBoby(id);
+            requestBody = MainApiBody.RedeemPointBoby(id ,  PhoneNumber);
         } catch (JSONException e) {
             e.printStackTrace();
         }

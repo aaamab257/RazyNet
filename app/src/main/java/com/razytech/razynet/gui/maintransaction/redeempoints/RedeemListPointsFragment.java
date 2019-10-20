@@ -15,22 +15,27 @@ import com.razytech.razynet.baseClasses.BaseFragment;
 import com.razytech.razynet.data.beans.RedeemPointsResponse;
 import com.razytech.razynet.data.prefs.PrefUtils;
 import com.razytech.razynet.databinding.ActivityRedeemListPointsBinding;
+import com.razytech.razynet.gui.addmobile.AddMobileModelView;
+import com.razytech.razynet.gui.addmobile.AddMobileView;
 import com.razytech.razynet.gui.mainpage.MainpageActivity;
 import com.razytech.razynet.gui.passwordconfirm.PasswordModelView;
 import com.razytech.razynet.gui.passwordconfirm.PasswordView;
 
 import java.util.List;
 
-public class RedeemListPointsFragment extends BaseFragment implements RedeemListPointsView ,  RedeemPointsAdapter.RedeemListener , PasswordView {
+public class RedeemListPointsFragment extends BaseFragment implements
+        RedeemListPointsView ,  RedeemPointsAdapter.RedeemListener ,
+        PasswordView , AddMobileView {
 
     View view ;
     ActivityRedeemListPointsBinding binding ;
     RedeemListPointsModelView modelView   ;
     RedeemPointsAdapter adapter ;
-   String redeem_id =  ""  , redeem_name =  "" ;
+    String redeem_id =  ""  , redeem_name =  "" ;
     PasswordModelView passwordModelView ;
     RedeemPointsResponse redeemPointsResponse =  null ;
-
+    String phoneNumber =  null ;
+    AddMobileModelView addMobileModelView ;
 
 
     @Override
@@ -51,6 +56,7 @@ public class RedeemListPointsFragment extends BaseFragment implements RedeemList
         binding.setRedeemname(redeem_name);
         ((MainpageActivity)getActivity()).setViewHandling(""  ,""  , true , false );
         passwordModelView =  new PasswordModelView(getActivity() , getActivity() ,this,binding.coorredeempoints);
+        addMobileModelView =  new AddMobileModelView(getActivity() , getActivity() ,this,binding.coorredeempoints);
         binding.swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -100,6 +106,7 @@ public class RedeemListPointsFragment extends BaseFragment implements RedeemList
     @Override
     public void After_redeemProduct(double updatePoints) {
         AppConstant.refreshhome =  true ;
+        phoneNumber =  null ;
         ((MainpageActivity)getActivity()).UpdatePointsHandling(updatePoints+"");
         AppConstant.userResponse.setBalance(updatePoints);
         AppConstant.userResponse.setToken(AppConstant.userResponse.getToken());
@@ -109,12 +116,21 @@ public class RedeemListPointsFragment extends BaseFragment implements RedeemList
     @Override
     public void onredeemClicked(RedeemPointsResponse post) {
         redeemPointsResponse  =  post ;
+        if (phoneNumber != null)
         passwordModelView.ShowAlertDialoug();
+        else
+         addMobileModelView.ShowAlertDialoug();
     }
 
     @Override
     public void VaildPassword() {
       if(redeemPointsResponse != null)
-          modelView.RedeemPoint(binding.coorredeempoints , getActivity()  ,redeemPointsResponse.getId()+"",  redeemPointsResponse.getValue() );
+          modelView.RedeemPoint(binding.coorredeempoints , getActivity()  ,redeemPointsResponse.getId()+"",  redeemPointsResponse.getValue(),phoneNumber );
+    }
+
+    @Override
+    public void VaildMobile(String PhoneNumber) {
+        phoneNumber =  PhoneNumber ;
+        passwordModelView.ShowAlertDialoug();
     }
 }

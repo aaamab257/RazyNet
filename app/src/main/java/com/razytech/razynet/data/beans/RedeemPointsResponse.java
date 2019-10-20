@@ -15,6 +15,16 @@ public class RedeemPointsResponse {
 //              "servingId": 2,
 //              "imageUrl": ""
 
+
+
+   // {"id":20,"name":"TopUp 10","description":"TopUp 10","isActive":true,
+    // "published":true,"schemaId":1,"categoryId":2,
+    // "price":10.00,"value":0.15,"cost":9.85,
+    // "imageUrl":"http://81.29.101.110:5201/Images/Products/TopUp 10-20.png"
+    // ,"categoryName":null,"schemaName":null,"createdBy":"Anonymous"}
+
+
+
     @SerializedName("id")
     private int id;
     @SerializedName("name")
@@ -29,6 +39,12 @@ public class RedeemPointsResponse {
     private int servingId;
     @SerializedName("imageUrl")
     private String imageUrl;
+
+
+    @SerializedName("price")
+    private double price;
+    @SerializedName("cost")
+    private double cost;
 
 
     public int getId() {
@@ -85,5 +101,21 @@ public class RedeemPointsResponse {
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public double getCost() {
+        return cost;
+    }
+
+    public void setCost(double cost) {
+        this.cost = cost;
     }
 }

@@ -8,6 +8,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import com.razytech.razynet.R;
@@ -40,6 +41,7 @@ import javax.inject.Inject;
 import static com.razytech.razynet.Utils.AppConstant.ADDWALLET_PAGE;
 import static com.razytech.razynet.Utils.AppConstant.CHANGEPASSWORD_page;
 import static com.razytech.razynet.Utils.AppConstant.CHILDDETAILS_page;
+import static com.razytech.razynet.Utils.AppConstant.CanaddWallet;
 import static com.razytech.razynet.Utils.AppConstant.HOME_page;
 import static com.razytech.razynet.Utils.AppConstant.MAINTRANSACTION_page;
 import static com.razytech.razynet.Utils.AppConstant.MOVE_page;
@@ -48,6 +50,7 @@ import static com.razytech.razynet.Utils.AppConstant.POINTS_page;
 import static com.razytech.razynet.Utils.AppConstant.PROFILE_page;
 import static com.razytech.razynet.Utils.AppConstant.REDEEMPOINTS_page;
 import static com.razytech.razynet.Utils.AppConstant.REDEEM_page;
+import static com.razytech.razynet.Utils.AppConstant.StarWallet;
 import static com.razytech.razynet.Utils.AppConstant.TEST_page;
 import static com.razytech.razynet.Utils.AppConstant.TRANSFERCONFIRMFINAL_page;
 import static com.razytech.razynet.Utils.AppConstant.TRANSFERCONFIRM_page;
@@ -298,18 +301,19 @@ public class MainpageActivity extends BaseActivity<ActivityMainpageBinding , Mai
 
     }
     public  void setViewHandling(String PointsString ,String wallet  ,boolean showback){
-        binding.toolbarpublic.setPointsnumber(AppConstant.userResponse.getBalance()+"");
-        binding.toolbarpublic.setWalletsnumber(AppConstant.userResponse.getChildsCount()+"");
-        binding.toolbarpublic.setShowback(showback);
-        binding.setShowbottombar(true);
-        StaticMethods.LoadImage(MainpageActivity.this, binding.toolbarpublic.imgProfile,AppConstant.userResponse.getIdImageUrl(),null);
+        if (AppConstant.userResponse != null) {
+            binding.toolbarpublic.setPointsnumber(AppConstant.userResponse.getBalance() + "");
+            binding.toolbarpublic.setWalletsnumber(AppConstant.userResponse.getChildsCount() + "");
+            binding.toolbarpublic.setShowback(showback);
+            binding.setShowbottombar(true);
+            StaticMethods.LoadImage(MainpageActivity.this, binding.toolbarpublic.imgProfile, AppConstant.userResponse.getIdImageUrl(), null);
+        }
     }
     public  void setViewHandling(String PointsString ,String wallet ) {
         try {
-
-        }catch (Exception e) {}
         binding.toolbarpublic.setPointsnumber(PointsString);
         binding.toolbarpublic.setWalletsnumber(wallet);
+        }catch (Exception e) {}
     }
     public  void UpdatePointsHandling(String PointsString   ){
         try {
@@ -412,10 +416,18 @@ public class MainpageActivity extends BaseActivity<ActivityMainpageBinding , Mai
     BroadcastReceiver netSwitchReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-            UpdatePointsHandling(intent.getExtras().getString(UPDATE_POINTS));
-            if (intent.hasExtra(UPDATE_CHILD)){
+            if (intent.hasExtra(UPDATE_POINTS)) {
+                UpdatePointsHandling(intent.getExtras().getString(UPDATE_POINTS));
+            }else if (intent.hasExtra(UPDATE_CHILD)){
                 setViewHandling(intent.getExtras().getString(UPDATE_POINTS),intent.getExtras().getString(UPDATE_CHILD));
+            }else if (intent.hasExtra(StarWallet) ){
+              //  displayView(HOME_page);
             }
+            else if ( intent.hasExtra(CanaddWallet)){
+              //  displayView(HOME_page);
+            }
+
+
         }
     };
 

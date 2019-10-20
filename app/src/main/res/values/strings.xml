@@ -1,100 +1,104 @@
 <resources>
-    <string name="app_name">RazyNet</string>
+<string name="app_name">RazyPocket</string>
 
-    <string name="noconnection">No Network Connection</string>
-    <string name="loading">Loading ......</string>
+<string name="noconnection">No Network Connection</string>
+<string name="loading">Loading ......</string>
 
 
-    <string name="create_acc_user_hint">User Name</string>
-    <string name="create_acc_phone_hint">Phone Number</string>
-    <string name="create_acc_searchphone_hint">Search By Phone Number</string>
-    <string name="create_acc_password_hint">Password</string>
-    <string name="oldpassword_hint">Old Password</string>
-    <string name="newpassword_hint">New Password</string>
-    <string name="create_acc_confpassword_hint">Confirm Password</string>
-    <string name="create_acc_nid_hint">NID Number</string>
-    <string name="create_acc_email_hint">Email</string>
-    <string name="points_hint">Enter Number Points</string>
-    <string name="gender">Gender :</string>
-    <string name="male_btn">Male</string>
-    <string name="female_btn">Female</string>
-    <string name="enter_invitation_code">Enter Invitation Code</string>
-    <string name="upload_nid_image">Upload  NID Image</string>
-    <string name="upload_user_image">Upload  User Image</string>
-    <string name="enter_btn">Enter</string>
-    <string name="upload_btn">Upload</string>
-    <string name="move_btn">MOVE</string>
-    <string name="add_btn">ADD</string>
-    <string name="skip_btn">Skip</string>
-    <string name="city">City</string>
-    <string name="area">Area</string>
-    <string name="addwallet">Add Wallet</string>
-    <string name="loginpage">Login Page</string>
-    <string name="forgetpage">Forget Password Page</string>
-    <string name="yourwallet">Your Wallet :-</string>
-    <string name="topwallet">Top Wallet in System :-</string>
-    <string name="walletlevel"><font size="20">Wallet </font> <font size="11">(Level)</font></string>
-    <string name="walletlevelvalue"><font size="20">%1$s </font> <font size="11">( %2$s ) </font>   </string>
-    <string name="takephoto">Take Photo</string>
-    <string name="chooselib">Choose from library</string>
-    <string name="cancel">Cancel</string>
-    <string name="selectimage">Select File</string>
-    <string name="titledialoug">Add Photo</string>
-    <string name="invitation_code_txt">Invitation Code</string>
-    <string name="cropimage">Crop Image</string>
-    <string name="invitation_expired_txt">Your invitation code has expired. Please contact with your friend to invite you again.</string>
-    <string name="savechanges">Save Changes</string>
-    <string name="updatechanges">Update Profile</string>
-    <string name="save">Save</string>
-    <string name="redeem">Redeem</string>
-    <string name="transfer">Transfer</string>
-    <string name="points">Points</string>
-    <string name="details">Details</string>
-    <string name="avaliable">Avaliable</string>
-    <string name="pointhistory">Point History</string>
-    <string name="choosewallet">Choose Wallet</string>
-    <string name="choosepoint">Choose Point</string>
-    <string name="confirm">Confirm</string>
-    <string name="next">NEXT</string>
-    <string name="back">BACK</string>
-    <string name="home">HOME</string>
-    <string name="avaliablenow">Avaliable now :</string>
-    <string name="confirmtxt">When you press the Confirm button, points will be deducted from your account </string>
-    <string name="confirmtxtsuccess">Points sent successfully </string>
-    <string name="in">IN</string>
-    <string name="all">ALL</string>
-    <string name="out">OUT</string>
-    <string name="day">DAY</string>
-    <string name="hour">HOUR</string>
-    <string name="min">MIN</string>
+<string name="create_acc_user_hint">User Name</string>
+<string name="create_acc_phone_hint">Phone Number</string>
+    <string name="create_acc_phone_confirm">Confirm  Phone Number</string>
+<string name="create_acc_searchphone_hint">Search By Phone Number</string>
+<string name="create_acc_password_hint">Password</string>
+<string name="oldpassword_hint">Old Password</string>
+<string name="newpassword_hint">New Password</string>
+<string name="create_acc_confpassword_hint">Confirm Password</string>
+<string name="create_acc_nid_hint">National ID Number</string>
+<string name="create_acc_email_hint">Email</string>
+<string name="points_hint">Enter Number Points</string>
+<string name="gender">Gender :</string>
+<string name="male_btn">Male</string>
+<string name="female_btn">Female</string>
+<string name="enter_invitation_code">Enter Invitation Code</string>
+<string name="upload_nid_image">Upload  National ID Image</string>
+<string name="upload_user_image">Upload  User Image</string>
+<string name="enter_btn">Enter</string>
+<string name="havevercode">I Have Invite Code</string>
+<string name="upload_btn">Upload</string>
+<string name="move_btn">MOVE</string>
+<string name="add_btn">ADD</string>
+<string name="skip_btn">Skip</string>
+<string name="city">City</string>
+<string name="area">Area</string>
+<string name="addwallet">Add Pocket</string>
+<string name="loginpage">Login Page</string>
+<string name="forgetpage">Forget Password Page</string>
+<string name="yourwallet">Your Top Pockets </string>
+<string name="topwallet">Top Pockets in System</string>
+<string name="walletlevel"><font size="20">Pocket </font> <font size="11">(Level)</font></string>
+<string name="walletlevelvalue"><font size="20">%1$s </font> <font size="11">( %2$s ) </font>   </string>
+<string name="takephoto">Take Photo</string>
+<string name="chooselib">Choose from library</string>
+<string name="cancel">Cancel</string>
+<string name="iwin">I Win</string>
+<string name="selectimage">Select File</string>
+<string name="titledialoug">Add Photo</string>
+<string name="invitation_code_txt">Invitation Code</string>
+<string name="cropimage">Crop Image</string>
+<string name="invitation_expired_txt">Your invitation code has expired. Please contact with your friend to invite you again.</string>
+<string name="savechanges">Save Changes</string>
+<string name="updatechanges">Update Profile</string>
+<string name="save">Save</string>
+<string name="redeem">Redeem</string>
+<string name="transfer">Transfer</string>
+<string name="points">Points</string>
+<string name="razprofit">Raz Profit</string>
+<string name="details">Details</string>
+<string name="avaliable">Avaliable</string>
+<string name="pointhistory">Point History</string>
+<string name="choosewallet">Choose Pocket</string>
+<string name="choosepoint">Choose Point</string>
+<string name="confirm">Confirm</string>
+<string name="next">NEXT</string>
+<string name="back">BACK</string>
+<string name="home">HOME</string>
+<string name="avaliablenow">Avaliable now :</string>
+<string name="confirmtxt">When you press the Confirm button, points will be deducted from your account </string>
+<string name="confirmtxtsuccess">Points sent successfully </string>
+<string name="in">IN</string>
+<string name="all">ALL</string>
+<string name="out">OUT</string>
+<string name="day">DAY</string>
+<string name="hour">HOUR</string>
+<string name="min">MIN</string>
 
-    <string name="submit">Submit</string>
-    <string name="fillalldata">Please Fill All Information :  </string>
-    <string name="remain">Remaining</string>
-    <string name="toexpired">To Expired</string>
-    <string name="sorry">Sorry</string>
-    <string name="yourinvitation">Your inventation code has expired  please contact with your friend to invite  you again</string>
-    <string name="yes">Yes</string>
-    <string name="no">No</string>
-    <string name="ok">OK</string>
-    <string name="logout">LOGOUT</string>
-    <string name="areyousureexit">Are you sure logout ?</string>
-    <string name="selectcity">Please select your City</string>
-    <string name="selectarea">Please select your Area</string>
-    <string name="cityfirst">you should choose City First</string>
-    <string name="verifycodesuccess">Verification Code </string>
-    <string name="verify">Verify </string>
-    <string name="Walletsuccess">Wallet Create Successfully</string>
-    <string name="movetext">Move in Other Wallet</string>
-    <string name="tryagain">Try Again</string>
-    <string name="forgot_your_txt">Forgot Password</string>
-    <string name="terms"><u>Terms and Conditions </u></string>
-    <string name="txtaccept">Accept</string>
+<string name="submit">Submit</string>
+<string name="fillalldata">Please Fill All Information :  </string>
+<string name="remain">Remaining</string>
+<string name="toexpired">To Expired</string>
+<string name="sorry">Sorry</string>
+<string name="yourinvitation">Your inventation code has expired  please contact with your friend to invite  you again</string>
+<string name="yes">Yes</string>
+<string name="no">No</string>
+<string name="ok">OK</string>
+<string name="logout">LOGOUT</string>
+<string name="areyousureexit">Are you sure logout ?</string>
+<string name="selectcity">Please select your City</string>
+<string name="selectarea">Please select your Area</string>
+<string name="cityfirst">you should choose City First</string>
+<string name="verifycodesuccess">Verification Code </string>
+<string name="verify">Verify </string>
+<string name="Walletsuccess">Wallet Create Successfully</string>
+<string name="movetext">Move in Other Wallet</string>
+<string name="tryagain">Try Again</string>
+<string name="forgot_your_txt">Forgot Password</string>
+<string name="terms"><u>Terms and Conditions </u></string>
+<string name="txtaccept">Accept</string>
 
-    <string name="changepassword">Change Password</string>
+<string name="changepassword">Change Password</string>
 
-    <string name="termstitle">شروط واحكام</string>
-    <string name="termsbody1">
+<string name="termstitle">شروط واحكام</string>
+<string name="termsbody1">
           1.  هذه الحسابات الالكترونية و البرمجيات و التطبيقات والقواعد البيانيه المحتفظ بها االكترونياً تملكها وتشغلها شركة الرازي للخدمات التكنولوجية، وهي شركة مصرية متخصصة في مجال تقنيات المعلومات وخدماتها. ومقرها بمدينة القاهرة، جمهورية مصر العربية.\n
     	2.  ان دخولك على هذه الحسابات و الخدمات و البرمجيات و التطبيقات والقواعد البيانية و الخدمات المقدمة يعني قبولك بجميع الشروط والأحكام الواردة هنا، وأي شروط أخرى يتم نشرها وتحديثها على صفحات القواعد أو موقع الشركة.\n
 
@@ -103,8 +107,8 @@
           5.  يرجى مراجعة هذه الصفحة بشكل دوري لأي تعديلات. علما بأن استمرار استخدامك لهذا الموقع أو البرامج و الحسابات و التطبيقات بعد نشر أي تغييرات سوف يعني أنك قد قبلت هذه التغييرات.\n
 
     </string>
-    <string name="termstitle2">شروط خاصة للمستخدمين</string>
-    <string name="termsbody2">
+<string name="termstitle2">شروط خاصة للمستخدمين</string>
+<string name="termsbody2">
 
           1- يتم دفع المبالغ المطلوبه لفتح الحساب نظير تفعيل الخدمة و هي قيمه غير مسترده يمكن الغائها او تغير سعر الخدمه في اي وقت و لا يحق للمستخدم المطالبه بفرق سعر حين تغيرها.\n
           2- يمكن دفع قيمه الحصول علي نقاط وفق السعر المعلن حينها و يحق للشركه تغيره في ايه و قت .\n
@@ -142,47 +146,49 @@
     </string>
 
 
-    <!-- empty filds -->
-    <string name="emptyuserName">Your User Name is Empty</string>
-    <string name="emptyPassword">Your Password is Empty</string>
-    <string name="emptyoldPassword">Your Old Password is Empty</string>
-    <string name="emptynewPassword">Your New Password is Empty</string>
-    <string name="emptynid">Your NID Number is Empty</string>
-    <string name="emptyinvcode">Your Invitation Code is Empty</string>
-    <string name="emptyConfPassword">Your Confirm Password is Empty</string>
-    <string name="emptynumberphone">Your Phone Number is Empty</string>
-    <string name="emptypoints">Your Points is Empty</string>
-    <string name="emptyCity">You should choose  City</string>
-    <string name="emptyArea">You should choose  Area</string>
-    <string name="emptychooisewallet">You should chooise Target Wallet</string>
-    <string name="emptyImage">You should  upload Image</string>
+<!-- empty filds -->
+<string name="emptyuserName">Your User Name is Empty</string>
+<string name="emptyPassword">Your Password is Empty</string>
+<string name="emptyoldPassword">Your Old Password is Empty</string>
+<string name="emptynewPassword">Your New Password is Empty</string>
+<string name="emptynid">Your National ID Number is Empty</string>
+<string name="emptyinvcode">Your Invitation Code is Empty</string>
+<string name="emptyConfPassword">Your Confirm Password is Empty</string>
+<string name="emptynumberphone">Your Phone Number is Empty</string>
+<string name="emptyconfnumberphone">Your Confirm Phone Number is Empty</string>
+<string name="emptypoints">Your Points is Empty</string>
+<string name="emptyCity">You should choose  City</string>
+<string name="emptyArea">You should choose  Area</string>
+<string name="emptychooisewallet">You should chooise Target Pocket</string>
+<string name="emptyImage">You should  upload Image</string>
 
-    <!--errors-->
-    <string name="tryagaing">Error occured, Please try again!</string>
-    <string name="invaildPasswordLenght">Password Length Should between 6 to 50</string>
-    <string name="Passworddonotmatch">Password does not match the confirm password.</string>
-    <string name="invaildnumberphone">Invalid Phone Number </string>
-    <string name="invaildnumbernid">Invalid NID Number </string>
-    <string name="donothaveenoughpoints">You Donot have enough points</string>
-    <string name="donothavechilds">No Child Found</string>
-    <string name="donothavenotifications">No Notifications Found</string>
-    <string name="donothavepointshistory">You Don\'t have History Transations yet </string>
-    <string name="shouldaccept">You Should Accept Terms and Conditions</string>
+<!--errors-->
+<string name="tryagaing">Error occured, Please try again!</string>
+<string name="invaildPasswordLenght">Password Length Should between 6 to 50</string>
+<string name="Passworddonotmatch">Password does not match the confirm password.</string>
+    <string name="Phonedonotmatch">Phone Number  does not match the confirm Phone Number</string>
+<string name="invaildnumberphone">Invalid Phone Number </string>
+<string name="invaildnumbernid">Invalid National ID Number </string>
+<string name="donothaveenoughpoints">You Donot have enough points</string>
+<string name="donothavechilds">No Child Found</string>
+<string name="donothavenotifications">No Notifications Found</string>
+<string name="donothavepointshistory">You Don\'t have History Transations yet </string>
+<string name="shouldaccept">You Should Accept Terms and Conditions</string>
 
-    <!--Crop -->
-    <string name="crop_image_activity_title"></string>
-    <string name="crop_image_menu_rotate_left">Rotate counter clockwise</string>
-    <string name="crop_image_menu_rotate_right">Rotate</string>
-    <string name="crop_image_menu_crop">Crop</string>
-    <string name="crop_image_menu_flip">Flip</string>
-    <string name="crop_image_menu_flip_horizontally">Flip horizontally</string>
-    <string name="crop_image_menu_flip_vertically">Flip vertically</string>
-    <string name="pick_image_intent_chooser_title">Select source</string>
-    <string name="crop_image_activity_no_permissions">Cancelling, required permissions are not granted</string>
+<!--Crop -->
+<string name="crop_image_activity_title"></string>
+<string name="crop_image_menu_rotate_left">Rotate counter clockwise</string>
+<string name="crop_image_menu_rotate_right">Rotate</string>
+<string name="crop_image_menu_crop">Crop</string>
+<string name="crop_image_menu_flip">Flip</string>
+<string name="crop_image_menu_flip_horizontally">Flip horizontally</string>
+<string name="crop_image_menu_flip_vertically">Flip vertically</string>
+<string name="pick_image_intent_chooser_title">Select source</string>
+<string name="crop_image_activity_no_permissions">Cancelling, required permissions are not granted</string>
 
 
-    <!-- Test -->
-    <string name="create_acc_date_hint">DD / MM / YYYY</string>
-    <string name="welcome_name_txt">Mohamed Magdy</string>
+<!-- Test -->
+<string name="create_acc_date_hint">DD / MM / YYYY</string>
+<string name="welcome_name_txt">Mohamed Magdy</string>
 
 </resources>

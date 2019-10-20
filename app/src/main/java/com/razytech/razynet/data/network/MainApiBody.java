@@ -185,9 +185,10 @@ public static RequestBody MoveBoby(String WalletId  , String newRoot) throws JSO
         return requestBody(params);
     }
 
-    public static RequestBody RedeemPointBoby(String id ) throws JSONException {
+    public static RequestBody RedeemPointBoby(String id ,  String MobileNo ) throws JSONException {
         JSONObject params=new JSONObject();
         params.put("id", id);
+        params.put("MobileNo", MobileNo);
         return requestBody(params);
     }
 

@@ -22,7 +22,7 @@
         android:layout_height="wrap_content"
         card_view:cardUseCompatPadding="true"
         card_view:cardCornerRadius="8dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="1dp"
         card_view:cardBackgroundColor="@color/Black"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
@@ -36,8 +36,8 @@
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/img_child"
-                android:layout_width="45dp"
-                android:layout_height="45dp"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
                 android:layout_centerInParent="true"
                 android:src="@drawable/avatar_profile"
                 app:civ_border_color="@color/colorAccent"
@@ -70,7 +70,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:layout_marginTop="5dp"
+
                 android:orientation="horizontal"
                 android:layout_alignParentRight="true"
                 android:layout_marginRight="10dp"
@@ -84,7 +84,7 @@
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="10dp"
+
                     android:layout_marginRight="10dp"
                     android:background="@mipmap/wallet_small"
                     android:padding="5dp" />
@@ -96,11 +96,11 @@
                     android:layout_centerVertical="true"
                     android:layout_marginRight="10dp"
                     android:layout_toLeftOf="@+id/imgpoints"
-                    android:fontFamily="@font/ralewayregular"
+                    android:fontFamily="@font/ralewaybold"
                     android:gravity="center"
                     android:text="@{handlers.childCounts+``}"
                     android:textColor="@color/green"
-                    android:textSize="12sp" />
+                    android:textSize="14sp" />
 
 
             </LinearLayout>
